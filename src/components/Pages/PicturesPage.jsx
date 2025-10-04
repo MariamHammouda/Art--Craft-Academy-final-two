@@ -79,6 +79,7 @@ const PicturesPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {/* Category 1: Origami & Paper Crafts */}
             <PinterestRealWidget 
+              key="origami-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/origami-paper-crafts/"
               title="Origami & Paper Crafts"
               width={350}
@@ -88,6 +89,7 @@ const PicturesPage = () => {
             
             {/* Category 2: Drawing */}
             <PinterestRealWidget 
+              key="drawing-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/drawing/"
               title="Drawing"
               width={350}
@@ -97,6 +99,7 @@ const PicturesPage = () => {
             
             {/* Category 3: Recycling Art */}
             <PinterestRealWidget 
+              key="recycling-art-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/recycling-art/"
               title="Recycling Art"
               width={350}
@@ -106,6 +109,7 @@ const PicturesPage = () => {
             
             {/* Category 4: Beads & Accessories */}
             <PinterestRealWidget 
+              key="beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/beads-accessories/"
               title="Beads & Accessories"
               width={350}
@@ -115,6 +119,7 @@ const PicturesPage = () => {
             
             {/* Category 5: Clay Creations */}
             <PinterestRealWidget 
+              key="clay-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/clay-creations/"
               title="Clay Creations"
               width={350}
@@ -124,6 +129,7 @@ const PicturesPage = () => {
             
             {/* Category 6: Preschool Crafts */}
             <PinterestRealWidget 
+              key="preschool-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/preschool-crafts/"
               title="Preschool Crafts"
               width={350}
@@ -133,6 +139,7 @@ const PicturesPage = () => {
             
             {/* Category 7: Perler Beads */}
             <PinterestRealWidget 
+              key="perler-beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/perler-beads/"
               title="Perler Beads"
               width={350}
@@ -142,6 +149,7 @@ const PicturesPage = () => {
             
             {/* Category 8: 3D Pen Fun */}
             <PinterestRealWidget 
+              key="3d-pen-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/3d-pen-fun/"
               title="3D Pen Fun"
               width={350}
@@ -151,6 +159,7 @@ const PicturesPage = () => {
             
             {/* Category 9: Miniature Wonders */}
             <PinterestRealWidget 
+              key="miniature-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/"
               title="Miniature Wonders"
               width={350}
@@ -160,6 +169,7 @@ const PicturesPage = () => {
             
             {/* Category 10: Science & DIY Experiments */}
             <PinterestRealWidget 
+              key="science-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/"
               title="Science & DIY Experiments"
               width={350}
@@ -169,6 +179,7 @@ const PicturesPage = () => {
             
             {/* Category 11: Tips & Tricks */}
             <PinterestRealWidget 
+              key="tips-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/tips-tricks/"
               title="Tips & Tricks"
               width={350}
