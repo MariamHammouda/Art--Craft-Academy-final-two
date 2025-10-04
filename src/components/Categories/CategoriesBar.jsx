@@ -9,18 +9,20 @@ const CategoriesBar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   // Show different number of categories based on screen size
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(4);
   
   useEffect(() => {
     const updateVisibleCount = () => {
       const width = window.innerWidth;
       let newCount;
-      if (width >= 1280) {
-        newCount = 4; // xl screens
+      if (width >= 1536) {
+        newCount = 6; // 2xl screens - show more categories
+      } else if (width >= 1280) {
+        newCount = 5; // xl screens - show more categories
       } else if (width >= 1024) {
-        newCount = 3; // lg screens
+        newCount = 4; // lg screens - increased from 3
       } else if (width >= 768) {
-        newCount = 2; // md screens
+        newCount = 3; // md screens - increased from 2
       } else if (width >= 640) {
         newCount = 2; // sm screens
       } else {
@@ -66,7 +68,7 @@ const CategoriesBar = () => {
   
   return (
     <section id="categories" className="py-0 px-0">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto px-4">
         <div className="relative">
           {/* Previous Button */}
           {showNavigation && currentIndex > 0 && (
