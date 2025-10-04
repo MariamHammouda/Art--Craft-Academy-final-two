@@ -17,7 +17,7 @@ const CoursesPage = () => {
               onClick={() => navigate("/")}
               className="text-[#59ACBE] hover:text-[#FCD11A] font-medium"
             >
-              ← Back to Home
+              ← {t('common.backToHome')}
             </button>
           </div>
           

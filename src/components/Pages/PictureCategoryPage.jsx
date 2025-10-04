@@ -77,7 +77,7 @@ const PictureCategoryPage = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Category Not Found</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('common.categoryNotFound')}</h1>
           <button
             onClick={() => navigate("/pictures")}
             className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200"
