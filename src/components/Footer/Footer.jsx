@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaEnvelope, FaPhone } from "react-icons/fa6";
-import { Logoimg } from '../Logo/Artlogo.jsx';
+import NavbarLogo from "../../assets/images/hero-images/navbar-logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -58,12 +58,15 @@ const Footer = () => {
 
         {/* Logo */}
         <div className="flex flex-col items-center md:items-end">
-          <div className="mb-4 transform scale-125">
-            <Logoimg />
+          <div className="mb-4">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={NavbarLogo} 
+                alt="Art Craft Academy" 
+                className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
           </div>
-          <p className="text-white/90 text-sm text-center md:text-right">
-            {t('common.welcome')}
-          </p>
         </div>
       </div>
 
