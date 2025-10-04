@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section id="home" className="bg-[#59ACBE] py-16">
+      <section id="home" className="bg-[#59ACBE] py-8 md:py-16">
         <div className="container mx-auto px-2 sm:px-4">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
             {/* Text Content Column */}
@@ -20,7 +20,7 @@ const HeroSection = () => {
                 <img
                   src={Artlogo}
                   alt="Academy of Art and Craft Logo"
-                  className="h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 2xl:h-80 w-auto object-contain drop-shadow-lg"
+                  className="h-24 sm:h-32 md:h-40 lg:h-48 xl:h-56 2xl:h-64 w-auto object-contain drop-shadow-lg"
                 />
               </div>
 

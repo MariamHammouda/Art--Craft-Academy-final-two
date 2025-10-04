@@ -13,7 +13,10 @@ const LatestVideos = () => {
   useEffect(() => {
     try {
       // Use fallback data for now to prevent errors
-      const fallbackVideos = videosData.slice(0, 15);
+      // Show fewer videos on mobile for better performance
+      const isMobile = window.innerWidth < 768;
+      const videoCount = isMobile ? 6 : 15;
+      const fallbackVideos = videosData.slice(0, videoCount);
       setVideos(fallbackVideos);
       setLoading(false);
     } catch (err) {
@@ -111,16 +114,23 @@ const LatestVideos = () => {
                 title={video.title || 'Untitled Video'}
                 categoryTitle={video.categoryTitle}
               />
-            );
           }) : (
             <div className="col-span-full text-center py-8">
               <p className="text-gray-500">No videos available</p>
             </div>
           )}
         </div>
+        
+        {/* Show "View More" button on mobile */}
+        <div className="md:hidden text-center mt-6">
+          <button 
+            onClick={() => window.location.href = '#/videos'}
+            className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200 font-medium"
+          >
+            {t('common.viewMore') || 'View More Videos'}
+          </button>
+        </div>
       </div>
     </section>
   );
 };
-
-export default memo(LatestVideos);
