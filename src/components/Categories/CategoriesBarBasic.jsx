@@ -16,7 +16,7 @@ const CategoriesBarBasic = () => {
       <h2 className="text-2xl font-bold mb-6 text-center">{t('categories.title')}</h2>
 
       {/* Categories Container */}
-      <div className="flex justify-center items-center gap-6 overflow-hidden flex-wrap max-w-6xl mx-auto">
+      <div className="flex justify-center items-center gap-6 overflow-hidden flex-wrap max-w-4xl mx-auto">
         {visibleCategories.map((cat) => (
           <CategoryCard
             key={cat.id}

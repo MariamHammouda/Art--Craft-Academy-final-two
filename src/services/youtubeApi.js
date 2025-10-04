@@ -91,7 +91,7 @@ export const fetchChannelVideos = async (channelId, maxResults = 50) => {
  * @param {number} maxResults - Maximum number of videos to fetch (default: 50)
  * @returns {Promise<Array>} Array of video objects
  */
-export const fetchPlaylistVideos = async (playlistId, maxResults = 50) => {
+export const fetchPlaylistVideos = async (playlistId, maxResults = 25) => {
   try {
     console.log('🔍 Attempting to fetch playlist:', playlistId);
     console.log('🎯 Playlist type:', playlistId === import.meta.env.VITE_ORIGAMI_PLAYLIST_ID ? 'ORIGAMI' : 
@@ -119,22 +119,46 @@ export const fetchPlaylistVideos = async (playlistId, maxResults = 50) => {
       return [];
     }
 
-    // Get videos from the playlist
-    const apiUrl = `${YOUTUBE_API_BASE_URL}/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${maxResults}&key=${YOUTUBE_API_KEY}`;
-    console.log('📡 Making API call to:', apiUrl);
+    // Get videos from the playlist with pagination support
+    let allVideosData = [];
+    let nextPageToken = '';
+    let totalFetched = 0;
+    const batchSize = Math.min(50, maxResults); // YouTube API max is 50 per request
     
-    const videosResponse = await fetch(apiUrl);
+    console.log(`📡 Fetching up to ${maxResults} videos from playlist ${playlistId}`);
     
-    console.log('📊 API Response status:', videosResponse.status);
-    console.log('📊 API Response ok:', videosResponse.ok);
+    do {
+      const apiUrl = `${YOUTUBE_API_BASE_URL}/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${batchSize}&key=${YOUTUBE_API_KEY}${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
+      console.log('📡 Making API call to:', apiUrl);
+      
+      const videosResponse = await fetch(apiUrl);
+      
+      console.log('📊 API Response status:', videosResponse.status);
+      console.log('📊 API Response ok:', videosResponse.ok);
+      
+      if (!videosResponse.ok) {
+        const errorText = await videosResponse.text();
+        console.error('❌ API Error Response:', errorText);
+        throw new Error(`Playlist API error: ${videosResponse.status} - ${errorText}`);
+      }
+      
+      const videosData = await videosResponse.json();
+      
+      if (videosData.items && videosData.items.length > 0) {
+        allVideosData.push(...videosData.items);
+        totalFetched += videosData.items.length;
+        console.log(`📥 Fetched ${videosData.items.length} videos (total: ${totalFetched})`);
+      }
+      
+      nextPageToken = videosData.nextPageToken || '';
+      
+      // Continue if we have more pages and haven't reached maxResults
+    } while (nextPageToken && totalFetched < maxResults);
     
-    if (!videosResponse.ok) {
-      const errorText = await videosResponse.text();
-      console.error('❌ API Error Response:', errorText);
-      throw new Error(`Playlist API error: ${videosResponse.status} - ${errorText}`);
-    }
+    console.log(`✅ Total videos fetched from playlist: ${totalFetched}/${maxResults}`);
     
-    const videosData = await videosResponse.json();
+    // Create a combined videosData object
+    const videosData = { items: allVideosData };
     
     // Get video statistics (views, likes, etc.)
     const videoIds = videosData.items.map(item => item.snippet.resourceId.videoId).join(',');
@@ -220,15 +244,20 @@ export const fetchCategorizedPlaylistVideos = async (playlists, maxResults = 10)
     console.log('🎯 fetchCategorizedPlaylistVideos: Starting with playlists:', playlists);
     const allVideos = [];
     
-    // Calculate videos per playlist to distribute evenly
-    const videosPerPlaylist = Math.ceil(maxResults / playlists.length);
-    console.log(`📊 Distributing ${maxResults} videos across ${playlists.length} playlists (${videosPerPlaylist} per playlist)`);
+    // Calculate videos per playlist - fetch more to get better distribution
+    // For playlists with many videos (like Origami with 41), we want to fetch more
+    const videosPerPlaylist = Math.max(15, Math.ceil(maxResults / playlists.length));
+    console.log(`📊 Fetching ${videosPerPlaylist} videos per playlist from ${playlists.length} playlists (total target: ${maxResults})`);
     
     for (const playlist of playlists) {
       console.log(`📡 Fetching from playlist: ${playlist.playlistId} (Category: ${playlist.categoryId})`);
       
       try {
-        const videos = await fetchPlaylistVideos(playlist.playlistId, videosPerPlaylist);
+        // Fetch more videos for Origami category (categoryId: 1) since it has 41 videos
+        const videosToFetch = playlist.categoryId === 1 ? Math.min(41, videosPerPlaylist * 2) : videosPerPlaylist;
+        console.log(`📊 Fetching ${videosToFetch} videos for category ${playlist.categoryId}`);
+        
+        const videos = await fetchPlaylistVideos(playlist.playlistId, videosToFetch);
         console.log(`✅ Got ${videos.length} videos from playlist ${playlist.playlistId}`);
         
         if (videos.length === 0) {

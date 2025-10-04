@@ -77,7 +77,7 @@ const PictureCategoryPage = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Category Not Found</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('common.categoryNotFound')}</h1>
           <button
             onClick={() => navigate("/pictures")}
             className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200"
@@ -192,7 +192,7 @@ const PictureCategoryPage = () => {
         
         {/* Text Content Below Image */}
         <div className={`${currentCategory.backgroundImage ? 'bg-white' : currentCategory.color} shadow-sm`}>
-          <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="max-w-5xl mx-auto px-6 py-8">
             <div className="flex items-center gap-4 mb-4">
               <button
                 onClick={() => navigate("/pictures")}
@@ -215,7 +215,7 @@ const PictureCategoryPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Breadcrumbs */}
         <Breadcrumbs 
           customBreadcrumbs={[
@@ -373,7 +373,7 @@ const PictureCategoryPage = () => {
         {/* Pinterest Real Widget Section */}
         {categoryToPinterestUrl[currentCategory.id] && (
           <div className="mt-12">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
                   📌 Pinterest Board الحقيقي
@@ -397,7 +397,7 @@ const PictureCategoryPage = () => {
         {/* Pinterest Embed Card Section (Fallback) */}
         {categoryToPinterestBoard[currentCategory.id] && (
           <div className="mt-12">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <PinterestEmbedCard
                 category={categoryToPinterestBoard[currentCategory.id]}
                 categoryName={t(`pictures.categories.${currentCategory.key}`)}

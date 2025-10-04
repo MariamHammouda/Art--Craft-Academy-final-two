@@ -1,10 +1,12 @@
 import React, { memo, useEffect, useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import VideoCard from "./VideoCard.jsx";
 import { videosData } from "../../mockData/videosData.js";
 
 const LatestVideos = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -50,7 +52,7 @@ const LatestVideos = () => {
   if (loading) {
     return (
       <section className="py-10 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[...Array(4)].map((_, index) => (
@@ -71,7 +73,7 @@ const LatestVideos = () => {
   if (error) {
     return (
       <section className="py-10 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="text-center py-8">
             <p className="text-gray-500 mb-4">{t('common.error')}: {error}</p>
@@ -86,7 +88,7 @@ const LatestVideos = () => {
   if (!loading && (!topVideos || topVideos.length === 0)) {
     return (
       <section className="py-10 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="text-center py-8">
             <p className="text-gray-500 mb-4">No latest videos available</p>
@@ -125,8 +127,8 @@ const LatestVideos = () => {
         {/* Show "View More" button on mobile */}
         <div className="md:hidden text-center mt-6">
           <button 
-            onClick={() => window.location.href = '#/videos'}
-            className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200 font-medium"
+            onClick={() => navigate('/videos')}
+            className="w-full sm:w-auto px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200 font-medium min-h-[44px] touch-manipulation"
           >
             {t('common.viewMore') || 'View More Videos'}
           </button>

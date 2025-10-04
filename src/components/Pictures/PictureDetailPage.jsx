@@ -99,7 +99,7 @@ const PictureDetailPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-5xl mx-auto px-4 py-4">
           <button
             onClick={() => navigate('/pictures')}
             className="flex items-center gap-2 text-[#59ACBE] hover:text-[#FCD11A] transition-colors duration-200"

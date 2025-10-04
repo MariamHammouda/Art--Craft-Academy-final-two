@@ -11,13 +11,13 @@ const CoursesPage = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-4">
             <button
               onClick={() => navigate("/")}
               className="text-[#59ACBE] hover:text-[#FCD11A] font-medium"
             >
-              ← Back to Home
+              ← {t('common.backToHome')}
             </button>
           </div>
           
@@ -29,7 +29,7 @@ const CoursesPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Breadcrumbs */}
         <Breadcrumbs />
         <div className="text-center">

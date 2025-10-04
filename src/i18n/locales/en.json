@@ -21,6 +21,7 @@
   },
   "categories": {
     "title": "Explore Categories",
+    "exploreCategories": "Explore Categories",
     "subtitle": "Discover various art and craft categories",
     "viewAll": "View All",
     "origamiWorld": "Origami & Paper Crafts",
@@ -138,6 +139,35 @@
     "title": "About Art Craft Academy",
     "subtitle": "Nurturing creativity since 2020",
     "mission": "Our Mission",
+    "missionDescription": "Art Craft Academy is dedicated to fostering creativity and artistic expression through comprehensive craft education. We believe that everyone has the potential to create beautiful, meaningful art with the right guidance and materials.",
+    "whatWeOffer": "What We Offer",
+    "offerList": {
+      "tutorials": "Step-by-step video tutorials for all skill levels",
+      "courses": "Comprehensive courses covering various craft techniques",
+      "supplies": "High-quality craft supplies and materials",
+      "community": "Community support and inspiration",
+      "guidance": "Expert guidance from experienced crafters"
+    },
+    "ourCategories": "Our Categories",
+    "categoriesDescription": "From origami and drawing to clay modeling and jewelry making, we cover a wide range of craft categories to suit every interest and skill level.",
+    "categoryCards": {
+      "origami": {
+        "title": "Origami World",
+        "description": "Paper folding techniques and projects"
+      },
+      "drawing": {
+        "title": "Drawing & Painting",
+        "description": "Artistic expression through drawing"
+      },
+      "clay": {
+        "title": "Clay & Sculpting",
+        "description": "3D art and modeling techniques"
+      },
+      "beads": {
+        "title": "Beads & Jewelry",
+        "description": "Accessory making and design"
+      }
+    },
     "vision": "Our Vision",
     "team": "Our Team",
     "history": "Our History",
@@ -229,7 +259,10 @@
     },
     "tips": {
       "organization": "Craft Organization Tips"
-    }
+    },
+    "headerAlt": "Picture Gallery Header",
+    "pinterestGallery": "Creative Pinterest Gallery",
+    "ourPinterestBoards": "🎨 Our Pinterest Boards"
   },
   "common": {
     "loading": "Loading...",
@@ -245,8 +278,15 @@
     "search": "Search",
     "explore": "Explore",
     "viewAll": "View All",
+    "viewMore": "View More",
     "viewDetails": "View Details",
     "tryAgain": "Try Again",
+    "backToDrawingGallery": "Back to Drawing Gallery",
+    "backToPictures": "Back to Pictures",
+    "drawingNotFound": "Drawing Not Found",
+    "categoryNotFound": "Category Not Found",
+    "somethingWentWrong": "Something went wrong",
+    "errorLoadingPage": "There was an error loading the page",
     "difficulty": {
       "beginner": "Beginner",
       "intermediate": "Intermediate",

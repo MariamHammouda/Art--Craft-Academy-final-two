@@ -42,7 +42,7 @@ const PicturesPage = () => {
         <div className="h-80 w-full overflow-hidden relative">
           <img
             src={picturesBackgroundImg}
-            alt="Picture Gallery Header"
+            alt={t('pictures.headerAlt')}
             className="w-full h-full object-cover scale-125 transform"
           />
           {/* Gradient overlay for better text readability */}
@@ -58,7 +58,7 @@ const PicturesPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-12">
+      <div className="max-w-5xl mx-auto px-2 sm:px-4 py-12">
         {/* Breadcrumbs */}
         <Breadcrumbs />
         {/* Grid Layout */}
@@ -69,19 +69,19 @@ const PicturesPage = () => {
         <div className="mt-16">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              🎨 Our Pinterest Boards 
+              {t('pictures.ourPinterestBoards')}
             </h2>
             {/* <p className="text-gray-600 max-w-2xl mx-auto">
               هذه هي Pinterest boards الحقيقية الخاصة بنا مع الصور الفعلية
             </p> */}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Category 1: Origami & Paper Crafts */}
             <PinterestRealWidget 
               key="origami-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/origami-paper-crafts/"
-              title="Origami & Paper Crafts"
+              title={t('pictures.categories.origamiPaperCrafts')}
               width={350}
               height={250}
               cols={2}
@@ -91,7 +91,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="drawing-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/drawing/"
-              title="Drawing"
+              title={t('pictures.categories.drawing')}
               width={350}
               height={250}
               cols={2}
@@ -101,7 +101,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="recycling-art-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/recycling-art/"
-              title="Recycling Art"
+              title={t('pictures.categories.recyclingArt')}
               width={350}
               height={250}
               cols={2}
@@ -111,7 +111,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/beads-accessories/"
-              title="Beads & Accessories"
+              title={t('pictures.categories.beadsAccessories')}
               width={350}
               height={250}
               cols={2}
@@ -121,7 +121,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="clay-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/clay-creations/"
-              title="Clay Creations"
+              title={t('pictures.categories.clayCreations')}
               width={350}
               height={250}
               cols={2}
@@ -131,7 +131,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="preschool-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/preschool-crafts/"
-              title="Preschool Crafts"
+              title={t('pictures.categories.preschoolCrafts')}
               width={350}
               height={250}
               cols={2}
@@ -141,7 +141,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="perler-beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/perler-beads/"
-              title="Perler Beads"
+              title={t('pictures.categories.perlerBeads')}
               width={350}
               height={250}
               cols={2}
@@ -151,7 +151,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="3d-pen-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/3d-pen-fun/"
-              title="3D Pen Fun"
+              title={t('pictures.categories.3dPenFun')}
               width={350}
               height={250}
               cols={2}
@@ -161,7 +161,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="miniature-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/"
-              title="Miniature Wonders"
+              title={t('pictures.categories.miniatureWonders')}
               width={350}
               height={250}
               cols={2}
@@ -171,7 +171,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="science-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/"
-              title="Science & DIY Experiments"
+              title={t('pictures.categories.scienceDiyExperiments')}
               width={350}
               height={250}
               cols={2}
@@ -181,7 +181,7 @@ const PicturesPage = () => {
             <PinterestRealWidget 
               key="tips-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/tips-tricks/"
-              title="Tips & Tricks"
+              title={t('pictures.categories.tipsTricks')}
               width={350}
               height={250}
               cols={2}
@@ -201,13 +201,13 @@ const PicturesPage = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Something went wrong</h1>
-          <p className="text-gray-600 mb-4">There was an error loading the Pictures page.</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('common.somethingWentWrong')}</h1>
+          <p className="text-gray-600 mb-4">{t('common.errorLoadingPage')}</p>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200"
           >
-            Back to Home
+            {t('common.backToHome')}
           </button>
         </div>
       </div>

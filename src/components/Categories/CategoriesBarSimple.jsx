@@ -44,7 +44,7 @@ const CategoriesBarSimple = () => {
     <section id="categories" className="p-8">
       <h2 className="text-2xl font-bold mb-6 text-center">{t('categories.title')}</h2>
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-4xl mx-auto">
         {/* Previous Button */}
         {showNavigation && currentPage > 0 && (
           <button

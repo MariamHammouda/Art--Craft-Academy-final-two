@@ -4,7 +4,7 @@ import { shortsData } from "../../mockData/shortsData.js";
 const ShortsStories = () => {
   return (
     <section className="py-6 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">Shorts</h2>
           <span className="text-sm text-gray-500">Stories</span>

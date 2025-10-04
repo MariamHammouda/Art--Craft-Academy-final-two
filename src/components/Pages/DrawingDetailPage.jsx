@@ -120,12 +120,12 @@ const DrawingDetailPage = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Drawing Not Found</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('common.drawingNotFound')}</h1>
           <button
             onClick={() => navigate("/pictures/category/2")}
             className="px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200"
           >
-            Back to Drawing Gallery
+            {t('common.backToDrawingGallery')}
           </button>
         </div>
       </div>
@@ -145,20 +145,20 @@ const DrawingDetailPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-yellow-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-5xl mx-auto px-6 py-6">
           <div className="flex items-center gap-4 mb-4">
             <button
               onClick={() => navigate("/pictures/category/2")}
               className="text-[#59ACBE] hover:text-[#FCD11A] font-medium transition-colors duration-200"
             >
-              ← Back to Drawing Gallery
+              ← {t('common.backToDrawingGallery')}
             </button>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column - Image */}
           <div className="space-y-6">

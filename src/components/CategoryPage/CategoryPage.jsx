@@ -62,12 +62,12 @@ const CategoryPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Category Not Found</h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">{t('common.categoryNotFound')}</h1>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-2 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors"
           >
-            Back to Home
+            {t('common.backToHome')}
           </button>
         </div>
       </div>

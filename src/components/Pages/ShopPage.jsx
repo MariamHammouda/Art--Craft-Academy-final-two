@@ -10,13 +10,13 @@ const ShopPage = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-4">
             <button
               onClick={() => navigate("/")}
               className="text-[#59ACBE] hover:text-[#FCD11A] font-medium"
             >
-              ← Back to Home
+              ← {t('common.backToHome')}
             </button>
           </div>
           
@@ -28,7 +28,7 @@ const ShopPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         <div className="text-center">
           <div className="bg-white rounded-lg shadow-lg p-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Shop Categories</h2>
