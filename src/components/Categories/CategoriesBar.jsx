@@ -65,17 +65,14 @@ const CategoriesBar = () => {
   const totalDots = Math.max(1, maxIndex + 1);
   
   return (
-    <section id="categories" className="py-12 px-6 bg-white">
+    <section id="categories" className="py-0 px-0">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center text-gray-900">{t('categories.title')}</h2>
-        <p className="text-gray-600 text-center mb-8 text-lg">{t('categories.subtitle')}</p>
-
         <div className="relative">
           {/* Previous Button */}
           {showNavigation && currentIndex > 0 && (
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white transition-colors duration-200"
               aria-label="Previous categories"
             >
               <FiChevronLeft className="w-6 h-6 text-[#59ACBE]" />
@@ -116,7 +113,7 @@ const CategoriesBar = () => {
           {showNavigation && currentIndex < maxIndex && (
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white transition-colors duration-200"
               aria-label="Next categories"
             >
               <FiChevronRight className="w-6 h-6 text-[#59ACBE]" />
@@ -133,8 +130,8 @@ const CategoriesBar = () => {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-colors duration-200 ${
                   index === currentIndex 
-                    ? 'bg-[#59ACBE]' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-[#FCD11A]' 
+                    : 'bg-white/50 hover:bg-white/80'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

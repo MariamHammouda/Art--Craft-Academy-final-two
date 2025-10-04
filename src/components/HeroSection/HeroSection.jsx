@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import HeroSlider from "../HeroImage/HeroSlider";
 import { Button } from "../Button/Button.jsx";
+import CategoriesBar from "../Categories/CategoriesBar.jsx";
 import Artlogo from "../../assets/images/hero-images/Artlogo.png";
 
 const HeroSection = () => {
@@ -49,6 +50,19 @@ const HeroSection = () => {
                 <HeroSlider />
               </div>
             </div>
+          </div>
+          
+          {/* Categories Section */}
+          <div className="mt-8 md:mt-12">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                {t('categories.exploreCategories') || 'Explore Categories'}
+              </h2>
+              <p className="text-white/80 text-sm md:text-base">
+                {t('categories.subtitle') || 'Discover amazing craft projects'}
+              </p>
+            </div>
+            <CategoriesBar />
           </div>
         </div>
       </section>
