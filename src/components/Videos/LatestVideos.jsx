@@ -114,6 +114,7 @@ const LatestVideos = () => {
                 title={video.title || 'Untitled Video'}
                 categoryTitle={video.categoryTitle}
               />
+            );
           }) : (
             <div className="col-span-full text-center py-8">
               <p className="text-gray-500">No videos available</p>
@@ -134,3 +135,5 @@ const LatestVideos = () => {
     </section>
   );
 };
+
+export default LatestVideos;
