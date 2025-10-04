@@ -122,10 +122,10 @@ const PinterestEmbedCard = ({ category, categoryName, limit = 3 }) => {
                 e.stopPropagation();
                 window.open(boardUrl, '_blank', 'noopener,noreferrer');
               }}
-              className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 text-sm font-medium"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 text-sm font-medium min-h-[44px] touch-manipulation"
             >
               <span className="mr-2">📌</span>
-              عرض المزيد على Pinterest
+              <span className="text-center">عرض المزيد على Pinterest</span>
             </button>
           </div>
         )}

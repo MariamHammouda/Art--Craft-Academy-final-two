@@ -44,9 +44,7 @@ const HeroSection = () => {
 
             {/* Image Slider Column */}
             <div className={`flex justify-center items-center ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
-              <div className="w-full max-w-2xl">
-                {" "}
-                {/* أو max-w-6xl للعرض الكامل */}
+              <div className="w-full max-w-xl">
                 <HeroSlider />
               </div>
             </div>

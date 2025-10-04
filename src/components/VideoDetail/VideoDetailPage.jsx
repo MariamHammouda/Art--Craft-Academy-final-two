@@ -41,7 +41,7 @@ const VideoDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="animate-pulse">
             <div className="aspect-video bg-gray-300 rounded-lg mb-6"></div>
             <div className="h-8 bg-gray-300 rounded mb-4"></div>
@@ -77,7 +77,7 @@ const VideoDetailPage = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header with back button */}
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-5xl mx-auto px-4 py-4">
           <button
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-[#59ACBE] hover:text-[#4a9bb0] font-medium transition-colors"
@@ -88,7 +88,7 @@ const VideoDetailPage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Video Section */}
           <div className="lg:col-span-2">

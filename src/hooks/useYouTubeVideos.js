@@ -93,7 +93,7 @@ export const useYouTubeVideos = (channels, maxResults = 10) => {
  * @param {number} maxResults - Maximum results
  * @returns {Object} { videos, loading, error, refetch }
  */
-export const useLatestVideos = (maxResults = 20) => {
+export const useLatestVideos = (maxResults = 100) => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

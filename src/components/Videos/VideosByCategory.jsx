@@ -5,17 +5,24 @@ import { videosData } from "../../mockData/videosData.js";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useLatestVideos } from "../../hooks/useYouTubeVideos.js";
-
 const VideosByCategoryComponent = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Fetch videos from YouTube API with caching
-  const { videos: apiVideos, loading, error } = useLatestVideos(30);
+  // Fetch videos from YouTube API with caching - increased to handle larger playlists
+  const { videos: apiVideos, loading, error } = useLatestVideos(100);
   
   // Memoized video selection - use API videos if available, otherwise fallback to mock data
   const videosToUse = useMemo(() => {
+    console.log('🎬 VideosByCategory: API videos count:', apiVideos.length);
+    console.log('🎬 VideosByCategory: Using', apiVideos.length > 0 ? 'API videos' : 'mock data');
+    if (apiVideos.length > 0) {
+      console.log('📊 Videos by category from API:', apiVideos.reduce((acc, video) => {
+        acc[video.categoryId] = (acc[video.categoryId] || 0) + 1;
+        return acc;
+      }, {}));
+    }
     return apiVideos.length > 0 ? apiVideos : videosData;
   }, [apiVideos]);
 
@@ -103,7 +110,7 @@ const VideosByCategoryComponent = () => {
           const { videos: categoryVideosSorted, hasMore } = categoryData;
           
           return (
-            <div key={category.id} id={`cat-${category.id}`} className="max-w-7xl mx-auto">
+            <div key={category.id} id={`cat-${category.id}`} className="max-w-5xl mx-auto">
               {/* Category Header */}
               <div 
                 className="flex items-center justify-between mb-6 cursor-pointer group"

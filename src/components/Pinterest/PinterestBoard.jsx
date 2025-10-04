@@ -116,7 +116,7 @@ const PinterestBoard = ({
           href={boardUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors min-h-[44px] touch-manipulation"
         >
           <span className="mr-2">📌</span>
           View Full Board on Pinterest
@@ -143,7 +143,7 @@ const PinterestFallback = ({ category, boardUrl }) => {
           href={boardUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          className="w-full sm:w-auto inline-flex items-center justify-center mt-4 px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors min-h-[44px] touch-manipulation"
         >
           <span className="mr-2">📌</span>
           Visit Pinterest Board
@@ -191,7 +191,7 @@ const PinterestFallback = ({ category, boardUrl }) => {
           href={boardUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors min-h-[44px] touch-manipulation"
         >
           <span className="mr-2">📌</span>
           View Full Board on Pinterest

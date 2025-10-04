@@ -8,7 +8,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-4">
             <button
               onClick={() => navigate("/")}
@@ -26,7 +26,7 @@ const AboutPage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-3xl mx-auto px-6 py-12">
         <div className="bg-white rounded-lg shadow-lg p-12">
           <div className="prose max-w-none">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Our Mission</h2>
