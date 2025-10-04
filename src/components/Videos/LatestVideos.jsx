@@ -1,32 +1,27 @@
-import React, { memo, useEffect, useState, useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import VideoCard from "./VideoCard.jsx";
 import { videosData } from "../../mockData/videosData.js";
+import { useLatestVideos } from "../../hooks/useYouTubeVideos.js";
 
 const LatestVideos = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   
-  // Initialize with fallback data to prevent errors
-  useEffect(() => {
-    try {
-      // Use fallback data for now to prevent errors
-      // Show fewer videos on mobile for better performance
-      const isMobile = window.innerWidth < 768;
-      const videoCount = isMobile ? 6 : 15;
-      const fallbackVideos = videosData.slice(0, videoCount);
-      setVideos(fallbackVideos);
-      setLoading(false);
-    } catch (err) {
-      console.error('Error initializing LatestVideos:', err);
-      setError('Failed to load videos');
-      setLoading(false);
-    }
-  }, []);
+  // Determine video count based on screen size
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const maxVideos = isMobile ? 20 : 50; // Fetch more, show less
+  
+  // Fetch videos from YouTube API with caching
+  const { videos: apiVideos, loading, error } = useLatestVideos(maxVideos);
+  
+  // Use API videos if available, otherwise fallback to mock data
+  const videos = useMemo(() => {
+    console.log('LatestVideos: API videos count:', apiVideos.length);
+    console.log('LatestVideos: Using', apiVideos.length > 0 ? 'API videos' : 'mock data');
+    return apiVideos.length > 0 ? apiVideos : videosData;
+  }, [apiVideos]);
   
   // Memoized sorting by publication date (most recent first) instead of views
   const topVideos = useMemo(() => {
