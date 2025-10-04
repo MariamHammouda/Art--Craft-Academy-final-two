@@ -50,13 +50,16 @@ function App() {
               <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
                 <LatestVideos />
               </ErrorBoundary>
-              <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
-                <LatestPicturesSlider />
-              </ErrorBoundary>
               <CategoriesBar />
-              <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
-                <VideosByCategory />
-              </ErrorBoundary>
+              {/* Show additional content only on larger screens */}
+              <div className="hidden md:block">
+                <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
+                  <LatestPicturesSlider />
+                </ErrorBoundary>
+                <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
+                  <VideosByCategory />
+                </ErrorBoundary>
+              </div>
             </>
           } />
           <Route path="/category/:id" element={<CategoryPage />} />
