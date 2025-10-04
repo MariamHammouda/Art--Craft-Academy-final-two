@@ -1,0 +1,414 @@
+{
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "videos": "Videos",
+    "pictures": "Pictures",
+    "courses": "Courses",
+    "shop": "Shop",
+    "about": "About",
+    "login": "Login",
+    "signup": "Sign Up",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title": "Discover Your",
+    "titleHighlight": "Creative",
+    "titleEnd": "Side",
+    "description": "Learn arts and crafts from professionals. Build your skills, unleash your imagination, and create something amazing.",
+    "startLearning": "Start Learning",
+    "browseCourses": "Browse Courses"
+  },
+  "categories": {
+    "title": "Explore Categories",
+    "subtitle": "Discover various art and craft categories",
+    "viewAll": "View All",
+    "origamiWorld": "Origami & Paper Crafts",
+    "drawing": "Drawing",
+    "beadsJewelry": "Beads & Accessories",
+    "clay": "Clay Creations",
+    "preschoolCrafts": "Preschool Crafts",
+    "scienceDiy": "Science & DIY Experiments",
+    "recyclingArt": "Recycling Art",
+    "perlerBeads": "Perler Beads",
+    "threeDPenFun": "3D Pen Fun",
+    "descriptions": {
+      "origamiWorld": "Discover the ancient art of paper folding with our step-by-step origami tutorials. From simple cranes to complex flowers, learn to create beautiful paper sculptures that will amaze your friends and family.",
+      "drawing": "Unleash your creativity with our comprehensive drawing tutorials. Learn fundamental techniques, shading, perspective, and various drawing styles from beginner to advanced levels.",
+      "beadsJewelry": "Create stunning jewelry and accessories with our bead crafting tutorials. Learn different techniques for making bracelets, necklaces, earrings, and decorative items using various types of beads.",
+      "clay": "Explore the world of clay crafting and pottery. Learn hand-building techniques, sculpting, and creating functional and decorative ceramic pieces from basic to advanced projects.",
+      "preschoolCrafts": "Fun and educational craft activities designed specifically for young children. Safe, simple projects that help develop fine motor skills and creativity in preschoolers.",
+      "scienceDiy": "Combine learning with fun through exciting science experiments and DIY projects. Explore physics, chemistry, and biology concepts through hands-on activities and experiments.",
+      "recyclingArt": "Turn everyday waste into beautiful art pieces. Learn eco-friendly crafting techniques using recycled materials to create unique decorations and functional items.",
+      "perlerBeads": "Create amazing pixel art and 3D designs with colorful Perler beads! Learn to make keychains, coasters, characters, and decorative items using this fun melting bead technique.",
+      "threeDPenFun": "Discover the world of 3D printing with a pen! Create incredible three-dimensional sculptures, jewelry, architectural models, and artistic designs using 3D printing pen technology."
+    }
+  },
+    "videos": {
+      "latest": "Latest Videos",
+      "featured": "Featured Videos",
+      "watchNow": "Watch Now",
+    "views": "views",
+    "byCategory": "Videos by Category",
+    "loadMore": "Load More",
+    "noVideos": "No videos available",
+    "notFound": "Video Not Found",
+    "description": "Description",
+    "materialsNeeded": "Materials Needed",
+    "relatedVideos": "Related Videos",
+    "noRelatedVideos": "No related videos found",
+    "viewAllInCategory": "View All Videos in Category",
+    "like": "Like",
+    "share": "Share",
+    "save": "Save",
+    "likes": "likes",
+    "published": "Published",
+    "learnHow": "Learn how to create",
+    "stepByStep": "Follow along with this step-by-step tutorial.",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "available": "Videos Available",
+    "totalViews": "Total Views",
+    "titles": {
+      "paperPencilCase": "Paper Pencil Case",
+      "origamiRose": "Origami Rose from Paper",
+      "origamiCrane": "Origami Crane Tutorial",
+      "basicDrawing": "Basic Drawing Techniques",
+      "watercolorBasics": "Watercolor Painting Basics",
+      "labubuBeads": "Making Labubu from Perler Beads",
+      "beadedBracelet": "DIY Beaded Bracelet",
+      "clayPottery": "Clay Pottery Basics",
+      "clayPot": "Clay Pot Making",
+      "preschoolCrafts": "Fun Preschool Crafts",
+      "preschoolPainting": "Preschool Painting Fun",
+      "scienceExperiment": "Science DIY Experiment",
+      "volcanoExperiment": "DIY Volcano Experiment",
+      "recycledArt": "Recycled Art Project",
+      "bottleArt": "Recycled Bottle Art",
+      "perlerPixelArt": "Perler Bead Pixel Art Tutorial",
+      "perlerKeychains": "DIY Perler Bead Keychains",
+      "perlerCharacters": "Perler Bead Character Designs",
+      "perlerCoasters": "Perler Bead Coasters DIY",
+      "perlerMagnets": "Perler Bead Fridge Magnets",
+      "perlerBowls": "3D Perler Bead Bowls",
+      "threeDPenBasics": "3D Pen Basics for Beginners",
+      "threeDPenTower": "3D Pen Eiffel Tower Tutorial",
+      "threeDPenAnimals": "3D Pen Animal Sculptures",
+      "threeDPenJewelry": "3D Pen Jewelry Making",
+      "threeDPenFlowers": "3D Pen Flower Bouquet",
+      "threeDPenArchitecture": "3D Pen Architecture Models"
+    }
+  },
+  "stories": {
+    "featured": "Featured Stories",
+    "shorts": "Short Stories",
+    "author": "By",
+    "publishedOn": "Published on",
+    "inspiration": "Inspiration",
+    "tutorial": "Tutorial",
+    "showcase": "Showcase"
+  },
+  "courses": {
+    "title": "Our Courses",
+    "subtitle": "Learn from expert instructors",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "enroll": "Enroll Now",
+    "price": "Price",
+    "duration": "Duration",
+    "students": "Students",
+    "rating": "Rating",
+    "free": "Free",
+    "premium": "Premium"
+  },
+  "shop": {
+    "title": "Art Supplies Shop",
+    "subtitle": "Quality materials for your creative journey",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "price": "Price",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "category": "Category",
+    "brand": "Brand",
+    "reviews": "Reviews"
+  },
+  "about": {
+    "title": "About Art Craft Academy",
+    "subtitle": "Nurturing creativity since 2020",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "team": "Our Team",
+    "history": "Our History",
+    "contact": "Contact Us",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "categories": "Categories",
+    "support": "Support",
+    "followUs": "Follow Us",
+    "newsletter": "Newsletter",
+    "subscribe": "Subscribe",
+    "enterEmail": "Enter your email",
+    "copyright": "© 2024 Art Craft Academy. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "helpCenter": "Help Center",
+    "faq": "FAQ"
+  },
+  "pictures": {
+    "title": "Picture Gallery",
+    "subtitle": "Explore our collection of inspiring craft pictures",
+    "latest": "Latest Pictures",
+    "latestDescription": "Discover the most recent creative projects from our community",
+    "noPictures": "No pictures available",
+    "comingSoon": "New pictures coming soon!",
+    "exploreMore": "Explore More Pictures",
+    "categories": {
+      "origamiPaperCrafts": "Origami & Paper Crafts",
+      "drawing": "Drawing",
+      "recyclingArt": "Recycling Art",
+      "beadsAccessories": "Beads & Accessories",
+      "clayCreations": "Clay Creations",
+      "preschoolCrafts": "Preschool Crafts",
+      "perlerBeads": "Perler Beads",
+      "3dPenFun": "3D Pen Fun",
+      "scienceDiyExperiments": "Science & DIY Experiments"
+    },
+    "descriptions": {
+      "origamiPaperCrafts": "Beautiful paper folding creations and paper craft projects",
+      "drawing": "Inspiring drawings, sketches, and artistic illustrations",
+      "recyclingArt": "Creative art projects made from recycled materials",
+      "beadsAccessories": "Stunning jewelry and accessories made with beads",
+      "clayCreations": "Amazing sculptures and pottery made from clay",
+      "preschoolCrafts": "Fun and colorful crafts perfect for young children",
+      "perlerBeads": "Pixel art and designs created with Perler beads",
+      "3dPenFun": "Incredible 3D creations made with 3D pens",
+      "scienceDiyExperiments": "Educational and fun science experiment results"
+    },
+    "viewGallery": "View Gallery",
+    "backToPictures": "Back to Pictures",
+    "noImages": "No images available in this category yet",
+    "origami": {
+      "colorfulCranes": "Colorful Paper Cranes Collection",
+      "paperFlowers": "Delicate Paper Flowers",
+      "butterfly": "Origami Butterfly Garden"
+    },
+    "drawing": {
+      "portraitSketch": "Portrait Sketching Techniques",
+      "landscapeArt": "Landscape Drawing Collection"
+    },
+    "recycling": {
+      "bottleGarden": "Plastic Bottle Garden"
+    },
+    "beads": {
+      "jewelrySet": "Handmade Jewelry Set",
+      "bracelet": "Friendship Bracelet Collection"
+    },
+    "clay": {
+      "potteryBowl": "Ceramic Pottery Bowl"
+    },
+    "preschool": {
+      "fingerPainting": "Colorful Finger Painting"
+    },
+    "perler": {
+      "pixelArt": "Pixel Art Characters"
+    },
+    "threeDPen": {
+      "sculptures": "3D Pen Letter Art"
+    },
+    "miniature": {
+      "dollhouse": "Miniature Dollhouse Room"
+    },
+    "science": {
+      "experiment": "Colorful Science Experiment"
+    },
+    "tips": {
+      "organization": "Craft Organization Tips"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "backToHome": "Back to Home",
+    "search": "Search",
+    "explore": "Explore",
+    "viewAll": "View All",
+    "viewDetails": "View Details",
+    "tryAgain": "Try Again",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "materials": {
+    "origamiPaper": "Origami Paper",
+    "ruler": "Ruler",
+    "pencils": "Pencils",
+    "paper": "Paper",
+    "eraser": "Eraser",
+    "beads": "Beads",
+    "string": "String",
+    "clay": "Clay",
+    "paintBrush": "Paint Brush",
+    "scissors": "Scissors",
+    "glue": "Glue"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy is important to us",
+    "lastUpdated": "Last updated",
+    "updateDate": "January 1, 2024",
+    "introduction": {
+      "title": "Introduction",
+      "content1": "Welcome to Art Craft Academy. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
+      "content2": "By using our website and services, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our services."
+    },
+    "informationCollected": {
+      "title": "Information We Collect",
+      "personalInfo": {
+        "title": "Personal Information",
+        "name": "Full name",
+        "email": "Email address",
+        "phone": "Phone number",
+        "address": "Mailing address"
+      },
+      "usageData": {
+        "title": "Usage Data",
+        "ipAddress": "IP address",
+        "browserInfo": "Browser type and version",
+        "pageViews": "Pages visited and time spent",
+        "timeSpent": "Time and date of visits",
+        "clickData": "Click-through and interaction data"
+      },
+      "cookies": {
+        "title": "Cookies and Tracking Technologies",
+        "content": "We use cookies and similar tracking technologies to enhance your experience on our website, analyze usage patterns, and provide personalized content."
+      }
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "provideServices": "To provide, operate, and maintain our services",
+      "improveServices": "To improve, personalize, and expand our services",
+      "communication": "To communicate with you about updates, promotions, and support",
+      "personalization": "To personalize your experience and provide relevant content",
+      "analytics": "To analyze usage patterns and improve our website performance",
+      "legal": "To comply with legal obligations and protect our rights"
+    },
+    "informationSharing": {
+      "title": "Information Sharing and Disclosure",
+      "intro": "We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:",
+      "serviceProviders": {
+        "title": "Service Providers",
+        "content": "We may share your information with trusted third-party service providers who assist us in operating our website, conducting our business, or serving our users."
+      },
+      "legal": {
+        "title": "Legal Requirements",
+        "content": "We may disclose your information if required to do so by law or in response to valid requests by public authorities."
+      },
+      "businessTransfer": {
+        "title": "Business Transfers",
+        "content": "In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of the business transaction."
+      }
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "content1": "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:",
+      "encryption": "Encryption of sensitive data in transit and at rest",
+      "accessControls": "Strict access controls and authentication procedures",
+      "regularAudits": "Regular security audits and vulnerability assessments",
+      "secureServers": "Secure server environments and data centers",
+      "content2": "However, please note that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
+    },
+    "yourRights": {
+      "title": "Your Privacy Rights",
+      "access": {
+        "title": "Right to Access",
+        "content": "You have the right to request copies of your personal information"
+      },
+      "correction": {
+        "title": "Right to Rectification",
+        "content": "You have the right to request correction of inaccurate or incomplete information"
+      },
+      "deletion": {
+        "title": "Right to Erasure",
+        "content": "You have the right to request deletion of your personal information under certain circumstances"
+      },
+      "portability": {
+        "title": "Right to Data Portability",
+        "content": "You have the right to request transfer of your data to another organization"
+      },
+      "objection": {
+        "title": "Right to Object",
+        "content": "You have the right to object to our processing of your personal information under certain circumstances"
+      }
+    },
+    "cookies": {
+      "title": "Cookies Policy",
+      "intro": "Our website uses cookies to enhance your browsing experience and provide personalized services. Cookies are small text files stored on your device that help us understand how you use our website.",
+      "types": {
+        "title": "Types of Cookies We Use",
+        "essential": {
+          "title": "Essential Cookies",
+          "content": "Required for the website to function properly"
+        },
+        "performance": {
+          "title": "Performance Cookies",
+          "content": "Help us analyze website usage and improve performance"
+        },
+        "functional": {
+          "title": "Functional Cookies",
+          "content": "Remember your preferences and personalize your experience"
+        },
+        "targeting": {
+          "title": "Targeting Cookies",
+          "content": "Used to deliver relevant advertisements and content"
+        }
+      },
+      "management": "You can manage your cookie preferences through your browser settings or by contacting us directly."
+    },
+    "thirdParty": {
+      "title": "Third-Party Services",
+      "intro": "Our website may integrate with third-party services that have their own privacy policies:",
+      "youtube": "For embedding educational videos and tutorials",
+      "analytics": "For website analytics and performance monitoring",
+      "payments": "For secure payment processing (if applicable)"
+    },
+    "children": {
+      "title": "Children's Privacy",
+      "content": "Our services are designed for users of all ages, including children. We take special care to protect children's privacy and comply with applicable laws regarding the collection of information from children under 13. We encourage parents and guardians to monitor their children's online activities and help us protect their privacy."
+    },
+    "international": {
+      "title": "International Data Transfers",
+      "content": "Your information may be transferred to and processed in countries other than your own. We ensure that such transfers are conducted in accordance with applicable data protection laws and that appropriate safeguards are in place to protect your information."
+    },
+    "retention": {
+      "title": "Data Retention",
+      "content": "We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, comply with legal obligations, resolve disputes, and enforce our agreements. When information is no longer needed, we securely delete or anonymize it."
+    },
+    "changes": {
+      "title": "Changes to This Privacy Policy",
+      "content": "We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any material changes by posting the updated policy on our website and updating the 'Last Updated' date. Your continued use of our services after such changes constitutes acceptance of the updated policy."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "intro": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+      "details": "Contact Information",
+      "email": "Email",
+      "address": "Address",
+      "phone": "Phone"
+    }
+  }
+}
