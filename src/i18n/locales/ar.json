@@ -20,6 +20,7 @@
     "browseCourses": "تصفح الدورات"
   },
   "categories": {
+    "all": "الكل",
     "exploreCategories": "استكشف الفئات",
     "subtitle": "اكتشف فئات متنوعة من الفنون والحرف",
     "viewAll": "عرض الكل",
@@ -52,6 +53,12 @@
     "byCategory": "الفيديوهات حسب الفئة",
     "loadMore": "تحميل المزيد",
     "noVideos": "لا توجد فيديوهات متاحة",
+    "allVideos": "جميع الفيديوهات",
+    "browseAllVideos": "تصفح جميع فيديوهاتنا التعليمية",
+    "noVideosFound": "لم يتم العثور على فيديوهات",
+    "tryDifferentCategory": "جرب فئة مختلفة أو ارجع لاحقاً",
+    "remaining": "متبقي",
+    "showingResults": "عرض {{start}}-{{end}} من {{total}} فيديو",
     "notFound": "الفيديو غير موجود",
     "description": "الوصف",
     "materialsNeeded": "المواد المطلوبة",
@@ -305,6 +312,8 @@
     "categoryNotFound": "الفئة غير موجودة",
     "somethingWentWrong": "حدث خطأ ما",
     "errorLoadingPage": "حدث خطأ أثناء تحميل الصفحة",
+    "previous": "السابق",
+    "next": "التالي",
     "difficulty": {
       "beginner": "مبتدئ",
       "intermediate": "متوسط",

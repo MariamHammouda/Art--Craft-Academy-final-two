@@ -14,13 +14,13 @@
   "hero": {
     "title": "Discover Your",
     "titleHighlight": "Creative",
-    "titleEnd": "Side",
     "description": "Learn arts and crafts from professionals. Build your skills, unleash your imagination, and create something amazing.",
     "startLearning": "Start Learning",
     "browseCourses": "Browse Courses"
   },
   "categories": {
     "title": "Explore Categories",
+    "all": "All",
     "exploreCategories": "Explore Categories",
     "subtitle": "Discover various art and craft categories",
     "viewAll": "View All",
@@ -53,6 +53,12 @@
     "byCategory": "Videos by Category",
     "loadMore": "Load More",
     "noVideos": "No videos available",
+    "allVideos": "All Videos",
+    "browseAllVideos": "Browse all our educational videos",
+    "noVideosFound": "No videos found",
+    "tryDifferentCategory": "Try a different category or check back later",
+    "remaining": "remaining",
+    "showingResults": "Showing {{start}}-{{end}} of {{total}} videos",
     "notFound": "Video Not Found",
     "description": "Description",
     "materialsNeeded": "Materials Needed",
@@ -287,6 +293,8 @@
     "categoryNotFound": "Category Not Found",
     "somethingWentWrong": "Something went wrong",
     "errorLoadingPage": "There was an error loading the page",
+    "previous": "Previous",
+    "next": "Next",
     "difficulty": {
       "beginner": "Beginner",
       "intermediate": "Intermediate",
