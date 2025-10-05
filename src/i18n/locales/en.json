@@ -14,6 +14,7 @@
   "hero": {
     "title": "Discover Your",
     "titleHighlight": "Creative",
+    "titleEnd": "side",
     "description": "Learn arts and crafts from professionals. Build your skills, unleash your imagination, and create something amazing.",
     "startLearning": "Start Learning",
     "browseCourses": "Browse Courses"

@@ -1,0 +1,40 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow admin or sensitive areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.env
+Disallow: /api/keys/
+
+# Allow important pages
+Allow: /about
+Allow: /courses
+Allow: /pictures
+Allow: /videos
+Allow: /privacy-policy
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://artcraftacademy.netlify.app/sitemap.xml
+
+# Additional directives for better SEO
+User-agent: *
+Disallow: /search?
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
