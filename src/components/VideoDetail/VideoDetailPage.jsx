@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaPlay, FaEye, FaThumbsUp, FaShare, FaBookmark, FaArrowLeft } from 'react-icons/fa6';
 import { useLatestVideos } from '../../hooks/useYouTubeVideos';
 import { videosData } from '../../mockData/videosData';
 import VideoCard from '../Videos/VideoCard';
+import RelatedVideoCard from '../Videos/RelatedVideoCard';
 import { formatViewCount } from '../../services/youtubeApi';
 
 const VideoDetailPage = () => {
@@ -13,25 +14,64 @@ const VideoDetailPage = () => {
   const { t } = useTranslation();
   const { videos: dynamicVideos, loading } = useLatestVideos(20);
   
-  const [video, setVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const [allVideos, setAllVideos] = useState([]);
   const [relatedVideos, setRelatedVideos] = useState([]);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [videoKey, setVideoKey] = useState(0); // Force iframe reload
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
+
+  // Handle video switching without page navigation
+  const switchToVideo = useCallback((newVideo) => {
+    console.log('🔄 Switching to video:', newVideo.title);
+    
+    // Set loading state
+    setIsVideoLoading(true);
+    
+    // Update current video
+    setCurrentVideo(newVideo);
+    
+    // Reset description state
+    setShowFullDescription(false);
+    
+    // Force iframe reload for autoplay
+    setVideoKey(prev => prev + 1);
+    
+    // Update URL without navigation
+    window.history.replaceState(null, '', `#/video/${newVideo.id}`);
+    
+    // Update related videos for new video
+    const related = allVideos
+      .filter(v => v.id.toString() !== newVideo.id.toString() && v.categoryId === newVideo.categoryId)
+      .slice(0, 6);
+    setRelatedVideos(related);
+    
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Remove loading state after a short delay
+    setTimeout(() => {
+      setIsVideoLoading(false);
+    }, 500);
+  }, [allVideos]);
 
   useEffect(() => {
     console.log('🔍 VideoDetailPage - Looking for video:', { videoId, dynamicVideosCount: dynamicVideos.length });
     
-    // Find video from dynamic videos or fallback to static data
-    const allVideos = dynamicVideos.length > 0 ? dynamicVideos : videosData;
-    console.log('📹 Available videos:', allVideos.map(v => ({ id: v.id, title: v.title })));
+    // Set all videos (dynamic or static)
+    const videos = dynamicVideos.length > 0 ? dynamicVideos : videosData;
+    setAllVideos(videos);
     
-    const foundVideo = allVideos.find(v => v.id.toString() === videoId);
+    console.log('📹 Available videos:', videos.map(v => ({ id: v.id, title: v.title })));
+    
+    const foundVideo = videos.find(v => v.id.toString() === videoId);
     console.log('🎯 Found video:', foundVideo);
     
     if (foundVideo) {
-      setVideo(foundVideo);
+      setCurrentVideo(foundVideo);
       
       // Get related videos from same category
-      const related = allVideos
+      const related = videos
         .filter(v => v.id.toString() !== videoId && v.categoryId === foundVideo.categoryId)
         .slice(0, 6);
       setRelatedVideos(related);
@@ -53,7 +93,7 @@ const VideoDetailPage = () => {
     );
   }
 
-  if (!video) {
+  if (!currentVideo) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -69,9 +109,9 @@ const VideoDetailPage = () => {
     );
   }
 
-  const videoTitle = video.titleKey ? t(video.titleKey) : video.title;
-  const categoryTitle = video.categoryTitleKey ? t(video.categoryTitleKey) : video.categoryTitle;
-  const description = video.description || `${t('videos.learnHow')} ${videoTitle.toLowerCase()}. ${t('videos.stepByStep')}`;
+  const videoTitle = currentVideo.titleKey ? t(currentVideo.titleKey) : currentVideo.title;
+  const categoryTitle = currentVideo.categoryTitleKey ? t(currentVideo.categoryTitleKey) : currentVideo.categoryTitle;
+  const description = currentVideo.description || `${t('videos.learnHow')} ${videoTitle.toLowerCase()}. ${t('videos.stepByStep')}`;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -94,22 +134,33 @@ const VideoDetailPage = () => {
           <div className="lg:col-span-2">
             {/* Video Player */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
-              <div className="aspect-video">
+              <div className="aspect-video relative">
                 <iframe
+                  key={videoKey} // Force reload for autoplay
                   className="w-full h-full"
-                  src={video.url}
+                  src={`${currentVideo.url}${currentVideo.url.includes('?') ? '&' : '?'}autoplay=1`}
                   title={videoTitle}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
+                
+                {/* Loading overlay */}
+                {isVideoLoading && (
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+                    <div className="text-center">
+                      <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
+                      <p className="text-white text-sm">{t('videos.loading')}</p>
+                    </div>
+                  </div>
+                )}
               </div>
               
               {/* YouTube Link Button */}
               <div className="p-4 bg-gray-50 border-t">
                 <button
                   onClick={() => {
-                    const videoId = video.url.match(/embed\/([^?]+)/)?.[1];
+                    const videoId = currentVideo.url.match(/embed\/([^?]+)/)?.[1];
                     if (videoId) {
                       window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
                     }
@@ -166,7 +217,7 @@ const VideoDetailPage = () => {
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {/* Dynamic materials based on category */}
-                  {video.categoryId === 1 && ( // Origami
+                  {currentVideo.categoryId === 1 && ( // Origami
                     <>
                       <div className="flex items-center gap-2 text-gray-700">
                         <span className="w-2 h-2 bg-[#59ACBE] rounded-full"></span>
@@ -178,7 +229,7 @@ const VideoDetailPage = () => {
                       </div>
                     </>
                   )}
-                  {video.categoryId === 2 && ( // Drawing
+                  {currentVideo.categoryId === 2 && ( // Drawing
                     <>
                       <div className="flex items-center gap-2 text-gray-700">
                         <span className="w-2 h-2 bg-[#59ACBE] rounded-full"></span>
@@ -194,7 +245,7 @@ const VideoDetailPage = () => {
                       </div>
                     </>
                   )}
-                  {video.categoryId === 3 && ( // Beads
+                  {currentVideo.categoryId === 3 && ( // Beads
                     <>
                       <div className="flex items-center gap-2 text-gray-700">
                         <span className="w-2 h-2 bg-[#59ACBE] rounded-full"></span>
@@ -220,38 +271,14 @@ const VideoDetailPage = () => {
               </h3>
               
               {relatedVideos.length > 0 ? (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {relatedVideos.map((relatedVideo) => (
-                    <div
+                    <RelatedVideoCard
                       key={relatedVideo.id}
-                      onClick={() => navigate(`/video/${relatedVideo.id}`)}
-                      className="cursor-pointer group"
-                    >
-                      <div className="flex gap-3">
-                        {/* Thumbnail */}
-                        <div className="flex-shrink-0 w-32 aspect-video bg-gray-200 rounded-lg overflow-hidden">
-                          <iframe
-                            className="w-full h-full"
-                            src={relatedVideo.url}
-                            title={relatedVideo.titleKey ? t(relatedVideo.titleKey) : relatedVideo.title}
-                            frameBorder="0"
-                          ></iframe>
-                        </div>
-                        
-                        {/* Info */}
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-gray-900 group-hover:text-[#59ACBE] transition-colors line-clamp-2 text-sm">
-                            {relatedVideo.titleKey ? t(relatedVideo.titleKey) : relatedVideo.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {relatedVideo.categoryTitleKey ? t(relatedVideo.categoryTitleKey) : relatedVideo.categoryTitle}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {formatViewCount(relatedVideo.views || 0)} {t('videos.views')}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                      video={relatedVideo}
+                      onVideoClick={switchToVideo}
+                      isActive={currentVideo?.id === relatedVideo.id}
+                    />
                   ))}
                 </div>
               ) : (
@@ -263,7 +290,7 @@ const VideoDetailPage = () => {
               {/* View All Videos Button */}
               <div className="mt-6 pt-4 border-t">
                 <button
-                  onClick={() => navigate(`/category/${video.categoryId}`)}
+                  onClick={() => navigate(`/category/${currentVideo.categoryId}`)}
                   className="w-full px-4 py-2 bg-[#59ACBE] text-white rounded-lg hover:bg-[#4a9bb0] transition-colors"
                 >
                   {t('videos.viewAllInCategory')}
