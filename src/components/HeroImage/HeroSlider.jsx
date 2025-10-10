@@ -3,10 +3,8 @@ import img1 from "../../assets/images/hero-images/house.jpg";
 import img2 from "../../assets/images/hero-images/accessory.jpg";
 import img3 from "../../assets/images/hero-images/girl.jpg";
 import img4 from "../../assets/images/hero-images/accessory2.jpg";
-import img5 from "../../assets/images/hero-images/popsicle.jpg"
-import img6 from  "../../assets/images/hero-images/popsicle2.jpg"
-
-
+import img5 from "../../assets/images/hero-images/popsicle.jpg";
+import img6 from "../../assets/images/hero-images/popsicle2.jpg";
 
 const SLIDE_INTERVAL_MS = 4000;
 
@@ -23,7 +21,7 @@ const SLIDE_INTERVAL_MS = 4000;
  * the container, cropping excess content as needed.
  */
 const HeroSlider = () => {
-  const images = useMemo(() => [img1, img2, img3, img4,img5,img6], []);
+  const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -55,10 +53,10 @@ const HeroSlider = () => {
         ))}
 
         {/* Enhanced Gradient Overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent z-10" />
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
           {images.map((_, i) => (
             <button
               key={i}
@@ -74,22 +72,27 @@ const HeroSlider = () => {
         </div>
 
         {/* Navigation Arrows */}
-        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 z-10">
+        <div className="absolute inset-0 flex items-center justify-between pointer-events-none z-20">
+          {/* Previous Arrow */}
           <button
             aria-label="Previous slide"
             onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
-            className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-all duration-200 hover:scale-110 backdrop-blur-sm"
+            className="pointer-events-auto ml-2 sm:ml-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white hover:scale-110 transition-all duration-200 shadow-lg backdrop-blur-sm"
+            style={{ touchAction: 'manipulation' }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+          
+          {/* Next Arrow */}
           <button
             aria-label="Next slide"
             onClick={() => setIndex((prev) => (prev + 1) % images.length)}
-            className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white hover:bg-black/60 transition-all duration-200 hover:scale-110 backdrop-blur-sm"
+            className="pointer-events-auto mr-2 sm:mr-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/90 text-gray-800 hover:bg-white hover:scale-110 transition-all duration-200 shadow-lg backdrop-blur-sm"
+            style={{ touchAction: 'manipulation' }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -105,4 +108,5 @@ const HeroSlider = () => {
     </div>
   );
 };
+
 export default HeroSlider;
