@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./i18n/i18n"; // Initialize i18n
-import NavBar from "./components/Navbar/Navbar.jsx";
+import NavBar from "./components/NavBar/NavBar.jsx";
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
 import CategoriesBar from "./components/Categories/CategoriesBar.jsx";
 import { VideosByCategory } from "./components/Videos/VideosByCategory.jsx";
