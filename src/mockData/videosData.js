@@ -43,21 +43,31 @@ export const videosData = [
     categoryTitleKey: "categories.drawing"
   },
   
-  // Beads & Jewelry Videos
+  // Recycling Art Videos
   {
-    id: 6,
-    url: "https://www.youtube.com/embed/gjqDo2LcBf4?si=qz84pD1usH7cXSQM&amp;start=2",
-    titleKey: "videos.titles.labubuBeads",
-    views: 98231,
+    id: 10,
+    url: "https://www.youtube.com/embed/NYp0VdQlfx4?si=recycle1",
+    title: "Bottle Cap Art Project",
+    views: 35210,
     categoryId: 3,
-    categoryTitleKey: "categories.beadsJewelry"
+    categoryTitle: "Recycling Art"
   },
+  {
+    id: 11,
+    url: "https://www.youtube.com/embed/55Rm_sfnuxE?si=recycle2",
+    title: "Cardboard Castle DIY",
+    views: 29870,
+    categoryId: 3,
+    categoryTitle: "Recycling Art"
+  },
+
+  // Beads & Jewelry Videos
   {
     id: 7,
     url: "https://www.youtube.com/embed/gjqDo2LcBf4?si=beads1",
     title: "DIY Beaded Bracelet",
     views: 35678,
-    categoryId: 3,
+    categoryId: 4,
     categoryTitle: "Beads & Jewelry"
   },
   
@@ -67,7 +77,7 @@ export const videosData = [
     url: "https://www.youtube.com/embed/X1Bc8XR96eI?si=clay1",
     title: "Clay Pottery Basics",
     views: 58900,
-    categoryId: 4,
+    categoryId: 5,
     categoryTitle: "Clay"
   },
   {
@@ -75,26 +85,8 @@ export const videosData = [
     url: "https://www.youtube.com/embed/Q4-VuXr8Rn0?si=clay2",
     title: "Making Clay Animals",
     views: 41200,
-    categoryId: 4,
+    categoryId: 5,
     categoryTitle: "Clay"
-  },
-  
-  // Recycling Art Videos (moved after Clay)
-  {
-    id: 10,
-    url: "https://www.youtube.com/embed/NYp0VdQlfx4?si=recycle1",
-    title: "Bottle Cap Art Project",
-    views: 35210,
-    categoryId: 5,
-    categoryTitle: "Recycling Art"
-  },
-  {
-    id: 11,
-    url: "https://www.youtube.com/embed/55Rm_sfnuxE?si=recycle2",
-    title: "Cardboard Castle DIY",
-    views: 29870,
-    categoryId: 5,
-    categoryTitle: "Recycling Art"
   },
   
   // Preschool Crafts Videos
@@ -121,7 +113,7 @@ export const videosData = [
     url: "https://www.youtube.com/embed/X1Bc8XR96eI?si=science1",
     title: "Homemade Volcano Experiment",
     views: 134560,
-    categoryId: 7,
+    categoryId: 9,
     categoryTitle: "Science DIY"
   },
   {
@@ -129,7 +121,7 @@ export const videosData = [
     url: "https://www.youtube.com/embed/Q4-VuXr8Rn0?si=science2",
     title: "DIY Slime Recipe",
     views: 165430,
-    categoryId: 7,
+    categoryId: 9,
     categoryTitle: "Science DIY"
   },
   {
@@ -267,7 +259,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerPixelArt",
     title: "Perler Bead Pixel Art Tutorial",
     views: 45670,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -277,7 +269,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerKeychains",
     title: "DIY Perler Bead Keychains",
     views: 32890,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -287,7 +279,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerCharacters",
     title: "Perler Bead Character Designs",
     views: 67540,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -297,7 +289,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerCoasters",
     title: "Perler Bead Coasters DIY",
     views: 28450,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -307,7 +299,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerMagnets",
     title: "Perler Bead Fridge Magnets",
     views: 19870,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -317,7 +309,7 @@ export const videosData = [
     titleKey: "videos.titles.perlerBowls",
     title: "3D Perler Bead Bowls",
     views: 41230,
-    categoryId: 9,
+    categoryId: 7,
     categoryTitleKey: "categories.perlerBeads",
     categoryTitle: "Perler Beads"
   },
@@ -329,7 +321,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenBasics",
     title: "3D Pen Basics for Beginners",
     views: 89340,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -339,7 +331,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenTower",
     title: "3D Pen Eiffel Tower Tutorial",
     views: 156780,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -349,7 +341,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenAnimals",
     title: "3D Pen Animal Sculptures",
     views: 73420,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -359,7 +351,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenJewelry",
     title: "3D Pen Jewelry Making",
     views: 45890,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -369,7 +361,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenFlowers",
     title: "3D Pen Flower Bouquet",
     views: 62150,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -379,7 +371,7 @@ export const videosData = [
     titleKey: "videos.titles.threeDPenArchitecture",
     title: "3D Pen Architecture Models",
     views: 38760,
-    categoryId: 10,
+    categoryId: 8,
     categoryTitleKey: "categories.threeDPenFun",
     categoryTitle: "3D Pen Fun"
   },
@@ -391,7 +383,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureDollhouse",
     title: "Miniature Dollhouse Tutorial",
     views: 124560,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -401,7 +393,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureFurniture",
     title: "Tiny Furniture Making",
     views: 87340,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -411,7 +403,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureGarden",
     title: "Miniature Fairy Garden",
     views: 95670,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -421,7 +413,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureFood",
     title: "Polymer Clay Miniature Food",
     views: 156890,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -431,7 +423,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureBooks",
     title: "Tiny Books and Library",
     views: 67230,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -441,7 +433,7 @@ export const videosData = [
     titleKey: "videos.titles.miniatureWorld",
     title: "Complete Miniature World Scene",
     views: 203450,
-    categoryId: 11,
+    categoryId: 10,
     categoryTitleKey: "categories.miniatureWonders",
     categoryTitle: "Miniature Wonders"
   },
@@ -453,7 +445,7 @@ export const videosData = [
     titleKey: "videos.titles.craftingHacks",
     title: "Essential Crafting Hacks & Tips",
     views: 178920,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   },
@@ -463,7 +455,7 @@ export const videosData = [
     titleKey: "videos.titles.toolTips",
     title: "Craft Tool Tips & Maintenance",
     views: 92340,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   },
@@ -473,7 +465,7 @@ export const videosData = [
     titleKey: "videos.titles.organizationTips",
     title: "Craft Room Organization Ideas",
     views: 145670,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   },
@@ -483,7 +475,7 @@ export const videosData = [
     titleKey: "videos.titles.budgetCrafting",
     title: "Budget-Friendly Crafting Tips",
     views: 234560,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   },
@@ -493,7 +485,7 @@ export const videosData = [
     titleKey: "videos.titles.troubleshooting",
     title: "Common Craft Problems & Solutions",
     views: 167890,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   },
@@ -503,7 +495,7 @@ export const videosData = [
     titleKey: "videos.titles.timeManagement",
     title: "Time Management for Crafters",
     views: 89450,
-    categoryId: 12,
+    categoryId: 11,
     categoryTitleKey: "categories.tipsTricks",
     categoryTitle: "Tips & Tricks"
   }

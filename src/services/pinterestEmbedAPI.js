@@ -175,7 +175,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_1',
       title: 'Easy Drawing Tutorials',
       description: 'Step-by-step drawing guides',
-      imageUrl: 'https://i.pinimg.com/236x/2c/3d/4e/2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f.jpg',
+      imageUrl: '/images/placeholder-drawing.jpg',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     },
@@ -183,7 +183,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_2',
       title: 'Character Drawing Ideas',
       description: 'Fun character sketches for beginners',
-      imageUrl: 'https://i.pinimg.com/236x/5f/6a/7b/5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     },
@@ -191,7 +191,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_3',
       title: 'Nature Drawing Inspiration',
       description: 'Beautiful nature sketches',
-      imageUrl: 'https://i.pinimg.com/236x/8c/9d/0e/8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     },
@@ -199,7 +199,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_4',
       title: 'Animal Drawing Guide',
       description: 'How to draw cute animals',
-      imageUrl: 'https://i.pinimg.com/236x/e5/f6/a7/e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     },
@@ -207,7 +207,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_5',
       title: 'Portrait Drawing Tips',
       description: 'Learn to draw faces',
-      imageUrl: 'https://i.pinimg.com/236x/f8/a9/b0/f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     },
@@ -215,7 +215,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'drawing_6',
       title: 'Landscape Drawing',
       description: 'Beautiful scenery sketches',
-      imageUrl: 'https://i.pinimg.com/236x/0b/1c/2d/0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.drawing,
       isPinterest: true
     }
@@ -225,7 +225,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'recycling_1',
       title: 'Plastic Bottle Crafts',
       description: 'Creative recycling projects',
-      imageUrl: 'https://i.pinimg.com/236x/3e/4f/5a/3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop',
       boardUrl: PINTEREST_BOARDS.recycling,
       isPinterest: true
     },
@@ -233,7 +233,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'recycling_2',
       title: 'Cardboard Art Projects',
       description: 'Upcycled cardboard creations',
-      imageUrl: 'https://i.pinimg.com/236x/6b/7c/8d/6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=6b/7c/8d/6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e.jpg',
       boardUrl: PINTEREST_BOARDS.recycling,
       isPinterest: true
     },
@@ -241,7 +241,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'recycling_3',
       title: 'Eco-Friendly Crafts',
       description: 'Sustainable craft ideas',
-      imageUrl: 'https://i.pinimg.com/236x/9e/0f/1a/9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=9e/0f/1a/9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b.jpg',
       boardUrl: PINTEREST_BOARDS.recycling,
       isPinterest: true
     }
@@ -251,7 +251,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'beads_1',
       title: 'Beaded Jewelry Making',
       description: 'Beautiful beaded accessories',
-      imageUrl: 'https://i.pinimg.com/236x/c1/d2/e3/c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=c1/d2/e3/c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6.jpg',
       boardUrl: PINTEREST_BOARDS.beads,
       isPinterest: true
     },
@@ -259,7 +259,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'beads_2',
       title: 'Colorful Bead Patterns',
       description: 'Creative bead designs',
-      imageUrl: 'https://i.pinimg.com/236x/f4/a5/b6/f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=f4/a5/b6/f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9.jpg',
       boardUrl: PINTEREST_BOARDS.beads,
       isPinterest: true
     },
@@ -267,7 +267,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'beads_3',
       title: 'DIY Hair Accessories',
       description: 'Handmade hair decorations',
-      imageUrl: 'https://i.pinimg.com/236x/a7/b8/c9/a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=a7/b8/c9/a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2.jpg',
       boardUrl: PINTEREST_BOARDS.beads,
       isPinterest: true
     }
@@ -277,7 +277,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'clay_1',
       title: 'Clay Pottery Projects',
       description: 'Beautiful clay creations',
-      imageUrl: 'https://i.pinimg.com/236x/e1/f2/a3/e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=e1/f2/a3/e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6.jpg',
       boardUrl: PINTEREST_BOARDS.clay,
       isPinterest: true
     },
@@ -285,7 +285,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'clay_2',
       title: 'Polymer Clay Crafts',
       description: 'Creative polymer clay ideas',
-      imageUrl: 'https://i.pinimg.com/236x/b4/c5/d6/b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=b4/c5/d6/b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9.jpg',
       boardUrl: PINTEREST_BOARDS.clay,
       isPinterest: true
     },
@@ -293,7 +293,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'clay_3',
       title: 'Clay Sculptures',
       description: 'Amazing clay art pieces',
-      imageUrl: 'https://i.pinimg.com/236x/d7/e8/f9/d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=d7/e8/f9/d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2.jpg',
       boardUrl: PINTEREST_BOARDS.clay,
       isPinterest: true
     }
@@ -303,7 +303,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'preschool_1',
       title: 'Fun Preschool Activities',
       description: 'Educational craft projects for kids',
-      imageUrl: 'https://i.pinimg.com/236x/fa/0b/1c/fa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=fa/0b/1c/fa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d.jpg',
       boardUrl: PINTEREST_BOARDS.preschool,
       isPinterest: true
     },
@@ -311,7 +311,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'preschool_2',
       title: 'Colorful Learning Crafts',
       description: 'Creative learning through crafts',
-      imageUrl: 'https://i.pinimg.com/236x/2d/3e/4f/2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=2d/3e/4f/2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a.jpg',
       boardUrl: PINTEREST_BOARDS.preschool,
       isPinterest: true
     },
@@ -319,7 +319,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'preschool_3',
       title: 'Easy Kids Projects',
       description: 'Simple crafts for young children',
-      imageUrl: 'https://i.pinimg.com/236x/5a/6b/7c/5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=5a/6b/7c/5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d.jpg',
       boardUrl: PINTEREST_BOARDS.preschool,
       isPinterest: true
     }
@@ -329,7 +329,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'perler_1',
       title: 'Perler Bead Patterns',
       description: 'Amazing perler bead designs',
-      imageUrl: 'https://i.pinimg.com/236x/8d/9e/0f/8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=8d/9e/0f/8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a.jpg',
       boardUrl: PINTEREST_BOARDS.perler,
       isPinterest: true
     },
@@ -337,7 +337,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'perler_2',
       title: 'Pixel Art with Beads',
       description: 'Create pixel art using perler beads',
-      imageUrl: 'https://i.pinimg.com/236x/0f/1a/2b/0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=0f/1a/2b/0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c.jpg',
       boardUrl: PINTEREST_BOARDS.perler,
       isPinterest: true
     },
@@ -345,7 +345,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'perler_3',
       title: 'Character Perler Beads',
       description: 'Fun character designs',
-      imageUrl: 'https://i.pinimg.com/236x/3c/4d/5e/3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=3c/4d/5e/3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f.jpg',
       boardUrl: PINTEREST_BOARDS.perler,
       isPinterest: true
     }
@@ -355,7 +355,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: '3dpen_1',
       title: '3D Pen Creations',
       description: 'Amazing 3D pen projects',
-      imageUrl: 'https://i.pinimg.com/236x/6f/7a/8b/6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=6f/7a/8b/6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c.jpg',
       boardUrl: PINTEREST_BOARDS['3dpen'],
       isPinterest: true
     },
@@ -363,7 +363,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: '3dpen_2',
       title: '3D Pen Art',
       description: 'Creative 3D pen artwork',
-      imageUrl: 'https://i.pinimg.com/236x/9c/0d/1e/9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=9c/0d/1e/9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f.jpg',
       boardUrl: PINTEREST_BOARDS['3dpen'],
       isPinterest: true
     }
@@ -373,7 +373,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'miniature_1',
       title: 'Miniature Dollhouse Items',
       description: 'Tiny detailed crafts',
-      imageUrl: 'https://i.pinimg.com/236x/2f/3a/4b/2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=2f/3a/4b/2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c.jpg',
       boardUrl: PINTEREST_BOARDS.miniature,
       isPinterest: true
     },
@@ -381,7 +381,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'miniature_2',
       title: 'Mini Food Crafts',
       description: 'Adorable miniature food items',
-      imageUrl: 'https://i.pinimg.com/236x/5c/6d/7e/5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=5c/6d/7e/5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f.jpg',
       boardUrl: PINTEREST_BOARDS.miniature,
       isPinterest: true
     }
@@ -391,7 +391,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'science_1',
       title: 'Science Experiments',
       description: 'Fun educational experiments',
-      imageUrl: 'https://i.pinimg.com/236x/8f/9a/0b/8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=8f/9a/0b/8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c.jpg',
       boardUrl: PINTEREST_BOARDS.science,
       isPinterest: true
     },
@@ -399,7 +399,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'science_2',
       title: 'DIY Science Projects',
       description: 'Hands-on learning activities',
-      imageUrl: 'https://i.pinimg.com/236x/0b/1c/2d/0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=0b/1c/2d/0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e.jpg',
       boardUrl: PINTEREST_BOARDS.science,
       isPinterest: true
     }
@@ -409,7 +409,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'tips_1',
       title: 'Crafting Tips & Tricks',
       description: 'Helpful crafting advice',
-      imageUrl: 'https://i.pinimg.com/236x/4e/5f/6a/4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=4e/5f/6a/4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b.jpg',
       boardUrl: PINTEREST_BOARDS.tips,
       isPinterest: true
     },
@@ -417,7 +417,7 @@ export const CURATED_PINTEREST_IMAGES = {
       id: 'tips_2',
       title: 'Organization Ideas',
       description: 'Craft room organization tips',
-      imageUrl: 'https://i.pinimg.com/236x/7b/8c/9d/7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop&sig=7b/8c/9d/7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e.jpg',
       boardUrl: PINTEREST_BOARDS.tips,
       isPinterest: true
     }

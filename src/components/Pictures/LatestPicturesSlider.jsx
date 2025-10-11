@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState, useMemo, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
-import PictureCard from "./PictureCard.jsx";
+import SimplePictureCard from "./SimplePictureCard.jsx";
 import { getLatestPictures } from "../../mockData/picturesData.js";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -214,7 +214,7 @@ const LatestPicturesSlider = () => {
               if (!picture || !picture.id) return null;
               return (
                 <div key={picture.id} className="flex-shrink-0 w-80">
-                  <PictureCard
+                  <SimplePictureCard
                     id={picture.id}
                     image={picture.image}
                     titleKey={picture.titleKey}

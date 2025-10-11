@@ -31,4 +31,30 @@ i18n
     }
   });
 
+// Set initial direction based on default language
+const setInitialDirection = () => {
+  const currentLang = i18n.language || 'en';
+  if (currentLang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = currentLang;
+  }
+};
+
+// Set direction on initialization
+i18n.on('initialized', setInitialDirection);
+
+// Set direction when language changes
+i18n.on('languageChanged', (lng) => {
+  if (lng === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = lng;
+  }
+});
+
 export default i18n;

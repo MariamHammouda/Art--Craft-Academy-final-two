@@ -5,6 +5,36 @@ const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const YOUTUBE_API_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 /**
+ * Filter out deleted, private, or invalid videos from YouTube API response
+ * @param {Array} items - Array of video items from YouTube API
+ * @returns {Array} Filtered array of valid videos
+ */
+const filterValidVideos = (items) => {
+  return items.filter(item => {
+    // Check if video has required data
+    if (!item.snippet || !item.snippet.resourceId || !item.snippet.resourceId.videoId) {
+      console.log('🚫 Filtering out video: Missing resourceId or videoId');
+      return false;
+    }
+    
+    // Check if thumbnails exist
+    if (!item.snippet.thumbnails || Object.keys(item.snippet.thumbnails).length === 0) {
+      console.log('🚫 Filtering out video: Missing thumbnails', item.snippet.title);
+      return false;
+    }
+    
+    // Check for deleted or private video titles
+    const title = item.snippet.title || '';
+    if (title === 'Deleted video' || title === 'Private video') {
+      console.log('🚫 Filtering out deleted/private video:', title);
+      return false;
+    }
+    
+    return true;
+  });
+};
+
+/**
  * Fetch videos from a YouTube channel
  * @param {string} channelId - YouTube channel ID
  * @param {number} maxResults - Maximum number of videos to fetch (default: 50)
@@ -45,19 +75,27 @@ export const fetchChannelVideos = async (channelId, maxResults = 50) => {
     
     const videosData = await videosResponse.json();
     
-    // Get video statistics (views, likes, etc.)
-    const videoIds = videosData.items.map(item => item.snippet.resourceId.videoId).join(',');
-    const statsResponse = await fetch(
-      `${YOUTUBE_API_BASE_URL}/videos?part=statistics,contentDetails&id=${videoIds}&key=${YOUTUBE_API_KEY}`
-    );
+    // Filter out deleted, private, or invalid videos
+    const filteredItems = filterValidVideos(videosData.items);
+    
+    console.log(`🔍 Filtered channel videos: ${videosData.items.length} → ${filteredItems.length} (removed ${videosData.items.length - filteredItems.length} deleted/private videos)`);
+    
+    // Get video statistics (views, likes, etc.) - only for valid videos
+    const videoIds = filteredItems.map(item => item.snippet.resourceId.videoId).join(',');
     
     let statsData = { items: [] };
-    if (statsResponse.ok) {
-      statsData = await statsResponse.json();
+    if (videoIds) {
+      const statsResponse = await fetch(
+        `${YOUTUBE_API_BASE_URL}/videos?part=statistics,contentDetails&id=${videoIds}&key=${YOUTUBE_API_KEY}`
+      );
+      
+      if (statsResponse.ok) {
+        statsData = await statsResponse.json();
+      }
     }
     
-    // Combine video data with statistics
-    const videos = videosData.items.map((item, index) => {
+    // Combine video data with statistics - using filtered items
+    const videos = filteredItems.map((item, index) => {
       const stats = statsData.items.find(stat => stat.id === item.snippet.resourceId.videoId);
       
       return {
@@ -160,19 +198,27 @@ export const fetchPlaylistVideos = async (playlistId, maxResults = 25) => {
     // Create a combined videosData object
     const videosData = { items: allVideosData };
     
-    // Get video statistics (views, likes, etc.)
-    const videoIds = videosData.items.map(item => item.snippet.resourceId.videoId).join(',');
-    const statsResponse = await fetch(
-      `${YOUTUBE_API_BASE_URL}/videos?part=statistics,contentDetails&id=${videoIds}&key=${YOUTUBE_API_KEY}`
-    );
+    // Filter out deleted, private, or invalid videos
+    const filteredItems = filterValidVideos(videosData.items);
+    
+    console.log(`🔍 Filtered videos: ${videosData.items.length} → ${filteredItems.length} (removed ${videosData.items.length - filteredItems.length} deleted/private videos)`);
+    
+    // Get video statistics (views, likes, etc.) - only for valid videos
+    const videoIds = filteredItems.map(item => item.snippet.resourceId.videoId).join(',');
     
     let statsData = { items: [] };
-    if (statsResponse.ok) {
-      statsData = await statsResponse.json();
+    if (videoIds) {
+      const statsResponse = await fetch(
+        `${YOUTUBE_API_BASE_URL}/videos?part=statistics,contentDetails&id=${videoIds}&key=${YOUTUBE_API_KEY}`
+      );
+      
+      if (statsResponse.ok) {
+        statsData = await statsResponse.json();
+      }
     }
     
-    // Combine video data with statistics
-    const videos = videosData.items.map((item, index) => {
+    // Combine video data with statistics - using filtered items
+    const videos = filteredItems.map((item, index) => {
       const stats = statsData.items.find(stat => stat.id === item.snippet.resourceId.videoId);
       
       return {
@@ -346,11 +392,15 @@ const getCategoryFromTitle = (title) => {
   
   if (titleLower.includes('origami') || titleLower.includes('paper fold')) return 1;
   if (titleLower.includes('draw') || titleLower.includes('sketch') || titleLower.includes('paint')) return 2;
-  if (titleLower.includes('bead') || titleLower.includes('jewelry') || titleLower.includes('bracelet')) return 3;
-  if (titleLower.includes('clay') || titleLower.includes('pottery') || titleLower.includes('ceramic')) return 4;
-  if (titleLower.includes('preschool') || titleLower.includes('kids') || titleLower.includes('children')) return 5;
-  if (titleLower.includes('science') || titleLower.includes('experiment') || titleLower.includes('diy')) return 6;
-  if (titleLower.includes('recycle') || titleLower.includes('upcycle') || titleLower.includes('bottle')) return 7;
+  if (titleLower.includes('recycle') || titleLower.includes('upcycle') || titleLower.includes('bottle')) return 3;
+  if (titleLower.includes('bead') || titleLower.includes('jewelry') || titleLower.includes('bracelet')) return 4;
+  if (titleLower.includes('clay') || titleLower.includes('pottery') || titleLower.includes('ceramic')) return 5;
+  if (titleLower.includes('preschool') || titleLower.includes('kids') || titleLower.includes('children')) return 6;
+  if (titleLower.includes('perler') || titleLower.includes('pixel art')) return 7;
+  if (titleLower.includes('3d pen') || titleLower.includes('3dpen')) return 8;
+  if (titleLower.includes('science') || titleLower.includes('experiment') || titleLower.includes('diy')) return 9;
+  if (titleLower.includes('miniature') || titleLower.includes('dollhouse') || titleLower.includes('tiny')) return 10;
+  if (titleLower.includes('tips') || titleLower.includes('tricks') || titleLower.includes('hack')) return 11;
   
   // Default to origami if no category matches
   return 1;
@@ -366,11 +416,15 @@ const getCategoryTitleKey = (title) => {
   const categoryMap = {
     1: 'categories.origamiWorld',
     2: 'categories.drawing',
-    3: 'categories.beadsJewelry',
-    4: 'categories.clay',
-    5: 'categories.preschoolCrafts',
-    6: 'categories.scienceDiy',
-    7: 'categories.recyclingArt',
+    3: 'categories.recyclingArt',
+    4: 'categories.beadsJewelry',
+    5: 'categories.clay',
+    6: 'categories.preschoolCrafts',
+    7: 'categories.perlerBeads',
+    8: 'categories.threeDPenFun',
+    9: 'categories.scienceDiy',
+    10: 'categories.miniatureWonders',
+    11: 'categories.tipsTricks',
   };
   
   return categoryMap[categoryId] || 'categories.origamiWorld';

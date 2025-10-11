@@ -5,7 +5,6 @@ import { HashLink } from "react-router-hash-link";
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import NavbarLogo from "../../assets/images/hero-images/navbar-logo.png";
-import CustomIcon from "../../assets/images/icon.ico";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher.jsx";
 import SearchModal from "../Search/SearchModal.jsx";
 
@@ -75,7 +74,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.home')}</span>
                 </Link>
@@ -87,7 +86,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.categories')}</span>
                 </HashLink>
@@ -99,7 +98,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.videos')}</span>
                 </HashLink>
@@ -110,7 +109,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.pictures')}</span>
                 </Link>
@@ -121,7 +120,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.courses')}</span>
                 </Link>
@@ -132,7 +131,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.shop')}</span>
                 </Link>
@@ -143,7 +142,7 @@ const NavBar = () => {
                   className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
                 >
                   <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.about')}</span>
                 </Link>
@@ -197,7 +196,7 @@ const NavBar = () => {
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-4 border-b border-white/20">
             <div className="flex items-center">
-              <img src={CustomIcon} alt="Art Icon" className="w-8 h-8 mr-2" />
+              <img src={NavbarLogo} alt="Art Icon" className="w-8 h-8 mr-2" />
               <h2 className="text-white text-lg font-semibold">{t('nav.menu')}</h2>
             </div>
             <button 
@@ -218,7 +217,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.home')}</span>
                 </Link>
               </li>
@@ -229,7 +228,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.categories')}</span>
                 </HashLink>
               </li>
@@ -240,7 +239,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.videos')}</span>
                 </HashLink>
               </li>
@@ -250,7 +249,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.pictures')}</span>
                 </Link>
               </li>
@@ -260,7 +259,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.courses')}</span>
                 </Link>
               </li>
@@ -270,7 +269,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.shop')}</span>
                 </Link>
               </li>
@@ -280,7 +279,7 @@ const NavBar = () => {
                   className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={CustomIcon} alt="Art Icon" className="w-6 h-6 mr-3" />
+                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
                   <span className="text-lg font-medium">{t('nav.about')}</span>
                 </Link>
               </li>

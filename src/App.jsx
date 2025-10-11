@@ -5,9 +5,10 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./i18n/i18n"; // Initialize i18n
-import NavBar from "./components/NavBar/NavBar.jsx";
+import NavBar from "./components/Navbar/Navbar.jsx";
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
 import CategoriesBar from "./components/Categories/CategoriesBar.jsx";
 import { VideosByCategory } from "./components/Videos/VideosByCategory.jsx";
@@ -29,7 +30,6 @@ import ImageDetailPage from "./components/Pinterest/ImageDetailPage.jsx";
 import PrivacyPolicyPage from "./components/Pages/PrivacyPolicyPage.jsx";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import QuotaManager from "./components/Debug/QuotaManager.jsx";
 import PinterestDebug from "./components/Debug/PinterestDebug.jsx";
 
 // Component to track navigation changes
@@ -44,6 +44,20 @@ function NavigationTracker() {
 }
 
 function App() {
+  const { i18n } = useTranslation();
+
+  // Set initial direction on app load
+  useEffect(() => {
+    const currentLang = i18n.language || 'en';
+    if (currentLang === 'ar') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = currentLang;
+    }
+  }, [i18n.language]);
+
   return (
     <Router>
       <div className="overflow-x-hidden">
@@ -95,7 +109,6 @@ function App() {
         </Routes>
 
         <Footer />
-        <QuotaManager />
       </div>
     </Router>
   );
