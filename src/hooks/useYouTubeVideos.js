@@ -147,6 +147,11 @@ export const useLatestVideos = (maxResults = 100) => {
         playlistId: import.meta.env.VITE_SCIENCE_PLAYLIST_ID,
         categoryId: 9,
         categoryTitleKey: 'categories.scienceDiy'
+      },
+      {
+        playlistId: import.meta.env.VITE_MINIATURE_WONDERS_PLAYLIST_ID,
+        categoryId: 10,
+        categoryTitleKey: 'categories.miniatureWonders'
       }
     ].filter(playlist => playlist.playlistId && !playlist.playlistId.startsWith('your_'));
   }, []);
@@ -381,6 +386,7 @@ export const useVideosByCategory = (categoryId, maxResults = 10) => {
         7: import.meta.env.VITE_PERLER_BEADS_PLAYLIST_ID, // Perler Beads
         8: import.meta.env.VITE_3D_PEN_FUN_PLAYLIST_ID, // 3D Pen Fun
         9: import.meta.env.VITE_SCIENCE_PLAYLIST_ID, // Science & DIY Experiments
+        10: import.meta.env.VITE_MINIATURE_WONDERS_PLAYLIST_ID, // Miniature Wonders
       };
       
       const playlistId = categoryPlaylistMap[categoryId];

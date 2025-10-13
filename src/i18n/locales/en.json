@@ -34,6 +34,7 @@
     "recyclingArt": "Recycling Art",
     "perlerBeads": "Perler Beads",
     "threeDPenFun": "3D Pen Fun",
+    "miniatureWonders": "Miniature Wonders",
     "descriptions": {
       "origamiWorld": "Discover the ancient art of paper folding with our step-by-step origami tutorials. From simple cranes to complex flowers, learn to create beautiful paper sculptures that will amaze your friends and family.",
       "drawing": "Unleash your creativity with our comprehensive drawing tutorials. Learn fundamental techniques, shading, perspective, and various drawing styles from beginner to advanced levels.",
@@ -43,7 +44,8 @@
       "scienceDiy": "Combine learning with fun through exciting science experiments and DIY projects. Explore physics, chemistry, and biology concepts through hands-on activities and experiments.",
       "recyclingArt": "Turn everyday waste into beautiful art pieces. Learn eco-friendly crafting techniques using recycled materials to create unique decorations and functional items.",
       "perlerBeads": "Create amazing pixel art and 3D designs with colorful Perler beads! Learn to make keychains, coasters, characters, and decorative items using this fun melting bead technique.",
-      "threeDPenFun": "Discover the world of 3D printing with a pen! Create incredible three-dimensional sculptures, jewelry, architectural models, and artistic designs using 3D printing pen technology."
+      "threeDPenFun": "Discover the world of 3D printing with a pen! Create incredible three-dimensional sculptures, jewelry, architectural models, and artistic designs using 3D printing pen technology.",
+      "miniatureWonders": "Enter the fascinating world of miniatures! Learn to create tiny detailed crafts, dollhouse accessories, miniature food, and small-scale replicas that capture the beauty of the full-sized world in perfect detail."
     }
   },
     "videos": {

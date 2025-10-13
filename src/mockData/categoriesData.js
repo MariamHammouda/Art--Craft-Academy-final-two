@@ -7,12 +7,14 @@ import recycleing from "../assets/images/recycleing.png"
 import science from "../assets/images/science.png"
 import perlerBeads from "../assets/images/perler-beads.ico"
 import threeDPenFun from "../assets/images/3d-pen-fun.ico"
+import miniatureWonders from "../assets/images/miniature-wonders.ico"
 // Category banner images
 import origamiCategory from "../assets/images/category-images/orgami-category.jpg"
 import drawingCategory from "../assets/images/category-images/drawing-category.jpg"
 import beadsCategory from "../assets/images/category-images/beads-category.jpg"
 import perlerBeadsCategory from "../assets/images/picture-gallary-images/perler-beads.jpg"
 import threeDPenCategory from "../assets/images/picture-gallary-images/3D-pen-letters.jpg"
+import miniatureWondersCategory from "../assets/images/picture-gallary-images/miniature-wonders.jpg"
 
 
 
@@ -88,5 +90,13 @@ export const categoriesData = [
     icon: science,
     bannerImage: science,
     descriptionKey: "categories.descriptions.scienceDiy",
+  },
+  {
+    id: 10,
+    titleKey: "categories.miniatureWonders",
+    color: "#8B5CF6", // purple
+    icon: miniatureWonders,
+    bannerImage: miniatureWondersCategory,
+    descriptionKey: "categories.descriptions.miniatureWonders",
   },
 ];
