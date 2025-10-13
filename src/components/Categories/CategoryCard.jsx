@@ -18,7 +18,8 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage }) => {
       6: 'bg-[#FFD93D] hover:bg-[#917c24]', // Preschool - Green
       7: 'bg-[#63C8FF] hover:bg-[#51a2cf]', // Perler Beads - red
       8: 'bg-[#32CD32] hover:bg-[#28B428]', // 3D Pen - green
-      9: 'bg-[#F0308F] hover:bg-[#bf2672]'  // Science - Pink
+      9: 'bg-[#F0308F] hover:bg-[#bf2672]',  // Science - Pink
+      10: 'bg-[#8B5CF6] hover:bg-[#7C3AED]'  // Miniature Wonders - Purple
     };
     return buttonColors[categoryId] || 'bg-[#59ACBE] hover:bg-[#4A9BB0]';
   };
@@ -88,7 +89,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage }) => {
         }
       }}
     >
-      <div className="bg-white rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 overflow-hidden w-full mx-2 my-2 sm:m-4" style={{ touchAction: 'manipulation' }}>
+      <div className="bg-white rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 overflow-hidden w-full my-2 sm:m-4" style={{ touchAction: 'manipulation' }}>
         {/* Colored Background Section with Icon */}
        <div 
           className="relative h-24 sm:h-32 flex items-center justify-center transition-all duration-300"
