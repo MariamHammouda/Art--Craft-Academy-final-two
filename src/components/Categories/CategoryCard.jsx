@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CategoryCard = ({ titleKey, icon, color, id, bannerImage }) => {
+const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = false }) => {
   const { t } = useTranslation();
   const [isPressed, setIsPressed] = useState(false);
   const title = t(titleKey);
@@ -43,6 +43,12 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage }) => {
     e.stopPropagation();
     console.log('Category clicked:', id, title);
     try {
+      // If forceNavigate is true, always navigate to category page
+      if (forceNavigate) {
+        window.location.href = `#/category/${id}`;
+        return;
+      }
+      
       const isMobile = window.innerWidth < 768;
       if (isMobile) {
         window.location.href = `#/category/${id}`;
@@ -60,7 +66,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage }) => {
       console.error('Navigation error:', error);
       window.location.href = `#/category/${id}`;
     }
-  }, [id, title]);
+  }, [id, title, forceNavigate]);
 
   const handleTouchStart = useCallback(() => setIsPressed(true), []);
   const handleTouchEnd = useCallback(() => setIsPressed(false), []);
