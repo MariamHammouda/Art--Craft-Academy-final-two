@@ -66,7 +66,7 @@ const VideosByCategoryComponent = () => {
   }, [videosByCategory, navigate]);
 
   return (
-    <section id="video-categories" className="py-12 px-6 bg-gray-50">
+    <section id="video-categories" className="py-12 px-6">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
         {t('videos.byCategory')}
       </h2>
