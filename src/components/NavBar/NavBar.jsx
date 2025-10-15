@@ -16,7 +16,7 @@ const NavBar = () => {
   
   // Check if we're on the home page (HashRouter consideration)
   const isHomePage = location.pathname === '/' || location.pathname === '';
-  const showLogo = !isHomePage; // Show logo on all pages EXCEPT home
+  const showLogo = true; // Show logo on all pages INCLUDING home
   
   // Close mobile menu when route changes
   useEffect(() => {
@@ -52,21 +52,21 @@ const NavBar = () => {
       <div className="container mx-auto px-2 sm:px-4 py-1 sm:py-2">
         <div className="flex items-center justify-between relative">
 
-          {/* Logo - Show on all pages EXCEPT home */}
+          {/* Logo - Show on all pages INCLUDING home */}
           {showLogo && (
-            <div className="flex-shrink-0 -my-3">
+            <div className="flex-shrink-0 -my-2">
               <Link to="/" className="flex items-center">
                 <img 
                   src={NavbarLogo} 
                   alt="Art Craft Academy" 
-                  className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto hover:scale-105 transition-transform duration-300"
+                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto hover:scale-105 transition-transform duration-300"
                 />
               </Link>
             </div>
           )}
 
           {/* Desktop Navigation Links */}
-          <div className={`${showLogo ? 'ml-8 lg:ml-12' : 'flex-1 flex justify-center'}`}>
+          <div className="ml-8 lg:ml-12 flex-1">
             <ul className="hidden md:flex items-center gap-4 lg:gap-8 text-white">
               <li>
                 <Link 
