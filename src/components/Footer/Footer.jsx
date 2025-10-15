@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaEnvelope, FaPhone } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaPinterestP, FaEnvelope, FaPhone } from "react-icons/fa6";
 import NavbarLogo from "../../assets/images/hero-images/navbar-logo.png";
 
 const Footer = () => {
@@ -40,18 +40,51 @@ const Footer = () => {
         {/* Social */}
         <div>
           <h3 className="text-xl font-semibold mb-4">{t('footer.followUs')}</h3>
-          <div className="flex items-center gap-4">
-            <a href="#" aria-label="Facebook" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+          <div className="flex items-center gap-3 flex-wrap">
+            <a 
+              href="https://www.facebook.com/share/1CmZqgcT7N/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Facebook" 
+              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+            >
               <FaFacebookF />
             </a>
-            <a href="#" aria-label="Instagram" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+            <a 
+              href="https://www.instagram.com/artandcraftacademy1?igsh=dndxZGg4aXI5Nmt3" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Instagram" 
+              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+            >
               <FaInstagram />
             </a>
-            <a href="#" aria-label="YouTube" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+            <a 
+              href="https://www.youtube.com/@Art-Craft-Academy1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="YouTube" 
+              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+            >
               <FaYoutube />
             </a>
-            <a href="#" aria-label="TikTok" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+            <a 
+              href="https://www.tiktok.com/@art_craft_academy?_t=ZS-90XcJsMfNEw&_r=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="TikTok" 
+              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+            >
               <FaTiktok />
+            </a>
+            <a 
+              href="https://pin.it/RLd2P2XCO" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Pinterest" 
+              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+            >
+              <FaPinterestP />
             </a>
           </div>
         </div>

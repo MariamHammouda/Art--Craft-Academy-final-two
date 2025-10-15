@@ -67,7 +67,7 @@ const VideosByCategoryComponent = () => {
   }, [videosByCategory, navigate]);
 
   return (
-    <section id="video-categories" className="py-12 px-8">
+    <section id="video-categories" className="py-12 px-2">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
         {t('videos.byCategory')}
       </h2>
@@ -111,7 +111,7 @@ const VideosByCategoryComponent = () => {
           const { videos: categoryVideosSorted, hasMore } = categoryData;
           
           return (
-            <div key={category.id} id={`cat-${category.id}`} className="max-w-7xl mx-auto">
+            <div key={category.id} id={`cat-${category.id}`} className="w-full px-2">
               {/* Category Card and Videos Grid */}
               <div className="flex gap-6 items-start">
                 {/* Category Card */}
