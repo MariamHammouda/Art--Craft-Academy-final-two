@@ -8,7 +8,7 @@ const Footer = () => {
   const { t } = useTranslation();
   
   return (
-    <footer className="text-white" style={{ backgroundColor: "#59ACBE" }}>
+    <footer className="text-white bg-gradient-to-r from-[#59ACBE] via-[#4A9BB8] to-[#3B8AAD]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4">
         {/* Contact */}
         <div>
@@ -46,7 +46,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Facebook" 
-              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+              className="h-10 w-10 rounded-full bg-[#1877F2] hover:bg-[#166FE5] text-white flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               <FaFacebookF />
             </a>
@@ -55,7 +55,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Instagram" 
-              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+              className="h-10 w-10 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] via-[#F77737] to-[#FCAF45] hover:from-[#7A2FB0] hover:via-[#E91A1A] hover:via-[#E56D33] hover:to-[#E09F3F] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg"
             >
               <FaInstagram />
             </a>
@@ -64,7 +64,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="YouTube" 
-              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+              className="h-10 w-10 rounded-full bg-[#FF0000] hover:bg-[#E60000] text-white flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               <FaYoutube />
             </a>
@@ -73,7 +73,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="TikTok" 
-              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+              className="h-10 w-10 rounded-full bg-[#000000] hover:bg-[#1a1a1a] text-white flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               <FaTiktok />
             </a>
@@ -82,7 +82,7 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Pinterest" 
-              className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+              className="h-10 w-10 rounded-full bg-[#E60023] hover:bg-[#CC001F] text-white flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               <FaPinterestP />
             </a>
