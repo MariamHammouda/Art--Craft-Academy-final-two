@@ -61,7 +61,12 @@ function App() {
 
   return (
     <Router>
-      <div className="overflow-x-hidden">
+      <div 
+        className="overflow-x-hidden min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{
+          backgroundImage: `url(${gradientBackground})`
+        }}
+      >
         <NavigationTracker />
         <NavBar />
         <Routes>
@@ -70,13 +75,8 @@ function App() {
             element={
               <>
                 <HeroSection />
-                {/* Main content section with gradient background */}
-                <div 
-                  className="bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${gradientBackground})`
-                  }}
-                >
+                {/* Main content section */}
+                <div>
                   <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
                     <LatestVideos />
                   </ErrorBoundary>
