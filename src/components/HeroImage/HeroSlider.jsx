@@ -32,9 +32,9 @@ const HeroSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      {/* Image Container with Increased Height and Enhanced Styling */}
-      <div className="relative w-full h-96 sm:h-[28rem] md:h-[32rem] lg:h-[36rem] overflow-hidden rounded-2xl shadow-2xl bg-gray-100">
+    <div className="w-full max-w-2xl mx-auto">
+      {/* Image Container with Smaller Responsive Height */}
+      <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded-2xl shadow-2xl bg-gray-100">
         {/* Slides */}
         {images.map((src, i) => (
           <div

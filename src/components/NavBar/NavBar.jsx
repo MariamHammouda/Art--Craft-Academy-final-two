@@ -48,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#59ACBE] shadow-lg">
+    <nav className="bg-gradient-to-br from-[#59ACBE] via-[#7BC4D4] to-[#A8E6CF] shadow-lg">
       <div className="container mx-auto px-2 sm:px-4 py-1 sm:py-2">
         <div className="flex items-center justify-between relative">
 
