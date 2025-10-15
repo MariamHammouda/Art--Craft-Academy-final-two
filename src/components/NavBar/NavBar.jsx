@@ -48,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-br from-[#59ACBE] via-[#7BC4D4] to-[#A8E6CF] shadow-lg">
+    <nav className="bg-[#74BFD0] shadow-lg">
       <div className="container mx-auto px-2 sm:px-4 py-1 sm:py-2">
         <div className="flex items-center justify-between relative">
 
@@ -173,14 +173,14 @@ const NavBar = () => {
 
             <Button
               onClick={() => console.log("Login clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#59ACBE] transition duration-200"
+              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
             >
               {t('nav.login')}
             </Button>
 
             <Button
               onClick={() => console.log("Sign Up clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-[#FCD11A] text-[#59ACBE] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
+              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
             >
               {t('nav.signup')}
             </Button>
@@ -189,7 +189,7 @@ const NavBar = () => {
       </div>
       
       {/* Mobile Side Menu */}
-      <div className={`mobile-menu fixed inset-y-0 left-0 z-50 w-72 sm:w-80 bg-[#59ACBE] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
+      <div className={`mobile-menu fixed inset-y-0 left-0 z-50 w-72 sm:w-80 bg-[#74BFD0] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
@@ -313,7 +313,7 @@ const NavBar = () => {
                   console.log("Login clicked");
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full px-4 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#59ACBE] transition duration-200"
+                className="w-full px-4 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
               >
                 {t('nav.login')}
               </Button>
@@ -323,7 +323,7 @@ const NavBar = () => {
                   console.log("Sign Up clicked");
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full px-4 py-3 bg-[#FCD11A] text-[#59ACBE] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
+                className="w-full px-4 py-3 bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
               >
                 {t('nav.signup')}
               </Button>
