@@ -58,6 +58,25 @@ const CategoryPage = () => {
   // Find category data for styling
   const categoryData = resolvedCategory;
 
+  // Get the same colors used in CategoryCard component
+  const getCardColors = (categoryId) => {
+    const cardColors = {
+      1: { bg: '#FFF4B3', circle: '#FFD93D' },
+      2: { bg: '#B3E5FF', circle: '#63C8FF' },
+      3: { bg: '#B3FFB3', circle: '#55e655ff' },
+      4: { bg: '#FFB3E6', circle: '#e14e98ff' },
+      5: { bg: '#FFF4B3', circle: '#FFD93D'  },
+      6: { bg: '#B3E5FF', circle: '#63C8FF' },
+      7: { bg: '#B3FFB3', circle: '#55e655ff' },
+      8: { bg: '#B3E5FF', circle: '#63C8FF' },
+      9: { bg: '#FFB3E6', circle: '#F0308F' },
+      10: { bg: '#D9B3FF', circle: '#8B5CF6' }
+    };
+    return cardColors[categoryId] || { bg: '#B3E5FF', circle: '#59ACBE' };
+  };
+
+  const cardColors = getCardColors(categoryData?.id);
+
   if (!categoryData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -93,7 +112,7 @@ const CategoryPage = () => {
             <div className="flex items-center justify-center gap-4 mb-4">
               <div
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg flex items-center justify-center"
-                style={{ backgroundColor: categoryData.color }}
+                style={{ backgroundColor: cardColors.circle }}
               >
                 <img src={categoryData.icon} alt={t(categoryData.titleKey)} className="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
@@ -119,8 +138,13 @@ const CategoryPage = () => {
 
             {/* Description */}
             <div className="order-1 lg:order-2">
-              <div className="bg-gradient-to-br from-gray-50 to-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <div 
+                className="p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200"
+                style={{ 
+                  backgroundColor: cardColors.bg
+                }}
+              >
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
                   {t('videos.description')}
                 </h2>
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
