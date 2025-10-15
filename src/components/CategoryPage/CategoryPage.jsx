@@ -5,6 +5,8 @@ import VideoCard from "../Videos/VideoCard.jsx";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { videosData } from "../../mockData/videosData.js";
 import { useVideosByCategory } from "../../hooks/useYouTubeVideos.js";
+import perlerBeadsCategoryImage from "../../assets/images/category-page-images/perler-beads.jpg";
+import recyclingArtCategoryImage from "../../assets/images/category-page-images/recycling-art.jpg";
 
 const CategoryPage = () => {
   const location = useLocation();
@@ -128,7 +130,11 @@ const CategoryPage = () => {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src={categoryData.bannerImage} 
+                  src={
+                    categoryData.id === 7 ? perlerBeadsCategoryImage :
+                    categoryData.id === 3 ? recyclingArtCategoryImage :
+                    categoryData.bannerImage
+                  } 
                   alt={t(categoryData.titleKey)}
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover"
                 />
@@ -144,10 +150,26 @@ const CategoryPage = () => {
                   backgroundColor: cardColors.bg
                 }}
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                <h2 
+                  className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4"
+                  style={{
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2)',
+                    transform: 'perspective(500px) rotateX(10deg)',
+                    transformOrigin: 'center bottom',
+                    letterSpacing: '0.5px'
+                  }}
+                >
                   {t('videos.description')}
                 </h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                <p 
+                  className="text-gray-700 text-lg leading-relaxed mb-6"
+                  style={{
+                    textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0.5px 0.5px 1px rgba(0,0,0,0.1)',
+                    transform: 'perspective(800px) rotateX(5deg)',
+                    transformOrigin: 'center bottom',
+                    letterSpacing: '0.3px'
+                  }}
+                >
                   {t(categoryData.descriptionKey)}
                 </p>
                 
