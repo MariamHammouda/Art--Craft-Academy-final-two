@@ -5,6 +5,7 @@ import img3 from "../../assets/images/hero-images/girl.jpg";
 import img4 from "../../assets/images/hero-images/accessory2.jpg";
 import img5 from "../../assets/images/hero-images/popsicle.jpg";
 import img6 from "../../assets/images/hero-images/popsicle2.jpg";
+import img7 from "../../assets/images/hero-images/popsicle.png";
 
 const SLIDE_INTERVAL_MS = 4000;
 
@@ -21,7 +22,7 @@ const SLIDE_INTERVAL_MS = 4000;
  * the container, cropping excess content as needed.
  */
 const HeroSlider = () => {
-  const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
+  const images = useMemo(() => [img1, img2, img3, img4, img5, img6, img7], []);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -32,9 +33,11 @@ const HeroSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto">
       {/* Image Container with Smaller Responsive Height */}
-      <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded-2xl shadow-2xl bg-gray-100">
+            <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded-2xl shadow-2xl bg-gray-100">
+
+      {/* <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 2xl:h-[28rem] overflow-hidden rounded-2xl shadow-2xl bg-gray-100"> */}
         {/* Slides */}
         {images.map((src, i) => (
           <div

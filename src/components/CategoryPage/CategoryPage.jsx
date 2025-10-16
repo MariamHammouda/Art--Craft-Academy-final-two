@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import VideoCard from "../Videos/VideoCard.jsx";
@@ -14,6 +14,26 @@ const CategoryPage = () => {
   const { t } = useTranslation();
   const { id: idParam } = useParams();
   const { categoryTitle: stateTitle, videos: stateVideos } = location.state || {};
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // Reset pagination when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [idParam]);
 
   // Try to get data from sessionStorage if React Router state is not available
   const sessionData = sessionStorage.getItem('categoryData');
@@ -78,6 +98,25 @@ const CategoryPage = () => {
   };
 
   const cardColors = getCardColors(categoryData?.id);
+
+  // Pagination logic
+  const videosPerPage = isMobile ? 8 : 12;
+  const totalVideos = resolvedVideos.length;
+  const totalPages = Math.ceil(totalVideos / videosPerPage);
+  const startIndex = (currentPage - 1) * videosPerPage;
+  const endIndex = startIndex + videosPerPage;
+  const currentVideos = [...resolvedVideos]
+    .sort((a, b) => (b.id ?? 0) - (a.id ?? 0))
+    .slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // Scroll to videos section
+    const videosSection = document.getElementById('videos-section');
+    if (videosSection) {
+      videosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   if (!categoryData) {
     return (
@@ -181,7 +220,7 @@ const CategoryPage = () => {
       </div>
 
       {/* Videos Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div id="videos-section" className="max-w-7xl mx-auto px-6 py-12">
         {videosLoading ? (
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#59ACBE]"></div>
@@ -193,21 +232,76 @@ const CategoryPage = () => {
           </div>
         ) : null}
         
+        {/* Videos Count Info */}
+        {totalVideos > 0 && (
+          <div className="mb-6 text-center">
+            <p className="text-gray-600">
+              {t('videos.showing')} {startIndex + 1}-{Math.min(endIndex, totalVideos)} {t('videos.of')} {totalVideos} {t('videos.videos')}
+            </p>
+          </div>
+        )}
+        
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[...resolvedVideos]
-            .sort((a, b) => (b.id ?? 0) - (a.id ?? 0))
-            .map((video) => (
-              <VideoCard
-                key={video.id}
-                id={video.id}
-                url={video.url}
-                titleKey={video.titleKey}
-                categoryTitleKey={video.categoryTitleKey}
-                title={video.title}
-                categoryTitle={video.categoryTitle}
-              />
+          {currentVideos.map((video) => (
+            <VideoCard
+              key={video.id}
+              id={video.id}
+              url={video.url}
+              titleKey={video.titleKey}
+              categoryTitleKey={video.categoryTitleKey}
+              title={video.title}
+              categoryTitle={video.categoryTitle}
+            />
           ))}
         </div>
+        
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center mt-8 gap-2">
+            {/* Previous Button */}
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === 1
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+              }`}
+            >
+              ← {t('common.previous')}
+            </button>
+            
+            {/* Page Numbers */}
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                    currentPage === page
+                      ? 'bg-[#74BFD0] text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            {/* Next Button */}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === totalPages
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+              }`}
+            >
+              {t('common.next')} →
+            </button>
+          </div>
+        )}
         
         {resolvedVideos.length === 0 && !videosLoading && (
           <div className="text-center py-12">
