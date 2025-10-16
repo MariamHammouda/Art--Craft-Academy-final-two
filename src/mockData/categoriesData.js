@@ -15,6 +15,7 @@ import drawingPageCategory from "../assets/images/category-page-images/drawing.j
 import beadsCategory from "../assets/images/category-images/beads-category.jpg"
 import beadsAccessoriesCategory from "../assets/images/category-page-images/beads-accessories.jpg"
 import clayCategory from "../assets/images/category-page-images/clay.jpg"
+import preschoolCraftsCategory from "../assets/images/category-page-images/preschool-crafts.jpg"
 import perlerBeadsCategory from "../assets/images/picture-gallary-images/perler-beads.jpg"
 import threeDPenCategory from "../assets/images/picture-gallary-images/3D-pen-letters.jpg"
 import miniatureWondersCategory from "../assets/images/picture-gallary-images/miniature-wonders.jpg"
@@ -68,7 +69,7 @@ export const categoriesData = [
     titleKey: "categories.preschoolCrafts",
     color: "#FFEB00", // yellow
     icon: preschool,
-    bannerImage: preschool,
+    bannerImage: preschoolCraftsCategory,
     descriptionKey: "categories.descriptions.preschoolCrafts",
   },
   {
