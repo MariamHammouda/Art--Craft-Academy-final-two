@@ -201,7 +201,7 @@ const CategoryPage = () => {
                   {t('videos.description')}
                 </h2>
                 <p 
-                  className="text-gray-700 text-lg leading-relaxed mb-6"
+                  className="text-gray-700 text-lg leading-relaxed mb-6 font-bold"
                   style={{
                     textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0.5px 0.5px 1px rgba(0,0,0,0.1)',
                     transform: 'perspective(800px) rotateX(5deg)',
