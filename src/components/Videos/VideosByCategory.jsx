@@ -1,6 +1,7 @@
 import React, { memo, useMemo, useCallback } from "react";
 import { useTranslation } from 'react-i18next';
 import VideoCard from "./VideoCard.jsx";
+import CategoryCard from "../Categories/CategoryCard.jsx";
 import { videosData } from "../../mockData/videosData.js";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -66,14 +67,14 @@ const VideosByCategoryComponent = () => {
   }, [videosByCategory, navigate]);
 
   return (
-    <section id="video-categories" className="py-12 px-6 bg-gray-50">
+    <section id="video-categories" className="py-12 px-2">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
         {t('videos.byCategory')}
       </h2>
       
       
       {loading && videosToUse.length === 0 && (
-        <div className="flex justify-center items-center py-12">
+        <div className="flex justify-center items-center py-12 ">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#59ACBE]"></div>
         </div>
       )}
@@ -110,41 +111,35 @@ const VideosByCategoryComponent = () => {
           const { videos: categoryVideosSorted, hasMore } = categoryData;
           
           return (
-            <div key={category.id} id={`cat-${category.id}`} className="max-w-5xl mx-auto">
-              {/* Category Header */}
-              <div 
-                className="flex items-center justify-between mb-6 cursor-pointer group"
-                onClick={() => handleCategoryClick(category.id, t(category.titleKey))}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-16 h-16 rounded-full shadow-lg flex items-center justify-center transition transform group-hover:scale-110"
-                    style={{ backgroundColor: category.color }}
-                  >
-                    <img src={category.icon} alt={category.title} className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-800 group-hover:text-[#59ACBE] transition-colors">
-                    {t(category.titleKey)}
-                  </h3>
-                </div>
-                <div className="text-[#59ACBE] font-medium group-hover:text-[#FCD11A] transition-colors">
-                  {t('categories.viewAll')} →
-                </div>
-              </div>
-              
-              {/* Videos Grid */}
-              <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {categoryVideosSorted.slice(0, 4).map((video) => (
-                  <VideoCard 
-                    key={video.id} 
-                    id={video.id}
-                    url={video.url} 
-                    titleKey={video.titleKey}
-                    categoryTitleKey={video.categoryTitleKey}
-                    title={video.title}
-                    categoryTitle={video.categoryTitle}
+            <div key={category.id} id={`cat-${category.id}`} className="w-full px-2">
+              {/* Category Card and Videos Grid */}
+              <div className="flex gap-6 items-start">
+                {/* Category Card */}
+                <div className="flex-shrink-0">
+                  <CategoryCard
+                    titleKey={category.titleKey}
+                    icon={category.icon}
+                    color={category.color}
+                    id={Number(category.id)}
+                    bannerImage={category.bannerImage}
+                    forceNavigate={true}
                   />
-                ))}
+                </div>
+                
+                {/* Videos Grid */}
+                <div className="flex-1 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {categoryVideosSorted.slice(0, 4).map((video) => (
+                    <VideoCard 
+                      key={video.id} 
+                      id={video.id}
+                      url={video.url} 
+                      titleKey={video.titleKey}
+                      categoryTitleKey={video.categoryTitleKey}
+                      title={video.title}
+                      categoryTitle={video.categoryTitle}
+                    />
+                  ))}
+                </div>
               </div>
               
               {/* Show More Button if there are more videos */}

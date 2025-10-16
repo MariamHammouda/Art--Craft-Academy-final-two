@@ -90,7 +90,7 @@ const LatestPicturesSlider = () => {
 
   if (loading) {
     return (
-      <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-yellow-50">
+      <section className="py-12 px-6 ">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -119,7 +119,7 @@ const LatestPicturesSlider = () => {
 
   if (error) {
     return (
-      <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-yellow-50">
+      <section className="py-12 px-6 ">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             {t('pictures.latest')}
@@ -143,7 +143,7 @@ const LatestPicturesSlider = () => {
   // If no pictures available, show message
   if (!loading && (!latestPictures || latestPictures.length === 0)) {
     return (
-      <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-yellow-50">
+      <section className="py-12 px-6 ">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             {t('pictures.latest')}
@@ -159,7 +159,7 @@ const LatestPicturesSlider = () => {
   }
 
   return (
-    <section className="py-12 px-6 bg-gradient-to-br from-blue-50 to-yellow-50">
+    <section className="py-12 px-6 ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -237,8 +237,8 @@ const LatestPicturesSlider = () => {
           </div>
 
           {/* Gradient Overlays for Visual Effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-blue-50 to-transparent pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-yellow-50 to-transparent pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white/20 to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none"></div>
         </div>
 
         {/* Mobile Navigation */}

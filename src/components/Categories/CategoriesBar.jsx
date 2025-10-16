@@ -17,7 +17,7 @@ const CategoriesBar = () => {
       else if (width >= 1280) newCount = 5;
       else if (width >= 1024) newCount = 4;
       else if (width >= 768) newCount = 3;
-      else if (width >= 640) newCount = 2;
+      else if (width >= 480) newCount = 2;
       else newCount = 1;
       setVisibleCount((prev) => (prev !== newCount ? newCount : prev));
     };
@@ -49,31 +49,45 @@ const CategoriesBar = () => {
 
   // ✅ حالة الموبايل (scrollable)
   if (visibleCount <= 2) {
-    return (
-      <section id="categories" className="py-0 px-0">
-        <div className="max-w-full mx-auto px-2 sm:px-4">
+  return (
+    <section id="categories" className="py-0 px-0">
+      <div className="w-full px-2">
+        <div
+          className="overflow-x-auto scrollbar-hide px-2"
+          style={{
+            touchAction: "pan-x",
+            WebkitOverflowScrolling: "touch", // enables smooth iOS scrolling
+          }}
+        >
           <div
-            className="overflow-x-auto scrollbar-hide px-4 -mx-2"
-            style={{ touchAction: "pan-x" }}
+            className="flex flex-nowrap gap-3 py-2"
+            style={{
+              minWidth: "max-content",
+              scrollSnapType: "x mandatory",
+            }}
           >
-            <div className="flex gap-3 sm:gap-4 min-w-max py-2">
-              {categoriesData.map((cat) => (
-                <div key={cat.id} className="w-40 sm:w-48 flex-shrink-0">
-                  <CategoryCard
-                    id={cat.id}
-                    titleKey={cat.titleKey}
-                    icon={cat.icon}
-                    color={cat.color}
-                    bannerImage={cat.bannerImage}
-                  />
-                </div>
-              ))}
-            </div>
+            {categoriesData.map((cat) => (
+              <div
+                key={cat.id}
+                className="flex-shrink-0 scroll-snap-align-start"
+                style={{ width: "220px" }}
+              >
+                <CategoryCard
+                  id={cat.id}
+                  titleKey={cat.titleKey}
+                  icon={cat.icon}
+                  color={cat.color}
+                  bannerImage={cat.bannerImage}
+                />
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
+
 
   // ✅ حالة الشاشات الكبيرة (slider)
   return (

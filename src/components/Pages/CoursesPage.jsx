@@ -8,9 +8,9 @@ const CoursesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-transparent">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-4">
             <button

@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaEnvelope, FaPhone } from "react-icons/fa6";
+import { FaEnvelope, FaPhone } from "react-icons/fa6";
 import NavbarLogo from "../../assets/images/hero-images/navbar-logo.png";
+import FacebookIcon from "../../assets/images/social-media-icons/facebook.ico";
+import InstagramIcon from "../../assets/images/social-media-icons/instagram.ico";
+import YoutubeIcon from "../../assets/images/social-media-icons/youtube.ico";
+import TiktokIcon from "../../assets/images/social-media-icons/tiktok.ico";
+import PinterestIcon from "../../assets/images/social-media-icons/pinterest.ico";
 
 const Footer = () => {
   const { t } = useTranslation();
   
   return (
-    <footer className="mt-16 text-white" style={{ backgroundColor: "#59ACBE" }}>
+    <footer className="text-white bg-[#74BFD0]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4">
         {/* Contact */}
         <div>
@@ -40,18 +45,51 @@ const Footer = () => {
         {/* Social */}
         <div>
           <h3 className="text-xl font-semibold mb-4">{t('footer.followUs')}</h3>
-          <div className="flex items-center gap-4">
-            <a href="#" aria-label="Facebook" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
-              <FaFacebookF />
+          <div className="flex items-center gap-3 flex-wrap">
+            <a 
+              href="https://www.facebook.com/share/1CmZqgcT7N/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Facebook" 
+              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+            >
+              <img src={FacebookIcon} alt="Facebook" className="h-10 w-10 rounded-full" />
             </a>
-            <a href="#" aria-label="Instagram" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
-              <FaInstagram />
+            <a 
+              href="https://www.instagram.com/artandcraftacademy1?igsh=dndxZGg4aXI5Nmt3" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Instagram" 
+              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+            >
+              <img src={InstagramIcon} alt="Instagram" className="h-10 w-10 rounded-full" />
             </a>
-            <a href="#" aria-label="YouTube" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
-              <FaYoutube />
+            <a 
+              href="https://www.youtube.com/@Art-Craft-Academy1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="YouTube" 
+              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+            >
+              <img src={YoutubeIcon} alt="YouTube" className="h-10 w-10 rounded-full" />
             </a>
-            <a href="#" aria-label="TikTok" className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
-              <FaTiktok />
+            <a 
+              href="https://www.tiktok.com/@art_craft_academy?_t=ZS-90XcJsMfNEw&_r=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="TikTok" 
+              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+            >
+              <img src={TiktokIcon} alt="TikTok" className="h-10 w-10 rounded-full" />
+            </a>
+            <a 
+              href="https://pin.it/RLd2P2XCO" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Pinterest" 
+              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+            >
+              <img src={PinterestIcon} alt="Pinterest" className="h-10 w-10 rounded-full" />
             </a>
           </div>
         </div>

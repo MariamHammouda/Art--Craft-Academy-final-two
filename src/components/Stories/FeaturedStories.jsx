@@ -3,7 +3,7 @@ import hero from "../../assets/images/hero-images/Artlogo.png";
 
 const FeaturedStories = () => {
   return (
-    <section className="py-10 px-6 bg-white">
+    <section className="py-10 px-6">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-6">Featured Tutorials or Stories</h2>
 

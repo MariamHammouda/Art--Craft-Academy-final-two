@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./i18n/i18n"; // Initialize i18n
+import gradientBackground from "./assets/images/gradient-background.jpg";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
 import CategoriesBar from "./components/Categories/CategoriesBar.jsx";
@@ -60,7 +61,12 @@ function App() {
 
   return (
     <Router>
-      <div className="overflow-x-hidden">
+      <div 
+        className="overflow-x-hidden min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{
+          backgroundImage: `url(${gradientBackground})`
+        }}
+      >
         <NavigationTracker />
         <NavBar />
         <Routes>
@@ -69,17 +75,22 @@ function App() {
             element={
               <>
                 <HeroSection />
-                <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
-                  <LatestVideos />
-                </ErrorBoundary>
-                {/* Show additional content only on larger screens */}
-                <div className="hidden md:block">
-                  <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
-                    <LatestPicturesSlider />
+                {/* Main content section */}
+                <div>
+                  <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
+                    <LatestVideos />
                   </ErrorBoundary>
-                  <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
-                    <VideosByCategory />
-                  </ErrorBoundary>
+                  {/* Show additional content only on larger screens */}
+                  <div className="hidden md:block">
+                    <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
+                      <LatestPicturesSlider />
+                    </ErrorBoundary>
+                    <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
+                      <VideosByCategory />
+                    </ErrorBoundary>
+                  </div>
+                  {/* Add spacer to push footer down and ensure background extends */}
+                  <div className="h-32"></div>
                 </div>
               </>
             }

@@ -46,8 +46,8 @@ const LatestVideos = () => {
 
   if (loading) {
     return (
-      <section className="py-10 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-10 px-8 ">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[...Array(4)].map((_, index) => (
@@ -67,8 +67,8 @@ const LatestVideos = () => {
 
   if (error) {
     return (
-      <section className="py-10 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-10 px-8 ">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="text-center py-8">
             <p className="text-gray-500 mb-4">{t('common.error')}: {error}</p>
@@ -82,8 +82,8 @@ const LatestVideos = () => {
   // If no videos available, show message
   if (!loading && (!topVideos || topVideos.length === 0)) {
     return (
-      <section className="py-10 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-10 px-8 ">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
           <div className="text-center py-8">
             <p className="text-gray-500 mb-4">No latest videos available</p>
@@ -95,7 +95,7 @@ const LatestVideos = () => {
   }
 
   return (
-    <section className="py-10 px-6 bg-white">
+    <section className="py-10 px-8 ">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
