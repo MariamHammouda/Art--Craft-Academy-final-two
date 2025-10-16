@@ -16,6 +16,7 @@ import beadsCategory from "../assets/images/category-images/beads-category.jpg"
 import beadsAccessoriesCategory from "../assets/images/category-page-images/beads-accessories.jpg"
 import clayCategory from "../assets/images/category-page-images/clay.jpg"
 import preschoolCraftsCategory from "../assets/images/category-page-images/preschool-crafts.jpg"
+import scienceDiyCategory from "../assets/images/category-page-images/science-diy-experiments.jpg"
 import perlerBeadsCategory from "../assets/images/picture-gallary-images/perler-beads.jpg"
 import threeDPenCategory from "../assets/images/picture-gallary-images/3D-pen-letters.jpg"
 import miniatureWondersCategory from "../assets/images/picture-gallary-images/miniature-wonders.jpg"
@@ -93,7 +94,7 @@ export const categoriesData = [
     titleKey: "categories.scienceDiy",
     color: "#FF2DD1", // red
     icon: science,
-    bannerImage: science,
+    bannerImage: scienceDiyCategory,
     descriptionKey: "categories.descriptions.scienceDiy",
   },
   {
