@@ -12,6 +12,7 @@ import miniatureWonders from "../assets/images/miniature-wonders.ico"
 import origamiCategory from "../assets/images/category-images/orgami-category.jpg"
 import drawingCategory from "../assets/images/category-images/drawing-category.jpg"
 import beadsCategory from "../assets/images/category-images/beads-category.jpg"
+import clayCategory from "../assets/images/category-page-images/clay.jpg"
 import perlerBeadsCategory from "../assets/images/picture-gallary-images/perler-beads.jpg"
 import threeDPenCategory from "../assets/images/picture-gallary-images/3D-pen-letters.jpg"
 import miniatureWondersCategory from "../assets/images/picture-gallary-images/miniature-wonders.jpg"
@@ -56,7 +57,7 @@ export const categoriesData = [
     titleKey: "categories.clay",
     color: "#FFAF00", // orange
     icon: clay,
-    bannerImage: clay,
+    bannerImage: clayCategory,
     descriptionKey: "categories.descriptions.clay",
   },
   {

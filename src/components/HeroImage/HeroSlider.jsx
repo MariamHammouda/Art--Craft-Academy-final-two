@@ -6,6 +6,7 @@ import img4 from "../../assets/images/hero-images/accessory2.jpg";
 import img5 from "../../assets/images/hero-images/popsicle.jpg";
 import img6 from "../../assets/images/hero-images/popsicle2.jpg";
 import img7 from "../../assets/images/hero-images/popsicle.png";
+import img8 from "../../assets/images/hero-images/lubobo.jpg";
 
 const SLIDE_INTERVAL_MS = 4000;
 
@@ -22,7 +23,7 @@ const SLIDE_INTERVAL_MS = 4000;
  * the container, cropping excess content as needed.
  */
 const HeroSlider = () => {
-  const images = useMemo(() => [img1, img2, img3, img4, img5, img6, img7], []);
+  const images = useMemo(() => [img1, img2, img3, img4, img5, img6, img7, img8], []);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
