@@ -63,9 +63,9 @@ const VideosPage = () => {
 
   if (loading && videosToUse.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         {/* Header */}
-        <div className="bg-white shadow-sm">
+        <div className="bg-transparent">
           <div className="max-w-5xl mx-auto px-6 py-8">
             <div className="flex items-center gap-4 mb-4">
               <button
@@ -102,9 +102,9 @@ const VideosPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-transparent">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-4">
             <button
@@ -123,7 +123,7 @@ const VideosPage = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="bg-white border-b">
+      <div className="bg-transparent">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex flex-wrap gap-2">
             <button

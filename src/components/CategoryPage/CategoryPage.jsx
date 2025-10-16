@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import VideoCard from "../Videos/VideoCard.jsx";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { videosData } from "../../mockData/videosData.js";
 import { useVideosByCategory } from "../../hooks/useYouTubeVideos.js";
+import perlerBeadsCategoryImage from "../../assets/images/category-page-images/perler-beads.jpg";
+import recyclingArtCategoryImage from "../../assets/images/category-page-images/recycling-art.jpg";
 
 const CategoryPage = () => {
   const location = useLocation();
@@ -12,6 +14,26 @@ const CategoryPage = () => {
   const { t } = useTranslation();
   const { id: idParam } = useParams();
   const { categoryTitle: stateTitle, videos: stateVideos } = location.state || {};
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // Reset pagination when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [idParam]);
 
   // Try to get data from sessionStorage if React Router state is not available
   const sessionData = sessionStorage.getItem('categoryData');
@@ -58,6 +80,44 @@ const CategoryPage = () => {
   // Find category data for styling
   const categoryData = resolvedCategory;
 
+  // Get the same colors used in CategoryCard component
+  const getCardColors = (categoryId) => {
+    const cardColors = {
+      1: { bg: '#FFF4B3', circle: '#FFD93D' },
+      2: { bg: '#B3E5FF', circle: '#63C8FF' },
+      3: { bg: '#B3FFB3', circle: '#55e655ff' },
+      4: { bg: '#FFB3E6', circle: '#e14e98ff' },
+      5: { bg: '#FFF4B3', circle: '#FFD93D'  },
+      6: { bg: '#B3E5FF', circle: '#63C8FF' },
+      7: { bg: '#B3FFB3', circle: '#55e655ff' },
+      8: { bg: '#B3E5FF', circle: '#63C8FF' },
+      9: { bg: '#FFB3E6', circle: '#F0308F' },
+      10: { bg: '#D9B3FF', circle: '#8B5CF6' }
+    };
+    return cardColors[categoryId] || { bg: '#B3E5FF', circle: '#59ACBE' };
+  };
+
+  const cardColors = getCardColors(categoryData?.id);
+
+  // Pagination logic
+  const videosPerPage = isMobile ? 8 : 12;
+  const totalVideos = resolvedVideos.length;
+  const totalPages = Math.ceil(totalVideos / videosPerPage);
+  const startIndex = (currentPage - 1) * videosPerPage;
+  const endIndex = startIndex + videosPerPage;
+  const currentVideos = [...resolvedVideos]
+    .sort((a, b) => (b.id ?? 0) - (a.id ?? 0))
+    .slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // Scroll to videos section
+    const videosSection = document.getElementById('videos-section');
+    if (videosSection) {
+      videosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   if (!categoryData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -75,9 +135,9 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-transparent">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center gap-4 mb-6">
             <button
@@ -93,7 +153,7 @@ const CategoryPage = () => {
             <div className="flex items-center justify-center gap-4 mb-4">
               <div
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg flex items-center justify-center"
-                style={{ backgroundColor: categoryData.color }}
+                style={{ backgroundColor: cardColors.circle }}
               >
                 <img src={categoryData.icon} alt={t(categoryData.titleKey)} className="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
@@ -109,7 +169,11 @@ const CategoryPage = () => {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src={categoryData.bannerImage} 
+                  src={
+                    categoryData.id === 7 ? perlerBeadsCategoryImage :
+                    categoryData.id === 3 ? recyclingArtCategoryImage :
+                    categoryData.bannerImage
+                  } 
                   alt={t(categoryData.titleKey)}
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover"
                 />
@@ -119,11 +183,32 @@ const CategoryPage = () => {
 
             {/* Description */}
             <div className="order-1 lg:order-2">
-              <div className="bg-gradient-to-br from-gray-50 to-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <div 
+                className="p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200"
+                style={{ 
+                  backgroundColor: cardColors.bg
+                }}
+              >
+                <h2 
+                  className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4"
+                  style={{
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2)',
+                    transform: 'perspective(500px) rotateX(10deg)',
+                    transformOrigin: 'center bottom',
+                    letterSpacing: '0.5px'
+                  }}
+                >
                   {t('videos.description')}
                 </h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                <p 
+                  className="text-gray-700 text-lg leading-relaxed mb-6"
+                  style={{
+                    textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0.5px 0.5px 1px rgba(0,0,0,0.1)',
+                    transform: 'perspective(800px) rotateX(5deg)',
+                    transformOrigin: 'center bottom',
+                    letterSpacing: '0.3px'
+                  }}
+                >
                   {t(categoryData.descriptionKey)}
                 </p>
                 
@@ -135,7 +220,7 @@ const CategoryPage = () => {
       </div>
 
       {/* Videos Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div id="videos-section" className="max-w-7xl mx-auto px-6 py-12">
         {videosLoading ? (
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#59ACBE]"></div>
@@ -147,21 +232,76 @@ const CategoryPage = () => {
           </div>
         ) : null}
         
+        {/* Videos Count Info */}
+        {totalVideos > 0 && (
+          <div className="mb-6 text-center">
+            <p className="text-gray-600">
+              {t('videos.showing')} {startIndex + 1}-{Math.min(endIndex, totalVideos)} {t('videos.of')} {totalVideos} {t('videos.videos')}
+            </p>
+          </div>
+        )}
+        
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[...resolvedVideos]
-            .sort((a, b) => (b.id ?? 0) - (a.id ?? 0))
-            .map((video) => (
-              <VideoCard
-                key={video.id}
-                id={video.id}
-                url={video.url}
-                titleKey={video.titleKey}
-                categoryTitleKey={video.categoryTitleKey}
-                title={video.title}
-                categoryTitle={video.categoryTitle}
-              />
+          {currentVideos.map((video) => (
+            <VideoCard
+              key={video.id}
+              id={video.id}
+              url={video.url}
+              titleKey={video.titleKey}
+              categoryTitleKey={video.categoryTitleKey}
+              title={video.title}
+              categoryTitle={video.categoryTitle}
+            />
           ))}
         </div>
+        
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center mt-8 gap-2">
+            {/* Previous Button */}
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === 1
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+              }`}
+            >
+              ← {t('common.previous')}
+            </button>
+            
+            {/* Page Numbers */}
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                    currentPage === page
+                      ? 'bg-[#74BFD0] text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            {/* Next Button */}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === totalPages
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+              }`}
+            >
+              {t('common.next')} →
+            </button>
+          </div>
+        )}
         
         {resolvedVideos.length === 0 && !videosLoading && (
           <div className="text-center py-12">

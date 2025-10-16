@@ -35,7 +35,7 @@ const PicturesPage = () => {
   // Add error handling for rendering
   try {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         {/* Hero Header with Image */}
         <div className="relative">
         {/* Header Image */}
@@ -199,7 +199,7 @@ const PicturesPage = () => {
   } catch (error) {
     console.error("Error rendering PicturesPage:", error);
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">{t('common.somethingWentWrong')}</h1>
           <p className="text-gray-600 mb-4">{t('common.errorLoadingPage')}</p>

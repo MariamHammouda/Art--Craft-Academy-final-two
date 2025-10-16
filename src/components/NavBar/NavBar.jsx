@@ -16,7 +16,7 @@ const NavBar = () => {
   
   // Check if we're on the home page (HashRouter consideration)
   const isHomePage = location.pathname === '/' || location.pathname === '';
-  const showLogo = !isHomePage; // Show logo on all pages EXCEPT home
+  const showLogo = true; // Show logo on all pages INCLUDING home
   
   // Close mobile menu when route changes
   useEffect(() => {
@@ -48,25 +48,25 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#59ACBE] shadow-lg">
+    <nav className="bg-[#74BFD0] shadow-lg">
       <div className="container mx-auto px-2 sm:px-4 py-1 sm:py-2">
         <div className="flex items-center justify-between relative">
 
-          {/* Logo - Show on all pages EXCEPT home */}
+          {/* Logo - Show on all pages INCLUDING home */}
           {showLogo && (
-            <div className="flex-shrink-0 -my-3">
+            <div className="flex-shrink-0 -my-2">
               <Link to="/" className="flex items-center">
                 <img 
                   src={NavbarLogo} 
                   alt="Art Craft Academy" 
-                  className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto hover:scale-105 transition-transform duration-300"
+                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto hover:scale-105 transition-transform duration-300"
                 />
               </Link>
             </div>
           )}
 
           {/* Desktop Navigation Links */}
-          <div className={`${showLogo ? 'ml-8 lg:ml-12' : 'flex-1 flex justify-center'}`}>
+          <div className="ml-8 lg:ml-12 flex-1">
             <ul className="hidden md:flex items-center gap-4 lg:gap-8 text-white">
               <li>
                 <Link 
@@ -173,14 +173,14 @@ const NavBar = () => {
 
             <Button
               onClick={() => console.log("Login clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#59ACBE] transition duration-200"
+              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
             >
               {t('nav.login')}
             </Button>
 
             <Button
               onClick={() => console.log("Sign Up clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-[#FCD11A] text-[#59ACBE] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
+              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
             >
               {t('nav.signup')}
             </Button>
@@ -189,7 +189,7 @@ const NavBar = () => {
       </div>
       
       {/* Mobile Side Menu */}
-      <div className={`mobile-menu fixed inset-y-0 left-0 z-50 w-72 sm:w-80 bg-[#59ACBE] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
+      <div className={`mobile-menu fixed inset-y-0 left-0 z-50 w-72 sm:w-80 bg-[#74BFD0] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
@@ -313,7 +313,7 @@ const NavBar = () => {
                   console.log("Login clicked");
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full px-4 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#59ACBE] transition duration-200"
+                className="w-full px-4 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
               >
                 {t('nav.login')}
               </Button>
@@ -323,7 +323,7 @@ const NavBar = () => {
                   console.log("Sign Up clicked");
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full px-4 py-3 bg-[#FCD11A] text-[#59ACBE] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
+                className="w-full px-4 py-3 bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
               >
                 {t('nav.signup')}
               </Button>
