@@ -48,18 +48,18 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#74BFD0] shadow-lg">
-      <div className="container mx-auto px-2 sm:px-4 py-1 sm:py-2">
+    <nav className="bg-[#74BFD0] shadow-lg sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between relative">
 
           {/* Logo - Show on all pages INCLUDING home */}
           {showLogo && (
-            <div className="flex-shrink-0 -my-2">
+            <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
                 <img 
                   src={NavbarLogo} 
                   alt="Art Craft Academy" 
-                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto hover:scale-105 transition-transform duration-300"
+                  className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto hover:scale-105 transition-transform duration-300"
                 />
               </Link>
             </div>
@@ -152,7 +152,7 @@ const NavBar = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden hamburger-btn text-white text-xl sm:text-2xl p-2 hover:text-[#FCD11A] transition-colors"
+            className="md:hidden hamburger-btn text-white text-2xl p-3 mr-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -188,157 +188,97 @@ const NavBar = () => {
         </div>
       </div>
       
-      {/* Mobile Side Menu */}
-      <div className={`mobile-menu fixed inset-y-0 left-0 z-50 w-72 sm:w-80 bg-[#74BFD0] shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
-        isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+      {/* Full-Screen Mobile Drawer */}
+      <div className={`mobile-menu fixed inset-0 z-50 md:hidden transition-all duration-500 ease-in-out ${
+        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}>
-        <div className="flex flex-col h-full">
-          {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-4 border-b border-white/20">
-            <div className="flex items-center">
-              <img src={NavbarLogo} alt="Art Icon" className="w-8 h-8 mr-2" />
-              <h2 className="text-white text-lg font-semibold">{t('nav.menu')}</h2>
-            </div>
-            <button 
-              onClick={toggleMobileMenu}
-              className="text-white text-xl p-1 hover:text-[#FCD11A] transition-colors"
-              aria-label="Close menu"
+        {/* Blurred Background Overlay */}
+        <div 
+          className={`absolute inset-0 bg-gradient-to-br from-[#74BFD0]/90 via-[#E8A5C4]/85 to-[#74BFD0]/90 backdrop-blur-md transition-all duration-500 ${
+            isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        
+        {/* Menu Content */}
+        <div className={`relative z-10 flex flex-col items-center justify-center h-full px-8 transform transition-all duration-500 ease-out ${
+          isMobileMenuOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
+        }`}>
+          {/* Close Button */}
+          <button 
+            onClick={toggleMobileMenu}
+            className="absolute top-8 right-8 text-white text-3xl p-2 hover:text-[#FCD11A] transition-colors rounded-full hover:bg-white/10"
+            aria-label="Close menu"
+          >
+            <FaTimes />
+          </button>
+          
+          {/* Logo */}
+          <div className="mb-12">
+            <img src={NavbarLogo} alt="Art Craft Academy" className="w-20 h-20 mx-auto" />
+          </div>
+          
+          {/* Navigation Links */}
+          <nav className="flex flex-col items-center space-y-8 mb-12">
+            <Link 
+              to="/" 
+              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FaTimes />
-            </button>
-          </div>
+              {t('nav.home')}
+            </Link>
+            <Link 
+              to="/videos" 
+              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.videos')}
+            </Link>
+            <Link 
+              to="/courses" 
+              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.courses')}
+            </Link>
+            <Link 
+              to="/shop" 
+              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.shop')}
+            </Link>
+            <Link 
+              to="/about" 
+              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.about')}
+            </Link>
+          </nav>
           
-          {/* Mobile Navigation Links */}
-          <div className="flex-1 overflow-y-auto py-4">
-            <ul className="space-y-2 px-4">
-              <li>
-                <Link 
-                  to="/" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.home')}</span>
-                </Link>
-              </li>
-              <li>
-                <HashLink 
-                  smooth 
-                  to="/#categories" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.categories')}</span>
-                </HashLink>
-              </li>
-              <li>
-                <HashLink 
-                  smooth 
-                  to="/#video-categories" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.videos')}</span>
-                </HashLink>
-              </li>
-              <li>
-                <Link 
-                  to="/pictures" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.pictures')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/courses" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.courses')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/shop" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.shop')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/about" 
-                  className="flex items-center py-3 px-4 text-white hover:bg-white/10 hover:text-[#FCD11A] rounded-lg transition-all duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <img src={NavbarLogo} alt="Art Icon" className="w-6 h-6 mr-3" />
-                  <span className="text-lg font-medium">{t('nav.about')}</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Mobile Menu Footer */}
-          <div className="border-t border-white/20 p-4 space-y-4">
+          {/* Additional Actions */}
+          <div className="flex flex-col items-center space-y-6">
             {/* Search Button */}
             <button 
               onClick={() => {
                 openSearchModal();
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full flex items-center justify-center py-3 px-4 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors" 
+              className="flex items-center justify-center py-3 px-6 bg-white/20 text-white rounded-full hover:bg-white/30 transition-all duration-300 backdrop-blur-sm" 
               title={t('common.search')}
             >
               <FaSearch className="mr-2" />
-              <span>{t('common.search')}</span>
+              <span className="text-lg">{t('common.search')}</span>
             </button>
             
             {/* Language Switcher */}
             <div className="flex justify-center">
               <LanguageSwitcher />
             </div>
-            
-            {/* Login/Signup Buttons */}
-            <div className="space-y-3">
-              <Button
-                onClick={() => {
-                  console.log("Login clicked");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full px-4 py-3 bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
-              >
-                {t('nav.login')}
-              </Button>
-
-              <Button
-                onClick={() => {
-                  console.log("Sign Up clicked");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full px-4 py-3 bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
-              >
-                {t('nav.signup')}
-              </Button>
-            </div>
           </div>
         </div>
       </div>
-      
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
       
       {/* Search Modal */}
       <SearchModal 

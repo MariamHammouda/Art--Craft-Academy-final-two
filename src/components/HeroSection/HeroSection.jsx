@@ -17,13 +17,13 @@ const HeroSection = () => {
             {/* Text Content Column */}
             <div className={`space-y-2 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
               {/* Big Logo */}
-              <div className={`flex justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'} mb-2 -mt-4`}>
+              {/* <div className={`flex justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'} mb-2 -mt-4`}>
                 <img
                   src={Artlogo}
                   alt="Academy of Art and Craft Logo"
                   className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain drop-shadow-lg"
                 />
-              </div>
+              </div> */}
 
               <div className="space-y-1">
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
