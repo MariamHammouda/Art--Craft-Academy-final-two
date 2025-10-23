@@ -1,8 +1,20 @@
 // Pinterest API Service
-import { getCache, setCache, generateCacheKey, shouldMakeApiCall, recordApiUsage } from './cacheManager.js';
+import { getCache, setCache, shouldMakeApiCall, recordApiUsage } from './cacheManager.js';
+
+// Pinterest-specific cache key generator
+const generatePinterestCacheKey = (type, params = {}) => {
+  return `pinterest_${type}_${JSON.stringify(params)}`;
+};
 
 const PINTEREST_TOKEN = import.meta.env.VITE_PINTEREST_TOKEN;
 const PINTEREST_API_BASE_URL = 'https://api.pinterest.com/v5';
+
+// Debug: Log token status on load
+console.log('🔑 Pinterest Token Status:', {
+  tokenExists: !!PINTEREST_TOKEN,
+  tokenLength: PINTEREST_TOKEN?.length || 0,
+  tokenPreview: PINTEREST_TOKEN ? `${PINTEREST_TOKEN.substring(0, 10)}...` : 'NOT FOUND'
+});
 
 // Pinterest board mapping for categories (Updated to match exact Pinterest board names)
 const PINTEREST_BOARD_MAPPING = {
@@ -41,7 +53,7 @@ export const fetchUserProfile = async () => {
       return null;
     }
 
-    const cacheKey = generateCacheKey('pinterest_user_profile');
+    const cacheKey = generatePinterestCacheKey('user_profile');
     const cachedData = getCache(cacheKey);
     
     if (cachedData) {
@@ -93,7 +105,7 @@ export const fetchUserBoards = async () => {
 
     console.log('✅ Pinterest token found, checking cache...');
 
-    const cacheKey = generateCacheKey('pinterest_user_boards');
+    const cacheKey = generatePinterestCacheKey('user_boards');
     const cachedData = getCache(cacheKey);
     
     // Temporarily disable cache to force fresh API calls for debugging
@@ -149,7 +161,7 @@ export const fetchBoardPins = async (boardId, pageSize = 25) => {
       return [];
     }
 
-    const cacheKey = generateCacheKey(`pinterest_board_pins_${boardId}_${pageSize}`);
+    const cacheKey = generatePinterestCacheKey('board_pins', { boardId, pageSize });
     const cachedData = getCache(cacheKey);
     
     if (cachedData) {
@@ -300,7 +312,7 @@ export const searchPins = async (query, pageSize = 25) => {
       return [];
     }
 
-    const cacheKey = generateCacheKey(`pinterest_search_${query}_${pageSize}`);
+    const cacheKey = generatePinterestCacheKey('search', { query, pageSize });
     const cachedData = getCache(cacheKey);
     
     if (cachedData) {

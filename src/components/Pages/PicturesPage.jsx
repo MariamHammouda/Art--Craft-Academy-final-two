@@ -76,15 +76,15 @@ const PicturesPage = () => {
             </p> */}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto px-2 sm:px-4">
             {/* Category 1: Origami & Paper Crafts */}
             <PinterestRealWidget 
               key="origami-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/origami-paper-crafts/"
               title={t('pictures.categories.origamiPaperCrafts')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 2: Drawing */}
@@ -92,9 +92,9 @@ const PicturesPage = () => {
               key="drawing-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/drawing/"
               title={t('pictures.categories.drawing')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 3: Recycling Art */}
@@ -102,9 +102,9 @@ const PicturesPage = () => {
               key="recycling-art-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/recycling-art/"
               title={t('pictures.categories.recyclingArt')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 4: Beads & Accessories */}
@@ -112,9 +112,9 @@ const PicturesPage = () => {
               key="beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/beads-accessories/"
               title={t('pictures.categories.beadsAccessories')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 5: Clay Creations */}
@@ -122,9 +122,9 @@ const PicturesPage = () => {
               key="clay-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/clay-creations/"
               title={t('pictures.categories.clayCreations')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 6: Preschool Crafts */}
@@ -132,9 +132,9 @@ const PicturesPage = () => {
               key="preschool-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/preschool-crafts/"
               title={t('pictures.categories.preschoolCrafts')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 7: Perler Beads */}
@@ -142,9 +142,9 @@ const PicturesPage = () => {
               key="perler-beads-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/perler-beads/"
               title={t('pictures.categories.perlerBeads')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 8: 3D Pen Fun */}
@@ -152,9 +152,9 @@ const PicturesPage = () => {
               key="3d-pen-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/3d-pen-fun/"
               title={t('pictures.categories.3dPenFun')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 9: Miniature Wonders */}
@@ -162,9 +162,9 @@ const PicturesPage = () => {
               key="miniature-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/"
               title={t('pictures.categories.miniatureWonders')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 10: Science & DIY Experiments */}
@@ -172,9 +172,9 @@ const PicturesPage = () => {
               key="science-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/"
               title={t('pictures.categories.scienceDiyExperiments')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
             
             {/* Category 11: Tips & Tricks */}
@@ -182,9 +182,9 @@ const PicturesPage = () => {
               key="tips-board"
               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/tips-tricks/"
               title={t('pictures.categories.tipsTricks')}
-              width={350}
-              height={250}
-              cols={2}
+              width={800}
+              height={500}
+              cols={3}
             />
           </div>
         </div>

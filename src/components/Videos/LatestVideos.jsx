@@ -95,10 +95,10 @@ const LatestVideos = () => {
   }
 
   return (
-    <section className="py-10 px-8 ">
+    <section className="py-6 sm:py-10 px-3 sm:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">{t('videos.latest')}</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 px-1 sm:px-0">{t('videos.latest')}</h2>
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           {topVideos && topVideos.length > 0 ? topVideos.map((video) => {
             if (!video || !video.id) return null;
             return (

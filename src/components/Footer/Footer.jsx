@@ -14,94 +14,94 @@ const Footer = () => {
   
   return (
     <footer className="text-white bg-[#74BFD0]">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
         {/* Contact */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">{t('about.contact')}</h3>
-          <ul className="space-y-2 text-white/90">
-            <li className="flex items-center gap-3">
-              <FaEnvelope />
-              <a href="mailto:hello@artcraft.academy" className="hover:underline">hello@artcraft.academy</a>
+        <div className="text-center sm:text-left">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('about.contact')}</h3>
+          <ul className="space-y-2 sm:space-y-3 text-white/90">
+            <li className="flex items-center justify-center sm:justify-start gap-3">
+              <FaEnvelope className="flex-shrink-0" />
+              <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base break-all">hello@artcraft.academy</a>
             </li>
-            <li className="flex items-center gap-3">
-              <FaPhone />
-              <a href="tel:+10000000000" className="hover:underline">+1 (000) 000-0000</a>
+            <li className="flex items-center justify-center sm:justify-start gap-3">
+              <FaPhone className="flex-shrink-0" />
+              <a href="tel:+10000000000" className="hover:underline text-sm sm:text-base">+1 (000) 000-0000</a>
             </li>
           </ul>
         </div>
 
         {/* Important Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">{t('footer.quickLinks')}</h3>
-          <ul className="space-y-2 text-white/90">
-            <li><Link to="/" className="hover:underline">{t('nav.home')}</Link></li>
-            <li><Link to="/#video-categories" className="hover:underline">{t('nav.videos')}</Link></li>
-            <li><Link to="/courses" className="hover:underline">{t('nav.courses')}</Link></li>
-            <li><Link to="/shop" className="hover:underline">{t('nav.shop')}</Link></li>
-            <li><Link to="/about" className="hover:underline">{t('nav.about')}</Link></li>
+        <div className="text-center sm:text-left">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('footer.quickLinks')}</h3>
+          <ul className="space-y-2 sm:space-y-3 text-white/90">
+            <li><Link to="/" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.home')}</Link></li>
+            <li><Link to="/#video-categories" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.videos')}</Link></li>
+            <li><Link to="/courses" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.courses')}</Link></li>
+            <li><Link to="/shop" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.shop')}</Link></li>
+            <li><Link to="/about" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.about')}</Link></li>
           </ul>
         </div>
 
         {/* Social */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">{t('footer.followUs')}</h3>
-          <div className="flex items-center gap-3 flex-wrap">
+        <div className="text-center sm:text-left">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('footer.followUs')}</h3>
+          <div className="flex items-center justify-center sm:justify-start gap-3 flex-wrap">
             <a 
               href="https://www.facebook.com/share/1CmZqgcT7N/" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Facebook" 
-              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+              className="h-11 w-11 sm:h-10 sm:w-10 rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 shadow-md hover:shadow-lg"
             >
-              <img src={FacebookIcon} alt="Facebook" className="h-10 w-10 rounded-full" />
+              <img src={FacebookIcon} alt="Facebook" className="h-11 w-11 sm:h-10 sm:w-10 rounded-full" />
             </a>
             <a 
               href="https://www.instagram.com/artandcraftacademy1?igsh=dndxZGg4aXI5Nmt3" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Instagram" 
-              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+              className="h-11 w-11 sm:h-10 sm:w-10 rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 shadow-md hover:shadow-lg"
             >
-              <img src={InstagramIcon} alt="Instagram" className="h-10 w-10 rounded-full" />
+              <img src={InstagramIcon} alt="Instagram" className="h-11 w-11 sm:h-10 sm:w-10 rounded-full" />
             </a>
             <a 
               href="https://www.youtube.com/@Art-Craft-Academy1" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="YouTube" 
-              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+              className="h-11 w-11 sm:h-10 sm:w-10 rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 shadow-md hover:shadow-lg"
             >
-              <img src={YoutubeIcon} alt="YouTube" className="h-10 w-10 rounded-full" />
+              <img src={YoutubeIcon} alt="YouTube" className="h-11 w-11 sm:h-10 sm:w-10 rounded-full" />
             </a>
             <a 
               href="https://www.tiktok.com/@art_craft_academy?_t=ZS-90XcJsMfNEw&_r=1" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="TikTok" 
-              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+              className="h-11 w-11 sm:h-10 sm:w-10 rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 shadow-md hover:shadow-lg"
             >
-              <img src={TiktokIcon} alt="TikTok" className="h-10 w-10 rounded-full" />
+              <img src={TiktokIcon} alt="TikTok" className="h-11 w-11 sm:h-10 sm:w-10 rounded-full" />
             </a>
             <a 
               href="https://pin.it/RLd2P2XCO" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Pinterest" 
-              className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg"
+              className="h-11 w-11 sm:h-10 sm:w-10 rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 shadow-md hover:shadow-lg"
             >
-              <img src={PinterestIcon} alt="Pinterest" className="h-10 w-10 rounded-full" />
+              <img src={PinterestIcon} alt="Pinterest" className="h-11 w-11 sm:h-10 sm:w-10 rounded-full" />
             </a>
           </div>
         </div>
 
         {/* Logo */}
-        <div className="flex flex-col items-center md:items-end">
-          <div className="mb-4">
+        <div className="flex flex-col items-center sm:items-center md:items-end">
+          <div className="mb-3 sm:mb-4">
             <Link to="/" className="flex items-center">
               <img 
                 src={NavbarLogo} 
                 alt="Art Craft Academy" 
-                className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto hover:scale-105 transition-transform duration-300"
+                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
               />
             </Link>
           </div>
@@ -109,11 +109,11 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/15">
-        <div className="max-w-7xl mx-auto px-6 py-4 text-sm text-white/80 flex flex-wrap items-center justify-between gap-2">
-          <p>{t('footer.copyright')}</p>
-          <div className="flex items-center gap-4">
-            <Link to="/privacy-policy" className="hover:underline">{t('footer.privacyPolicy')}</Link>
-            <a href="#" className="hover:underline">{t('footer.termsOfService')}</a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm text-white/80 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2">
+          <p className="text-center sm:text-left">{t('footer.copyright')}</p>
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
+            <Link to="/privacy-policy" className="hover:underline hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>
+            <a href="#" className="hover:underline hover:text-white transition-colors">{t('footer.termsOfService')}</a>
           </div>
         </div>
       </div>

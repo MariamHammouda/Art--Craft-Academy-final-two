@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { categoriesData } from "../../mockData/categoriesData.js";
@@ -8,6 +8,8 @@ const CategoriesBar = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
+  const [scrollIndex, setScrollIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -47,46 +49,104 @@ const CategoriesBar = () => {
   const showNavigation = totalCategories > visibleCount;
   const totalDots = Math.max(1, maxIndex + 1);
 
-  // ✅ حالة الموبايل (scrollable)
+  // ✅ Mobile Experience (horizontal scrollable)
   if (visibleCount <= 2) {
-  return (
-    <section id="categories" className="py-0 px-0">
-      <div className="w-full px-2">
-        <div
-          className="overflow-x-auto scrollbar-hide px-2"
-          style={{
-            touchAction: "pan-x",
-            WebkitOverflowScrolling: "touch", // enables smooth iOS scrolling
-          }}
-        >
-          <div
-            className="flex flex-nowrap gap-3 py-2"
-            style={{
-              minWidth: "max-content",
-              scrollSnapType: "x mandatory",
-            }}
-          >
-            {categoriesData.map((cat) => (
+    return (
+      <section id="categories" className="py-0 px-0">
+        {/* Section Heading */}
+        <div className="text-center mb-6 px-4">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-lg">
+            {t('categories.discoverCategories') || 'Discover Categories'}
+          </h3>
+          <p className="text-white/80 text-sm sm:text-base drop-shadow-sm">
+            {t('categories.swipeToExplore') || 'Swipe to explore different crafts'}
+          </p>
+        </div>
+
+        <div className="w-full">
+          {/* Scroll Container with Gradient Shadows */}
+          <div className="relative">
+            {/* Left Gradient Shadow */}
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#74BFD0] to-transparent z-10 pointer-events-none" />
+            
+            {/* Right Gradient Shadow */}
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#74BFD0] to-transparent z-10 pointer-events-none" />
+            
+            <div
+              ref={scrollContainerRef}
+              className="overflow-x-auto scrollbar-hide px-4"
+              onScroll={(e) => {
+                const scrollLeft = e.target.scrollLeft;
+                const itemWidth = 140 + 16; // width + gap
+                const index = Math.round(scrollLeft / itemWidth);
+                setScrollIndex(index);
+              }}
+              style={{
+                touchAction: "pan-x",
+                WebkitOverflowScrolling: "touch",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
               <div
-                key={cat.id}
-                className="flex-shrink-0 scroll-snap-align-start"
-                style={{ width: "220px" }}
+                className="flex flex-nowrap gap-4 py-4"
+                style={{
+                  minWidth: "max-content",
+                  scrollSnapType: "x mandatory",
+                }}
               >
-                <CategoryCard
-                  id={cat.id}
-                  titleKey={cat.titleKey}
-                  icon={cat.icon}
-                  color={cat.color}
-                  bannerImage={cat.bannerImage}
-                />
+                {categoriesData.map((cat, index) => (
+                  <div
+                    key={cat.id}
+                    className="flex-shrink-0 scroll-snap-align-start"
+                    style={{ 
+                      width: "140px",
+                      scrollSnapAlign: "start"
+                    }}
+                  >
+                    <CategoryCard
+                      id={cat.id}
+                      titleKey={cat.titleKey}
+                      icon={cat.icon}
+                      color={cat.color}
+                      bannerImage={cat.bannerImage}
+                      isMobile={true}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+          
+          {/* Scroll Indicator - Interactive */}
+          <div className="flex justify-center mt-4">
+            <div className="flex gap-1.5">
+              {categoriesData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (scrollContainerRef.current) {
+                      const itemWidth = 140 + 16; // width + gap
+                      scrollContainerRef.current.scrollTo({
+                        left: index * itemWidth,
+                        behavior: 'smooth'
+                      });
+                    }
+                  }}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === scrollIndex
+                      ? "bg-[#FF6B35] w-3 h-1.5"
+                      : "bg-white/40 w-1.5 h-1.5 hover:bg-white/60"
+                  }`}
+                  aria-label={`Go to category ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }
 
 
   // ✅ حالة الشاشات الكبيرة (slider)

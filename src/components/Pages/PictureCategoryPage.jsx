@@ -386,9 +386,9 @@ const PictureCategoryPage = () => {
               <PinterestRealWidget
                 boardUrl={categoryToPinterestUrl[currentCategory.id]}
                 title={t(`pictures.categories.${currentCategory.key}`)}
-                width={600}
-                height={400}
-                cols={3}
+                width={1000}
+                height={600}
+                cols={4}
               />
             </div>
           </div>

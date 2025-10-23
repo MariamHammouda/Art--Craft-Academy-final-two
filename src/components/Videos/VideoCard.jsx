@@ -62,7 +62,7 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
   
   return (
     <div 
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
+      className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
       onMouseEnter={handleMouseEnter}
     >
       <div className="aspect-video relative bg-gray-100">
@@ -88,8 +88,8 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
             )}
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white ml-0.5 sm:ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
@@ -105,34 +105,35 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
           />
         )}
       </div>
-      <div className="p-4">
+      <div className="p-2 sm:p-4">
         <div 
           className="cursor-pointer"
           onClick={handleClick}
         >
-          <h4 className="font-semibold text-gray-800 mb-1 line-clamp-2 group-hover:text-[#59ACBE] transition-colors">{displayTitle}</h4>
+          <h4 className="font-semibold text-xs sm:text-base text-gray-800 mb-1 line-clamp-2 group-hover:text-[#59ACBE] transition-colors">{displayTitle}</h4>
           {displayCategoryTitle && (
-            <p className="text-sm text-gray-500 mb-3">{displayCategoryTitle}</p>
+            <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3 line-clamp-1">{displayCategoryTitle}</p>
           )}
         </div>
         
         {/* YouTube Link Button */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1.5 sm:gap-0">
           <button
             onClick={handleClick}
-            className="text-sm text-[#59ACBE] hover:text-[#4a9bb0] font-medium transition-colors"
+            className="hidden sm:block text-sm text-[#59ACBE] hover:text-[#4a9bb0] font-medium transition-colors"
           >
             View Details →
           </button>
           <button
             onClick={handleYouTubeClick}
-            className="flex items-center gap-1 px-3 py-1 bg-red-600 text-white text-xs rounded-full hover:bg-red-700 transition-colors"
+            className="flex items-center justify-center gap-1 px-2 sm:px-3 py-1.5 sm:py-1 bg-red-600 text-white text-xs rounded-full hover:bg-red-700 transition-colors w-full sm:w-auto touch-manipulation"
             title="Watch on YouTube"
           >
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            YouTube
+            <span className="hidden sm:inline">YouTube</span>
+            <span className="sm:hidden">Watch</span>
           </button>
         </div>
       </div>

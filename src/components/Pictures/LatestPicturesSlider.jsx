@@ -159,19 +159,19 @@ const LatestPicturesSlider = () => {
   }
 
   return (
-    <section className="py-12 px-6 ">
+    <section className="py-6 sm:py-12 px-3 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-8 gap-3 sm:gap-0">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2 px-1 sm:px-0">
               {t('pictures.latest')}
             </h2>
           </div>
           
-          <div className="flex items-center gap-4">
-            {/* Navigation Buttons */}
-            <div className="flex gap-2">
+          <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
+            {/* Navigation Buttons - Hidden on mobile, show only on desktop slider */}
+            <div className="hidden lg:flex gap-2">
               <button
                 onClick={handlePrevClick}
                 className="p-2 bg-white text-[#59ACBE] rounded-full shadow-md hover:bg-[#59ACBE] hover:text-white transition-all duration-200"
@@ -191,19 +191,48 @@ const LatestPicturesSlider = () => {
             {/* View All Button */}
             <button
               onClick={handleViewAllClick}
-              className="flex items-center gap-2 px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-200 font-medium shadow-md hover:shadow-lg"
+              className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#59ACBE] text-white text-sm sm:text-base rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-200 font-medium shadow-md hover:shadow-lg touch-manipulation"
             >
               {t('common.viewAll')}
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
-        {/* Pictures Slider */}
+        {/* Pictures Display - Grid on mobile, Slider on desktop */}
         <div className="relative">
+          {/* Mobile Grid Layout */}
+          <div className="lg:hidden grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+            {latestPictures && latestPictures.length > 0 ? latestPictures.slice(0, 6).map((picture) => {
+              if (!picture || !picture.id) return null;
+              return (
+                <div key={picture.id}>
+                  <SimplePictureCard
+                    id={picture.id}
+                    image={picture.image}
+                    titleKey={picture.titleKey}
+                    title={picture.title}
+                    categoryTitleKey={picture.categoryTitleKey}
+                    categoryTitle={picture.categoryTitle}
+                    description={picture.description}
+                    likes={picture.likes}
+                    difficulty={picture.difficulty}
+                    tags={picture.tags}
+                  />
+                </div>
+              );
+            }) : (
+              <div className="col-span-2 sm:col-span-3 text-center py-12 bg-white rounded-xl shadow-md">
+                <div className="text-6xl mb-4">🖼️</div>
+                <p className="text-gray-500 text-lg">{t('pictures.noPictures')}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop Slider Layout */}
           <div 
             ref={sliderRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            className="hidden lg:flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -228,35 +257,12 @@ const LatestPicturesSlider = () => {
                   />
                 </div>
               );
-            }) : (
-              <div className="w-full text-center py-12 bg-white rounded-xl shadow-md">
-                <div className="text-6xl mb-4">🖼️</div>
-                <p className="text-gray-500 text-lg">{t('pictures.noPictures')}</p>
-              </div>
-            )}
+            }) : null}
           </div>
 
-          {/* Gradient Overlays for Visual Effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white/20 to-transparent pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none"></div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="flex justify-center mt-6 lg:hidden">
-          <div className="flex gap-2">
-            <button
-              onClick={handlePrevClick}
-              className="px-4 py-2 bg-white text-[#59ACBE] border-2 border-[#59ACBE] rounded-lg hover:bg-[#59ACBE] hover:text-white transition-all duration-200 font-medium"
-            >
-              Previous
-            </button>
-            <button
-              onClick={handleNextClick}
-              className="px-4 py-2 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-200 font-medium"
-            >
-              Next
-            </button>
-          </div>
+          {/* Gradient Overlays for Desktop Slider */}
+          <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white/20 to-transparent pointer-events-none"></div>
+          <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none"></div>
         </div>
       </div>
 

@@ -1,5 +1,4 @@
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
-import { Button } from "../Button/Button.jsx";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useTranslation } from 'react-i18next';
@@ -59,15 +58,15 @@ const NavBar = () => {
                 <img 
                   src={NavbarLogo} 
                   alt="Art Craft Academy" 
-                  className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto hover:scale-105 transition-transform duration-300"
+                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto hover:scale-105 transition-transform duration-300"
                 />
               </Link>
             </div>
           )}
 
           {/* Desktop Navigation Links */}
-          <div className="ml-8 lg:ml-12 flex-1">
-            <ul className="hidden md:flex items-center gap-4 lg:gap-8 text-white">
+          <div className="ml-4 md:ml-8 lg:ml-12 flex-1">
+            <ul className="hidden md:flex items-center gap-3 lg:gap-8 text-white">
               <li>
                 <Link 
                   to="/" 
@@ -90,29 +89,6 @@ const NavBar = () => {
                   </div>
                   <span className="text-sm lg:text-lg font-semibold">{t('nav.categories')}</span>
                 </HashLink>
-              </li>
-              <li>
-                <HashLink 
-                  smooth 
-                  to="/#video-categories" 
-                  className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
-                >
-                  <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
-                  </div>
-                  <span className="text-sm lg:text-lg font-semibold">{t('nav.videos')}</span>
-                </HashLink>
-              </li>
-              <li>
-                <Link 
-                  to="/pictures" 
-                  className="group flex flex-col items-center text-white hover:text-[#FCD11A] font-medium transition-all duration-300"
-                >
-                  <div className="opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300 mb-1">
-                    <img src={NavbarLogo} alt="Art Icon" className="w-10 h-10 lg:w-16 lg:h-16" />
-                  </div>
-                  <span className="text-sm lg:text-lg font-semibold">{t('nav.pictures')}</span>
-                </Link>
               </li>
               <li>
                 <Link 
@@ -150,16 +126,26 @@ const NavBar = () => {
             </ul>
           </div>
           
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden hamburger-btn text-white text-2xl p-3 mr-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {/* Mobile Actions (Search + Menu) */}
+          <div className="flex md:hidden items-center gap-2">
+            <button 
+              onClick={openSearchModal}
+              className="text-white text-xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
+              title={t('common.search')}
+              aria-label="Search"
+            >
+              <FaSearch />
+            </button>
+            <button 
+              className="hamburger-btn text-white text-2xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
 
-          {/* Desktop Search, Language, Buttons */}
+          {/* Desktop Search, Language */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-shrink-0 ml-auto mt-4 lg:mt-8">
             <button 
               onClick={openSearchModal}
@@ -170,20 +156,6 @@ const NavBar = () => {
             </button>
 
             <LanguageSwitcher />
-
-            <Button
-              onClick={() => console.log("Login clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#74BFD0] transition duration-200"
-            >
-              {t('nav.login')}
-            </Button>
-
-            <Button
-              onClick={() => console.log("Sign Up clicked")}
-              className="px-3 lg:px-6 py-1.5 lg:py-2 text-sm lg:text-base bg-[#FCD11A] text-[#74BFD0] border-2 border-[#FCD11A] rounded-lg hover:bg-yellow-500 transition duration-200"
-            >
-              {t('nav.signup')}
-            </Button>
           </div>
         </div>
       </div>
@@ -214,68 +186,67 @@ const NavBar = () => {
           </button>
           
           {/* Logo */}
-          <div className="mb-12">
-            <img src={NavbarLogo} alt="Art Craft Academy" className="w-20 h-20 mx-auto" />
+          <div className="mb-8 sm:mb-12">
+            <img src={NavbarLogo} alt="Art Craft Academy" className="w-20 h-20 sm:w-24 sm:h-24 mx-auto drop-shadow-xl" />
           </div>
           
-          {/* Navigation Links */}
-          <nav className="flex flex-col items-center space-y-8 mb-12">
+          {/* Navigation Links - Larger touch targets */}
+          <nav className="flex flex-col items-center space-y-6 sm:space-y-8 mb-8 sm:mb-12 w-full max-w-xs">
             <Link 
               to="/" 
-              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.home')}
             </Link>
+            <HashLink 
+              smooth 
+              to="/#categories" 
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.categories')}
+            </HashLink>
             <Link 
               to="/videos" 
-              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.videos')}
             </Link>
             <Link 
+              to="/pictures" 
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('nav.pictures')}
+            </Link>
+            <Link 
               to="/courses" 
-              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.courses')}
             </Link>
             <Link 
               to="/shop" 
-              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.shop')}
             </Link>
             <Link 
               to="/about" 
-              className="text-white text-2xl font-semibold hover:text-[#FCD11A] transition-all duration-300 hover:scale-110 transform"
+              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.about')}
             </Link>
           </nav>
           
-          {/* Additional Actions */}
-          <div className="flex flex-col items-center space-y-6">
-            {/* Search Button */}
-            <button 
-              onClick={() => {
-                openSearchModal();
-                setIsMobileMenuOpen(false);
-              }}
-              className="flex items-center justify-center py-3 px-6 bg-white/20 text-white rounded-full hover:bg-white/30 transition-all duration-300 backdrop-blur-sm" 
-              title={t('common.search')}
-            >
-              <FaSearch className="mr-2" />
-              <span className="text-lg">{t('common.search')}</span>
-            </button>
-            
-            {/* Language Switcher */}
-            <div className="flex justify-center">
-              <LanguageSwitcher />
-            </div>
+          {/* Language Switcher */}
+          <div className="flex justify-center mt-6">
+            <LanguageSwitcher />
           </div>
         </div>
       </div>

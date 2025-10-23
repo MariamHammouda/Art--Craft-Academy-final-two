@@ -19,6 +19,7 @@ import PictureDetailPage from "./components/Pictures/PictureDetailPage.jsx";
 import FeaturedStories from "./components/Stories/FeaturedStories.jsx";
 import ShortsStories from "./components/Stories/ShortsStories.jsx";
 import CategoryPage from "./components/CategoryPage/CategoryPage.jsx";
+import CategoryPageNew from "./components/CategoryPage/CategoryPageNew.jsx";
 import VideoDetailPage from "./components/VideoDetail/VideoDetailPage.jsx";
 import AboutPage from "./components/Pages/AboutPage.jsx";
 import CoursesPage from "./components/Pages/CoursesPage.jsx";
@@ -80,11 +81,12 @@ function App() {
                   <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
                     <LatestVideos />
                   </ErrorBoundary>
-                  {/* Show additional content only on larger screens */}
+                  {/* Latest Pictures - Now visible on mobile with grid layout */}
+                  <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
+                    <LatestPicturesSlider />
+                  </ErrorBoundary>
+                  {/* Video Categories - Hidden on mobile */}
                   <div className="hidden md:block">
-                    <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
-                      <LatestPicturesSlider />
-                    </ErrorBoundary>
                     <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
                       <VideosByCategory />
                     </ErrorBoundary>
@@ -95,7 +97,8 @@ function App() {
               </>
             }
           />
-          <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/category/:id" element={<CategoryPageNew />} />
+          <Route path="/category/:id/:type" element={<CategoryPageNew />} />
           <Route path="/video/:videoId" element={<VideoDetailPage />} />
           <Route path="/videos" element={<VideosPage />} />
           <Route path="/pictures" element={<PicturesPage />} />

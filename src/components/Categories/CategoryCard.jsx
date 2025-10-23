@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = false }) => {
+const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = false, isMobile = false }) => {
   const { t } = useTranslation();
   const [isPressed, setIsPressed] = useState(false);
   const title = t(titleKey);
@@ -74,6 +74,19 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
 
   const cardColors = getCardColors(id);
 
+  // Mobile-specific dimensions
+  const cardStyle = isMobile ? {
+    height: '180px',
+    width: '140px',
+    minWidth: '140px',
+    padding: '16px 12px 12px 12px'
+  } : {
+    height: '240px',
+    width: '220px',
+    minWidth: '220px',
+    padding: '24px 24px 16px 24px'
+  };
+
   return (
     <div
       className={`group cursor-pointer transition-all duration-300 ${isPressed ? 'scale-95' : ''}`}
@@ -86,20 +99,17 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
       style={{
         touchAction: 'manipulation',
         perspective: '1000px',
-        paddingTop: '30px'
+        paddingTop: isMobile ? '20px' : '30px'
       }}
     >
       <div
-        className="rounded-3xl transition-all duration-500 overflow-visible w-full my-2 sm:m-4 transform-gpu relative"
+        className="rounded-2xl sm:rounded-3xl transition-all duration-500 overflow-visible w-full my-2 sm:m-4 transform-gpu relative"
         style={{
           backgroundColor: cardColors.bg,
           transformStyle: 'preserve-3d',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)',
           transform: 'translateY(0px)',
-          height: '240px',
-          padding: '24px 24px 16px 24px',
-          minWidth: '220px',
-          width: '220px',
+          ...cardStyle,
           transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         }}
         onMouseEnter={(e) => {
@@ -115,7 +125,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
         <div
           className="absolute -top-4 left-1/2 transform -translate-x-1/2 transition-all duration-500"
           style={{
-            transform: 'translateX(-50%) translateY(-12px) translateZ(20px)',
+            transform: `translateX(-50%) translateY(${isMobile ? '-8px' : '-12px'}) translateZ(20px)`,
             transformStyle: 'preserve-3d'
           }}
         >
@@ -125,8 +135,8 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
               backgroundColor: 'rgba(0, 0, 0, 0.1)',
               transform: 'translateY(8px) scale(0.95)',
               filter: 'blur(16px)',
-              width: '120px',
-              height: '120px'
+              width: isMobile ? '80px' : '120px',
+              height: isMobile ? '80px' : '120px'
             }}
           />
           <div
@@ -135,14 +145,14 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
               backgroundColor: cardColors.circle,
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1)',
               transform: 'translateZ(10px)',
-              width: '120px',
-              height: '120px'
+              width: isMobile ? '80px' : '120px',
+              height: isMobile ? '80px' : '120px'
             }}
           >
             <img
               src={icon}
               alt={title}
-              className="w-16 h-16 transition-all duration-300 group-hover:scale-110"
+              className={`${isMobile ? 'w-10 h-10' : 'w-16 h-16'} transition-all duration-300 group-hover:scale-110`}
               style={{
                 filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
                 transform: 'translateZ(5px)'
@@ -152,10 +162,10 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
         </div>
 
         {/* Card Content */}
-        <div className="absolute bottom-0 left-0 right-0 pb-6 text-center flex flex-col items-center">
-          <div className="mb-3">
+        <div className={`absolute bottom-0 left-0 right-0 ${isMobile ? 'pb-3' : 'pb-6'} text-center flex flex-col items-center`}>
+          <div className={`${isMobile ? 'mb-2' : 'mb-3'}`}>
             <h3
-              className="text-gray-800 font-bold text-sm sm:text-base leading-tight px-3"
+              className={`text-gray-800 font-bold ${isMobile ? 'text-xs' : 'text-sm sm:text-base'} leading-tight px-2`}
               style={{
                 color: '#4A5568',
                 transform: 'translateZ(5px)',
@@ -168,11 +178,11 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
           <button
             className={`${getButtonColor(
               id
-            )} text-sm sm:text-base font-semibold px-6 py-2.5 rounded-full transition-all duration-300 relative overflow-hidden`}
+            )} ${isMobile ? 'text-xs px-4 py-1.5' : 'text-sm sm:text-base px-6 py-2.5'} font-semibold rounded-full transition-all duration-300 relative overflow-hidden`}
             style={{
               transform: 'translateZ(8px)',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              minWidth: '100px'
+              minWidth: isMobile ? '80px' : '100px'
             }}
           >
             <span className="relative z-10">{t('common.explore')}</span>

@@ -11,11 +11,11 @@ const HeroSection = () => {
 
   return (
     <>
-      <section id="home" className="bg-[#74BFD0] py-4 md:py-8 lg:py-12 min-h-screen flex items-center">
-        <div className="container mx-auto px-2 sm:px-4 w-full">
-          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
+      <section id="home" className="bg-[#74BFD0] py-6 sm:py-8 md:py-12 lg:py-16 min-h-screen flex items-center">
+        <div className="container mx-auto px-4 sm:px-6 w-full">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
             {/* Text Content Column */}
-            <div className={`space-y-2 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
+            <div className={`space-y-4 sm:space-y-6 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
               {/* Big Logo */}
               {/* <div className={`flex justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'} mb-2 -mt-4`}>
                 <img
@@ -25,18 +25,18 @@ const HeroSection = () => {
                 />
               </div> */}
 
-              <div className="space-y-1">
-                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
+              <div className="space-y-3 sm:space-y-4">
+                <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight px-2">
                   {t("hero.title")}
-                  <span className="text-[#FCD11A] block sm:inline">
+                  <span className="text-[#FF6B35] block sm:inline drop-shadow-lg">
                     {" "}
                     {t("hero.titleHighlight")}
                   </span>
                   {t("hero.titleEnd") && (
-                    <span className="block">{t("hero.titleEnd")}</span>
+                    <span className="block mt-2">{t("hero.titleEnd")}</span>
                   )}
                 </h1>
-                <p className={`text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed max-w-lg mx-auto ${isRTL ? 'lg:mr-0' : 'lg:mx-0'}`}>
+                <p className={`text-lg sm:text-xl lg:text-xl text-white/95 leading-relaxed max-w-2xl mx-auto ${isRTL ? 'lg:mr-0' : 'lg:mx-0'} drop-shadow-sm px-4 sm:px-2`}>
                   {t("hero.description")}
                 </p>
               </div>
@@ -44,19 +44,19 @@ const HeroSection = () => {
 
             {/* Image Slider Column */}
             <div className={`flex justify-center items-center ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
-              <div className="w-full max-w-md">
+              <div className="w-full max-w-lg px-4">
                 <HeroSlider />
               </div>
             </div>
           </div>
           
           {/* Categories Section */}
-          <div className="mt-2 md:mt-4">
-            <div className="text-center mb-3">
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
+          <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-20">
+            <div className="text-center mb-4 sm:mb-6 px-4">
+              <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 drop-shadow-lg">
                 {t('categories.exploreCategories') || 'Explore Categories'}
               </h2>
-              <p className="text-white/80 text-sm md:text-base">
+              <p className="text-white/90 text-base sm:text-lg md:text-lg drop-shadow-sm">
                 {t('categories.subtitle') || 'Discover amazing craft projects'}
               </p>
             </div>
