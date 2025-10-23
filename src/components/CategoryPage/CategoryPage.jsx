@@ -175,8 +175,8 @@ const CategoryPage = () => {
           </div>
 
           {/* Image and Description Section */}
-          <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 items-start mb-6 sm:mb-8">
-            {/* Category Image */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-8 items-start mb-6 sm:mb-8">
+            {/* Category Image - Shows first on mobile */}
             <div className="w-full">
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
                 <img 
@@ -192,7 +192,7 @@ const CategoryPage = () => {
               </div>
             </div>
 
-            {/* Description */}
+            {/* Description - Shows second on mobile, below image */}
             <div className="w-full">
               <div 
                 className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg h-full flex flex-col justify-center"

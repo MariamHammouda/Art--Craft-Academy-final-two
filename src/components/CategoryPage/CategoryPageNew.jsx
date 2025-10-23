@@ -170,8 +170,8 @@ const CategoryPageNew = () => {
 
         {/* Category Image and Description Section */}
         <div className="grid lg:grid-cols-2 gap-8 items-center mb-8">
-          {/* Category Image */}
-          <div className="order-2 lg:order-1">
+          {/* Category Image - Shows first on mobile (order-1), first on desktop (lg:order-1) */}
+          <div className="order-1 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
               <img 
                 src={
@@ -186,8 +186,8 @@ const CategoryPageNew = () => {
             </div>
           </div>
 
-          {/* Description */}
-          <div className="order-1 lg:order-2">
+          {/* Description - Shows second on mobile (order-2), second on desktop (lg:order-2) */}
+          <div className="order-2 lg:order-2">
             <div 
               className="p-6 sm:p-8 rounded-3xl shadow-xl border-2 border-white/50 backdrop-blur-sm"
               style={{ 
