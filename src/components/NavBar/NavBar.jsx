@@ -191,10 +191,10 @@ const NavBar = () => {
           </div>
           
           {/* Navigation Links - Larger touch targets */}
-          <nav className="flex flex-col items-center space-y-6 sm:space-y-8 mb-8 sm:mb-12 w-full max-w-xs">
+          <nav className="flex flex-col items-center space-y-3 sm:space-y-4 mb-4 sm:mb-8 w-full max-w-xs">
             <Link 
               to="/" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.home')}
@@ -202,28 +202,28 @@ const NavBar = () => {
             <HashLink 
               smooth 
               to="/#categories" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.categories')}
             </HashLink>
             <Link 
               to="/courses" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.courses')}
             </Link>
             <Link 
               to="/shop" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.shop')}
             </Link>
             <Link 
               to="/about" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('nav.about')}
@@ -231,7 +231,7 @@ const NavBar = () => {
           </nav>
           
           {/* Language Switcher */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-3">
             <LanguageSwitcher />
           </div>
         </div>
