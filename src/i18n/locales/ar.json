@@ -60,6 +60,7 @@
     "noVideosFound": "لم يتم العثور على فيديوهات",
     "tryDifferentCategory": "جرب فئة مختلفة أو ارجع لاحقاً",
     "remaining": "متبقي",
+    "availableVideos": "فيديوهات متاحة",
     "showingResults": "عرض {{start}}-{{end}} من {{total}} فيديو",
     "notFound": "الفيديو غير موجود",
     "description": "الوصف",
