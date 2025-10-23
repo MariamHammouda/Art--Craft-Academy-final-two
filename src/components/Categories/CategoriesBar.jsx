@@ -119,8 +119,8 @@ const CategoriesBar = () => {
           </div>
           
           {/* Scroll Indicator - Interactive */}
-          <div className="flex justify-center mt-4">
-            <div className="flex gap-1 bg-black/15 backdrop-blur-sm px-1.5 py-1 rounded-full">
+          <div className="flex justify-center mt-6">
+            <div className="flex gap-2 bg-black/10 backdrop-blur-sm px-3 py-2 rounded-full">
               {categoriesData.map((_, index) => (
                 <button
                   key={index}
@@ -135,9 +135,15 @@ const CategoriesBar = () => {
                   }}
                   className={`rounded-full transition-all duration-300 ${
                     index === scrollIndex
-                      ? "bg-[#FF6B35] w-6 h-1.5"
-                      : "bg-white/60 w-1.5 h-1.5 hover:bg-white/80 hover:scale-110"
+                      ? "bg-[#FF6B35]"
+                      : "bg-white/60 hover:bg-white/80"
                   }`}
+                  style={{
+                    width: index === scrollIndex ? '32px' : '10px',
+                    height: '10px',
+                    minWidth: index === scrollIndex ? '32px' : '10px',
+                    minHeight: '10px'
+                  }}
                   aria-label={`Go to category ${index + 1}`}
                 />
               ))}
@@ -209,18 +215,26 @@ const CategoriesBar = () => {
         </div>
 
         {/* Dots Indicator */}
+      {/* Dots Indicator */}
+      {/* Dots Indicator */}
         {showNavigation && totalDots > 1 && (
           <div className="flex justify-center mt-6">
-            <div className="flex gap-1 bg-black/15 backdrop-blur-sm px-1.5 py-1 rounded-full">
+            <div className="flex gap-2 bg-black/10 backdrop-blur-sm px-3 py-2 rounded-full">
               {Array.from({ length: totalDots }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`rounded-full transition-all duration-300 ${
                     index === currentIndex
-                      ? "bg-[#FF6B35] w-8 h-1.5"
-                      : "bg-white/60 w-1.5 h-1.5 hover:bg-white/80 hover:scale-110"
+                      ? "bg-[#FF6B35]"
+                      : "bg-white/60 hover:bg-white/80"
                   }`}
+                  style={{
+                    width: index === currentIndex ? '40px' : '12px',
+                    height: '12px',
+                    minWidth: index === currentIndex ? '40px' : '12px',
+                    minHeight: '12px'
+                  }}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

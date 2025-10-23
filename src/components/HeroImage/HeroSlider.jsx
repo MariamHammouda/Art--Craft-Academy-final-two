@@ -95,7 +95,7 @@ const HeroSlider = () => {
             className="pointer-events-auto mr-3 sm:mr-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/95 text-gray-800 hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all duration-300 shadow-xl backdrop-blur-sm ring-2 ring-white/30"
             style={{ touchAction: 'manipulation' }}
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
