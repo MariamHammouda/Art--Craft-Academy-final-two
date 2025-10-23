@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { ChevronRight, Video, Image } from 'lucide-react';
 import VideoCard from "../Videos/VideoCard.jsx";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { videosData } from "../../mockData/videosData.js";
@@ -18,6 +19,7 @@ const CategoryPage = () => {
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeTab, setActiveTab] = useState('videos'); // 'videos' or 'pictures'
   
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -135,39 +137,48 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <div className="bg-transparent">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center gap-4 mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-pink-100 via-blue-50 to-white">
+      {/* Breadcrumb Navigation */}
+      <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
             <button
               onClick={() => navigate("/")}
-              className="text-[#59ACBE] hover:text-[#4a9bb0] font-medium transition-colors"
+              className="hover:text-[#59ACBE] transition-colors"
             >
-              ← {t('common.back')}
+              {t('nav.home')}
             </button>
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-gray-800 font-medium">{t(categoryData.titleKey)}</span>
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-gray-500">{activeTab === 'videos' ? t('nav.videos') : t('nav.pictures')}</span>
           </div>
-          
-          {/* Title Section */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-4 mb-4">
+        </div>
+      </div>
+
+      {/* Header Section */}
+      <div className="bg-transparent">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12">
+          {/* Category Title with Icon */}
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
               <div
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg flex items-center justify-center"
+                className="w-16 h-16 sm:w-24 sm:h-24 rounded-full shadow-lg flex items-center justify-center"
                 style={{ backgroundColor: cardColors.circle }}
               >
-                <img src={categoryData.icon} alt={t(categoryData.titleKey)} className="w-10 h-10 sm:w-12 sm:h-12" />
+                <img src={categoryData.icon} alt={t(categoryData.titleKey)} className="w-8 h-8 sm:w-14 sm:h-14" />
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
                 {t(categoryData.titleKey)}
               </h1>
             </div>
           </div>
 
           {/* Image and Description Section */}
-          <div className="grid lg:grid-cols-2 gap-8 items-center mb-8">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 items-start mb-6 sm:mb-8">
             {/* Category Image */}
-            <div className="order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="w-full">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
                 <img 
                   src={
                     categoryData.id === 7 ? perlerBeadsCategoryImage :
@@ -175,73 +186,88 @@ const CategoryPage = () => {
                     categoryData.bannerImage
                   } 
                   alt={t(categoryData.titleKey)}
-                  className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
             </div>
 
             {/* Description */}
-            <div className="order-1 lg:order-2">
+            <div className="w-full">
               <div 
-                className="p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200"
+                className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-lg h-full flex flex-col justify-center"
                 style={{ 
                   backgroundColor: cardColors.bg
                 }}
               >
-                <h2 
-                  className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4"
-                  style={{
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2)',
-                    transform: 'perspective(500px) rotateX(10deg)',
-                    transformOrigin: 'center bottom',
-                    letterSpacing: '0.5px'
-                  }}
-                >
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
                   {t('videos.description')}
                 </h2>
-                <p 
-                  className="text-gray-700 text-lg leading-relaxed mb-6 font-bold"
-                  style={{
-                    textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0.5px 0.5px 1px rgba(0,0,0,0.1)',
-                    transform: 'perspective(800px) rotateX(5deg)',
-                    transformOrigin: 'center bottom',
-                    letterSpacing: '0.3px'
-                  }}
-                >
+                <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                   {t(categoryData.descriptionKey)}
                 </p>
-                
-           
               </div>
             </div>
+          </div>
+
+          {/* Videos/Pictures Tabs */}
+          <div className="flex justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <button
+              onClick={() => {
+                setActiveTab('videos');
+                setCurrentPage(1);
+              }}
+              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 shadow-md ${
+                activeTab === 'videos'
+                  ? 'bg-[#59ACBE] text-white scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <Video className="w-4 h-4 sm:w-5 sm:h-5" />
+              {t('nav.videos')}
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('pictures');
+                navigate(`/pictures/${categoryData.id}`);
+              }}
+              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 shadow-md ${
+                activeTab === 'pictures'
+                  ? 'bg-[#59ACBE] text-white scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+              {t('nav.pictures')}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Videos Grid */}
-      <div id="videos-section" className="max-w-7xl mx-auto px-6 py-12">
+      <div id="videos-section" className="bg-white rounded-3xl shadow-lg mx-3 sm:mx-6 lg:mx-auto max-w-7xl p-4 sm:p-8 mb-8">
         {videosLoading ? (
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#59ACBE]"></div>
           </div>
         ) : videosError ? (
-          <div className="text-center py-12">
-            <p className="text-red-600 mb-4">Error loading videos: {videosError}</p>
-            <p className="text-gray-600">Showing fallback content...</p>
+          <div className="text-center py-12 bg-red-50 rounded-2xl">
+            <p className="text-red-600 mb-2 text-sm sm:text-base">Error loading videos: {videosError}</p>
+            <p className="text-gray-600 text-xs sm:text-sm">Showing fallback content...</p>
           </div>
         ) : null}
         
         {/* Videos Count Info */}
         {totalVideos > 0 && (
-          <div className="mb-6 text-center">
-            <p className="text-gray-600">
-              {t('videos.showing')} {startIndex + 1}-{Math.min(endIndex, totalVideos)} {t('videos.of')} {totalVideos} {t('videos.videos')}
+          <div className="mb-6 text-center bg-gray-50 rounded-xl p-3 sm:p-4">
+            <p className="text-gray-700 text-sm sm:text-base font-medium">
+              videos showing {startIndex + 1}-{Math.min(endIndex, totalVideos)} videos of {totalVideos} videos·videos
             </p>
           </div>
         )}
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* 2-column grid on mobile, 3-4 columns on larger screens */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {currentVideos.map((video) => (
             <VideoCard
               key={video.id}
@@ -257,55 +283,69 @@ const CategoryPage = () => {
         
         {/* Pagination Controls */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center mt-8 gap-2">
+          <div className="flex flex-wrap justify-center items-center mt-8 gap-2">
             {/* Previous Button */}
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-all shadow-md ${
                 currentPage === 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+                  : 'bg-[#59ACBE] text-white hover:bg-[#74BFD0] hover:shadow-lg'
               }`}
             >
-              ← {t('common.previous')}
+              ← {isMobile ? '' : t('common.previous')}
             </button>
             
             {/* Page Numbers */}
-            <div className="flex gap-1">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`px-3 py-2 rounded-lg font-medium transition-colors ${
-                    currentPage === page
-                      ? 'bg-[#74BFD0] text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+            <div className="flex gap-1 sm:gap-2">
+              {Array.from({ length: Math.min(totalPages, isMobile ? 3 : 5) }, (_, i) => {
+                let page;
+                if (totalPages <= (isMobile ? 3 : 5)) {
+                  page = i + 1;
+                } else if (currentPage <= (isMobile ? 2 : 3)) {
+                  page = i + 1;
+                } else if (currentPage >= totalPages - (isMobile ? 1 : 2)) {
+                  page = totalPages - (isMobile ? 2 : 4) + i;
+                } else {
+                  page = currentPage - (isMobile ? 1 : 2) + i;
+                }
+                
+                return (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full font-semibold text-xs sm:text-sm transition-all shadow-md ${
+                      currentPage === page
+                        ? 'bg-[#59ACBE] text-white scale-110'
+                        : 'bg-white text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
             </div>
             
             {/* Next Button */}
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-all shadow-md ${
                 currentPage === totalPages
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-[#74BFD0] text-white hover:bg-[#59ACBE]'
+                  : 'bg-[#59ACBE] text-white hover:bg-[#74BFD0] hover:shadow-lg'
               }`}
             >
-              {t('common.next')} →
+              {isMobile ? '' : t('common.next')} →
             </button>
           </div>
         )}
         
         {resolvedVideos.length === 0 && !videosLoading && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">{t('videos.noVideosFound')}</p>
+          <div className="text-center py-12 bg-gray-50 rounded-2xl">
+            <div className="text-6xl mb-4">🎬</div>
+            <p className="text-gray-600 text-base sm:text-lg">{t('videos.noVideosFound')}</p>
           </div>
         )}
       </div>

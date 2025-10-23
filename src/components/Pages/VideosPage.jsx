@@ -199,25 +199,15 @@ const VideosPage = () => {
                 <div key={category.id} className="space-y-4 sm:space-y-6">
                   {/* Category Card */}
                   <div className="flex flex-col items-center">
-                    <div 
-                      onClick={() => {
-                        handleCategoryChange(category.id.toString());
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <div style={{ pointerEvents: 'none' }}>
-                        <CategoryCard
-                          titleKey={category.titleKey}
-                          icon={category.icon}
-                          color={category.color}
-                          id={category.id}
-                          bannerImage={category.bannerImage}
-                          forceNavigate={false}
-                          isMobile={false}
-                        />
-                      </div>
-                    </div>
+                    <CategoryCard
+                      titleKey={category.titleKey}
+                      icon={category.icon}
+                      color={category.color}
+                      id={category.id}
+                      bannerImage={category.bannerImage}
+                      forceNavigate={true}
+                      isMobile={false}
+                    />
                     <p className="text-gray-600 text-sm sm:text-base mt-2">
                       {categoryVideos.length} {t('videos.availableVideos')}
                     </p>
