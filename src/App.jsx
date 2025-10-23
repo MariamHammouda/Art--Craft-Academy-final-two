@@ -48,6 +48,25 @@ function NavigationTracker() {
 function App() {
   const { i18n } = useTranslation();
 
+  // Suppress YouTube iframe CORS errors globally
+  useEffect(() => {
+    const handleError = (event) => {
+      // Suppress SecurityError from YouTube iframes (these are harmless)
+      if (event.message && (
+        event.message.includes('cross-origin') || 
+        event.message.includes('SecurityError')
+      )) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        return true;
+      }
+    };
+    
+    window.addEventListener('error', handleError, true);
+    return () => window.removeEventListener('error', handleError, true);
+  }, []);
+
   // Set initial direction on app load
   useEffect(() => {
     const currentLang = i18n.language || 'en';

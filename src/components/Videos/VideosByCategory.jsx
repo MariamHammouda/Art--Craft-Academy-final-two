@@ -137,6 +137,7 @@ const VideosByCategoryComponent = () => {
                       categoryTitleKey={video.categoryTitleKey}
                       title={video.title}
                       categoryTitle={video.categoryTitle}
+                      isMobile={false}
                     />
                   ))}
                 </div>

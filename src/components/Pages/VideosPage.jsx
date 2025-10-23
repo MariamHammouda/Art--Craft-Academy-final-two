@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef } from "react";
+import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Play } from 'lucide-react';
@@ -14,6 +14,17 @@ const VideosPage = () => {
   const navigate = useNavigate();
   const [categoryPage, setCategoryPage] = useState(1); // Pagination for categories
   const categoriesPerPage = 4; // Show 4 categories per page
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Fetch videos from YouTube API with caching
   const { videos: apiVideos, loading, error } = useLatestVideos(100);
@@ -162,6 +173,7 @@ const VideosPage = () => {
                       categoryTitleKey={video.categoryTitleKey}
                       title={video.title || 'Untitled Video'}
                       categoryTitle={video.categoryTitle}
+                      isMobile={isMobile}
                     />
                   ))}
                 </div>

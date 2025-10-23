@@ -1,11 +1,27 @@
-import React, { memo, useState, useCallback } from 'react'
+import React, { memo, useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, thumbnail }) => {
+const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, thumbnail, isMobile }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [showIframe, setShowIframe] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  
+  // Suppress YouTube CORS errors (they're harmless and expected)
+  useEffect(() => {
+    const handleError = (event) => {
+      // Suppress SecurityError from YouTube iframe
+      if (event.message && event.message.includes('cross-origin')) {
+        event.preventDefault();
+        event.stopPropagation();
+        return true;
+      }
+    };
+    
+    window.addEventListener('error', handleError, true);
+    return () => window.removeEventListener('error', handleError, true);
+  }, []);
   
   // Safety checks for props
   if (!id || !url) {
@@ -56,8 +72,17 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
   }, [url]);
   
   const handleMouseEnter = useCallback(() => {
-    // Lazy load iframe on hover for better performance
+    // Lazy load iframe on hover for better performance (desktop only)
+    if (!isMobile) {
+      setShowIframe(true);
+    }
+  }, [isMobile]);
+  
+  const handlePlayClick = useCallback((e) => {
+    e.stopPropagation(); // Prevent card click
+    // Load iframe and start playing
     setShowIframe(true);
+    setIsPlaying(true);
   }, []);
   
   return (
@@ -69,12 +94,17 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
         {showIframe ? (
           <iframe
             className="w-full h-full"
-            src={url}
+            src={`${url}${isPlaying ? '?autoplay=1&mute=0' : ''}`}
             title={displayTitle}
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             loading="lazy"
+            sandbox="allow-same-origin allow-scripts allow-presentation allow-forms"
+            referrerPolicy="no-referrer-when-downgrade"
+            onError={(e) => {
+              console.log('Iframe load event (this is normal)');
+            }}
           />
         ) : (
           <>
@@ -88,20 +118,25 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
             )}
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
-              <div className="w-10 h-10 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+              <button
+                onClick={handlePlayClick}
+                className="w-10 h-10 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg hover:bg-red-700 hover:scale-110 transition-all touch-manipulation"
+                aria-label="Play video"
+              >
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white ml-0.5 sm:ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
-              </div>
+              </button>
             </div>
           </>
         )}
-        {/* Click overlay - only show when iframe is not loaded */}
-        {!showIframe && (
+        {/* Click overlay for desktop - navigate to detail page on thumbnail click */}
+        {!showIframe && !isMobile && (
           <div 
-            className="absolute inset-0 cursor-pointer bg-transparent hover:bg-black hover:bg-opacity-10 transition-all"
+            className="absolute inset-0 cursor-pointer bg-transparent hover:bg-black hover:bg-opacity-10 transition-all z-10"
             onClick={handleClick}
             title="Click to view video details"
+            style={{ pointerEvents: 'auto' }}
           />
         )}
       </div>
@@ -116,14 +151,18 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
           )}
         </div>
         
-        {/* YouTube Link Button */}
-        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1.5 sm:gap-0">
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 sm:gap-0">
+          {/* View Details Button - visible on mobile */}
           <button
             onClick={handleClick}
-            className="hidden sm:block text-sm text-[#59ACBE] hover:text-[#4a9bb0] font-medium transition-colors"
+            className="flex items-center justify-center gap-1 px-3 py-1.5 text-xs sm:text-sm text-[#59ACBE] hover:text-white bg-[#59ACBE]/10 hover:bg-[#59ACBE] border border-[#59ACBE] rounded-full font-medium transition-all sm:border-0 sm:bg-transparent sm:hover:bg-transparent sm:hover:text-[#4a9bb0] sm:px-0 sm:py-0 touch-manipulation"
           >
-            View Details →
+            <span>View Details</span>
+            <span className="hidden sm:inline">→</span>
           </button>
+          
+          {/* YouTube External Link Button */}
           <button
             onClick={handleYouTubeClick}
             className="flex items-center justify-center gap-1 px-2 sm:px-3 py-1.5 sm:py-1 bg-red-600 text-white text-xs rounded-full hover:bg-red-700 transition-colors w-full sm:w-auto touch-manipulation"
@@ -133,7 +172,7 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
             <span className="hidden sm:inline">YouTube</span>
-            <span className="sm:hidden">Watch</span>
+            <span className="sm:hidden">Open in App</span>
           </button>
         </div>
       </div>

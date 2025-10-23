@@ -110,6 +110,7 @@ const LatestVideos = () => {
                 categoryTitleKey={video.categoryTitleKey}
                 title={video.title || 'Untitled Video'}
                 categoryTitle={video.categoryTitle}
+                isMobile={isMobile}
               />
             );
           }) : (
