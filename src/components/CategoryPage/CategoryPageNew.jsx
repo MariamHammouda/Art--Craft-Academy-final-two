@@ -140,13 +140,19 @@ const CategoryPageNew = () => {
               {t('nav.home')}
             </button>
             <span className="text-gray-400">/</span>
-            <span className="text-gray-600 font-medium">{t(categoryData.titleKey)}</span>
-            {activeTab && (
+            {/* Show "Categories" link on mobile only */}
+            {isMobile && (
               <>
+                <button
+                  onClick={() => navigate("/videos")}
+                  className="text-[#74BFD0] hover:text-[#59ACBE] transition-colors font-medium"
+                >
+                  {t('nav.categories')}
+                </button>
                 <span className="text-gray-400">/</span>
-                <span className="text-gray-800 font-semibold capitalize">{activeTab}</span>
               </>
             )}
+            <span className="text-gray-800 font-semibold">{t(categoryData.titleKey)}</span>
           </div>
         </div>
       </div>
@@ -247,15 +253,6 @@ const CategoryPageNew = () => {
                   <p className="text-gray-600">Showing fallback content...</p>
                 </div>
               ) : null}
-              
-              {/* Videos Count */}
-              {totalVideos > 0 && (
-                <div className="mb-6 text-center">
-                  <p className="text-gray-600 text-lg">
-                    {t('videos.showing')} {startIndex + 1}-{Math.min(endIndex, totalVideos)} {t('videos.of')} {totalVideos} {t('videos.videos')}
-                  </p>
-                </div>
-              )}
               
               {/* Videos Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
