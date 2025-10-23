@@ -118,16 +118,6 @@ const LatestVideos = () => {
             </div>
           )}
         </div>
-        
-        {/* Show "View More" button on mobile */}
-        <div className="md:hidden text-center mt-6">
-          <button 
-            onClick={() => navigate('/videos')}
-            className="w-full sm:w-auto px-6 py-3 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors duration-200 font-medium min-h-[44px] touch-manipulation"
-          >
-            {t('common.viewMore') || 'View More Videos'}
-          </button>
-        </div>
       </div>
     </section>
   );
