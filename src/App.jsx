@@ -86,8 +86,8 @@ function App() {
                     <LatestPicturesSlider />
                   </ErrorBoundary>
                   
-                  {/* View Categories Button */}
-                  <div className="py-8 px-4 sm:px-8">
+                  {/* View Categories Button - Mobile Only */}
+                  <div className="md:hidden py-8 px-4 sm:px-8">
                     <div className="max-w-7xl mx-auto text-center">
                       <a 
                         href="#/videos"
