@@ -120,7 +120,7 @@ const CategoriesBar = () => {
           
           {/* Scroll Indicator - Interactive */}
           <div className="flex justify-center mt-4">
-            <div className="flex gap-1.5">
+            <div className="flex gap-1 bg-black/15 backdrop-blur-sm px-1.5 py-1 rounded-full">
               {categoriesData.map((_, index) => (
                 <button
                   key={index}
@@ -135,8 +135,8 @@ const CategoriesBar = () => {
                   }}
                   className={`rounded-full transition-all duration-300 ${
                     index === scrollIndex
-                      ? "bg-[#FF6B35] w-3 h-1.5"
-                      : "bg-white/40 w-1.5 h-1.5 hover:bg-white/60"
+                      ? "bg-[#FF6B35] w-6 h-1.5"
+                      : "bg-white/60 w-1.5 h-1.5 hover:bg-white/80 hover:scale-110"
                   }`}
                   aria-label={`Go to category ${index + 1}`}
                 />
@@ -210,19 +210,21 @@ const CategoriesBar = () => {
 
         {/* Dots Indicator */}
         {showNavigation && totalDots > 1 && (
-          <div className="flex justify-center mt-6 gap-2">
-            {Array.from({ length: totalDots }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentIndex
-                    ? "bg-[#FCD11A]"
-                    : "bg-white/50 hover:bg-white/80"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+          <div className="flex justify-center mt-6">
+            <div className="flex gap-1 bg-black/15 backdrop-blur-sm px-1.5 py-1 rounded-full">
+              {Array.from({ length: totalDots }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-[#FF6B35] w-8 h-1.5"
+                      : "bg-white/60 w-1.5 h-1.5 hover:bg-white/80 hover:scale-110"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

@@ -208,20 +208,6 @@ const NavBar = () => {
               {t('nav.categories')}
             </HashLink>
             <Link 
-              to="/videos" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.videos')}
-            </Link>
-            <Link 
-              to="/pictures" 
-              className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.pictures')}
-            </Link>
-            <Link 
               to="/courses" 
               className="w-full text-center py-4 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
               onClick={() => setIsMobileMenuOpen(false)}
