@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useCallback, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import VideoCard from "../Videos/VideoCard.jsx";
+import CategoryCard from "../Categories/CategoryCard.jsx";
 import { videosData } from "../../mockData/videosData.js";
 import { categoriesData } from "../../mockData/categoriesData.js";
 import { useLatestVideos } from "../../hooks/useYouTubeVideos.js";
@@ -197,24 +198,29 @@ const VideosPage = () => {
               return (
                 <div key={category.id} className="space-y-4 sm:space-y-6">
                   {/* Category Card */}
-                  <div className="bg-gradient-to-br from-[#74BFD0] to-[#59ACBE] rounded-2xl p-4 sm:p-6 shadow-lg">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-                      <div className="flex-1">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                          {t(category.titleKey)}
-                        </h2>
-                        <p className="text-white/90 text-sm sm:text-base">
-                          {categoryVideos.length} {t('videos.availableVideos')}
-                        </p>
+                  <div className="flex flex-col items-center">
+                    <div 
+                      onClick={() => {
+                        handleCategoryChange(category.id.toString());
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div style={{ pointerEvents: 'none' }}>
+                        <CategoryCard
+                          titleKey={category.titleKey}
+                          icon={category.icon}
+                          color={category.color}
+                          id={category.id}
+                          bannerImage={category.bannerImage}
+                          forceNavigate={false}
+                          isMobile={false}
+                        />
                       </div>
-                      <button
-                        onClick={() => handleCategoryChange(category.id.toString())}
-                        className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-[#59ACBE] rounded-xl font-semibold hover:bg-[#FCD11A] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg text-sm sm:text-base touch-manipulation"
-                      >
-                        {t('common.explore')}
-                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </button>
                     </div>
+                    <p className="text-gray-600 text-sm sm:text-base mt-2">
+                      {categoryVideos.length} {t('videos.availableVideos')}
+                    </p>
                   </div>
 
                   {/* Category Videos Grid - 2 columns on mobile */}
