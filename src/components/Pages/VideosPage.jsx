@@ -12,6 +12,8 @@ import { useLatestVideos } from "../../hooks/useYouTubeVideos.js";
 const VideosPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [categoryPage, setCategoryPage] = useState(1); // Pagination for categories
+  const categoriesPerPage = 4; // Show 4 categories per page
 
   // Fetch videos from YouTube API with caching
   const { videos: apiVideos, loading, error } = useLatestVideos(100);
@@ -31,6 +33,26 @@ const VideosPage = () => {
     });
     return grouped;
   }, [videosToUse]);
+
+  // Get categories that have videos
+  const categoriesWithVideos = useMemo(() => {
+    return categoriesData.filter(category => {
+      const videos = videosByCategory[category.id] || [];
+      return videos.length > 0;
+    });
+  }, [videosByCategory]);
+
+  // Pagination for categories
+  const totalCategoryPages = Math.ceil(categoriesWithVideos.length / categoriesPerPage);
+  const startCategoryIndex = (categoryPage - 1) * categoriesPerPage;
+  const endCategoryIndex = startCategoryIndex + categoriesPerPage;
+  const paginatedCategories = categoriesWithVideos.slice(startCategoryIndex, endCategoryIndex);
+
+  // Handle category page change
+  const handleCategoryPageChange = useCallback((page) => {
+    setCategoryPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   if (loading && videosToUse.length === 0) {
     return (
@@ -112,9 +134,8 @@ const VideosPage = () => {
 
         {/* Show all videos grouped by category */}
         <div className="space-y-8 sm:space-y-12">
-          {categoriesData.map((category) => {
+          {paginatedCategories.map((category) => {
             const categoryVideos = videosByCategory[category.id] || [];
-            if (categoryVideos.length === 0) return null;
             
             return (
               <div key={category.id} className="space-y-4 sm:space-y-6">
@@ -152,6 +173,54 @@ const VideosPage = () => {
             );
           })}
         </div>
+
+        {/* Category Pagination */}
+        {totalCategoryPages > 1 && (
+          <div className="flex flex-wrap justify-center items-center mt-12 gap-2">
+            {/* Previous Button */}
+            <button
+              onClick={() => handleCategoryPageChange(categoryPage - 1)}
+              disabled={categoryPage === 1}
+              className={`px-3 sm:px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-all shadow-md ${
+                categoryPage === 1
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#59ACBE] text-white hover:bg-[#74BFD0] hover:shadow-lg'
+              }`}
+            >
+              ← {t('common.previous')}
+            </button>
+            
+            {/* Page Numbers */}
+            <div className="flex gap-1 sm:gap-2">
+              {Array.from({ length: totalCategoryPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handleCategoryPageChange(page)}
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full font-semibold text-xs sm:text-sm transition-all shadow-md ${
+                    categoryPage === page
+                      ? 'bg-[#59ACBE] text-white scale-110'
+                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            {/* Next Button */}
+            <button
+              onClick={() => handleCategoryPageChange(categoryPage + 1)}
+              disabled={categoryPage === totalCategoryPages}
+              className={`px-3 sm:px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-all shadow-md ${
+                categoryPage === totalCategoryPages
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-[#59ACBE] text-white hover:bg-[#74BFD0] hover:shadow-lg'
+              }`}
+            >
+              {t('common.next')} →
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
