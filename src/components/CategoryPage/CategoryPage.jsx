@@ -257,14 +257,6 @@ const CategoryPage = () => {
           </div>
         ) : null}
         
-        {/* Videos Count Info */}
-        {totalVideos > 0 && (
-          <div className="mb-6 text-center bg-gray-50 rounded-xl p-3 sm:p-4">
-            <p className="text-gray-700 text-sm sm:text-base font-medium">
-              videos showing {startIndex + 1}-{Math.min(endIndex, totalVideos)} videos of {totalVideos} videos·videos
-            </p>
-          </div>
-        )}
         
         {/* 2-column grid on mobile, 3-4 columns on larger screens */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">

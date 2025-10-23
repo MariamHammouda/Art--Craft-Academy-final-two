@@ -149,7 +149,7 @@ const VideosByCategoryComponent = () => {
                     onClick={() => handleCategoryClick(category.id, t(category.titleKey))}
                     className="px-6 py-2 bg-[#59ACBE] text-white rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-colors"
                   >
-                    {t('categories.viewAll')} {categoryVideosSorted.length - 4} {t('videos.loadMore')}
+                    {t('categories.viewAll')}
                   </button>
                 </div>
               )}

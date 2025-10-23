@@ -117,8 +117,7 @@ const VideosPage = () => {
       <div className="bg-transparent">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4">{t('videos.allVideos')}</h1>
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg">{t('videos.browseAllVideos')}</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4">{t('categories.title')}</h1>
           </div>
         </div>
       </div>
@@ -150,9 +149,6 @@ const VideosPage = () => {
                     forceNavigate={true}
                     isMobile={false}
                   />
-                  <p className="text-gray-600 text-sm sm:text-base mt-2">
-                    {categoryVideos.length} {t('videos.availableVideos')}
-                  </p>
                 </div>
 
                 {/* Category Videos Grid - 2 columns on mobile */}

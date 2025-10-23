@@ -314,8 +314,8 @@ const PictureCategoryPage = () => {
                   Pinterest Gallery Active!
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  You're viewing {pins.length} beautiful {t(`pictures.categories.${currentCategory.key}`).toLowerCase()} images 
-                  directly from your Pinterest boards. Click any image to view it on Pinterest.
+                  View beautiful {t(`pictures.categories.${currentCategory.key}`).toLowerCase()} images 
+                  directly from our Pinterest boards. Click any image to view it on Pinterest.
                 </p>
               </>
             ) : currentCategory.id === 2 ? (
