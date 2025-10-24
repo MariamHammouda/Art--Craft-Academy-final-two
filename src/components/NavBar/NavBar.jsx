@@ -24,6 +24,7 @@ const NavBar = () => {
   
   // Lock body scroll when mobile menu is open
   useEffect(() => {
+    console.log('Mobile menu state changed to:', isMobileMenuOpen);
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
@@ -54,7 +55,9 @@ const NavBar = () => {
   }, [isMobileMenuOpen]);
   
   const toggleMobileMenu = () => {
+    console.log('Toggle menu clicked, current state:', isMobileMenuOpen);
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    console.log('New state will be:', !isMobileMenuOpen);
   };
   
   const openSearchModal = () => {
@@ -66,7 +69,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-[#74BFD0] shadow-lg sticky top-0 z-50">
+    <nav className="bg-[#74BFD0] shadow-lg sticky top-0 z-[100]">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between relative">
 
@@ -146,17 +149,17 @@ const NavBar = () => {
           </div>
           
           {/* Mobile Actions (Search + Menu) */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-2 relative z-10">
             <button 
               onClick={openSearchModal}
-              className="text-white text-xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
+              className="text-white text-xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10 touch-manipulation"
               title={t('common.search')}
               aria-label="Search"
             >
               <FaSearch />
             </button>
             <button 
-              className="hamburger-btn text-white text-2xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10"
+              className="hamburger-btn text-white text-2xl p-2 hover:text-[#FCD11A] transition-colors rounded-lg hover:bg-white/10 touch-manipulation"
               onClick={toggleMobileMenu}
               aria-label="Toggle mobile menu"
             >
@@ -180,81 +183,80 @@ const NavBar = () => {
       </div>
       
       {/* Full-Screen Mobile Drawer */}
-      <div className={`mobile-menu fixed inset-0 z-50 md:hidden transition-all duration-500 ease-in-out ${
-        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-      }`}>
-        {/* Blurred Background Overlay */}
-        <div 
-          className={`absolute inset-0 bg-gradient-to-br from-[#74BFD0]/90 via-[#E8A5C4]/85 to-[#74BFD0]/90 backdrop-blur-md transition-all duration-500 ${
-            isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
-          }`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-        
-        {/* Menu Content */}
-        <div className={`relative z-10 flex flex-col items-center justify-start h-full px-8 py-8 overflow-y-auto transform transition-all duration-500 ease-out ${
-          isMobileMenuOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
-        }`}>
-          {/* Close Button */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu fixed inset-0 z-[150] md:hidden animate-fadeIn">
+          {/* Blurred Background Overlay */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-[#74BFD0]/90 via-[#E8A5C4]/85 to-[#74BFD0]/90 backdrop-blur-md"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Menu Content - Scrollable Container */}
+          <div className="relative z-10 flex flex-col items-center justify-start h-full w-full px-8 py-8 mobile-menu-scroll animate-slideDown">
+          {/* Close Button - Fixed position so it's always visible while scrolling */}
           <button 
             onClick={toggleMobileMenu}
-            className="absolute top-8 right-8 text-white text-3xl p-2 hover:text-[#FCD11A] transition-colors rounded-full hover:bg-white/10"
+            className="fixed top-8 right-8 text-white text-3xl p-2 hover:text-[#FCD11A] transition-colors rounded-full hover:bg-white/10 z-20"
             aria-label="Close menu"
           >
             <FaTimes />
           </button>
           
-          {/* Logo */}
-          <div className="mb-8 sm:mb-12">
-            <img src={NavbarLogo} alt="Art Craft Academy" className="w-20 h-20 sm:w-24 sm:h-24 mx-auto drop-shadow-xl" />
-          </div>
-          
-          {/* Navigation Links - Larger touch targets */}
-          <nav className="flex flex-col items-center space-y-3 sm:space-y-4 mb-4 sm:mb-8 w-full max-w-xs">
-            <Link 
-              to="/" 
-              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.home')}
-            </Link>
-            <HashLink 
-              smooth 
-              to="/#categories" 
-              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.categories')}
-            </HashLink>
-            <Link 
-              to="/courses" 
-              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.courses')}
-            </Link>
-            <Link 
-              to="/shop" 
-              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.shop')}
-            </Link>
-            <Link 
-              to="/about" 
-              className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.about')}
-            </Link>
-          </nav>
-          
-          {/* Language Switcher */}
-          <div className="flex justify-center mt-3">
-            <LanguageSwitcher />
+          {/* Menu Inner Content - Scrollable */}
+          <div className="flex flex-col items-center w-full min-h-full">
+            {/* Logo */}
+            <div className="mb-8 sm:mb-12 flex-shrink-0">
+              <img src={NavbarLogo} alt="Art Craft Academy" className="w-20 h-20 sm:w-24 sm:h-24 mx-auto drop-shadow-xl" />
+            </div>
+            
+            {/* Navigation Links - Larger touch targets */}
+            <nav className="flex flex-col items-center space-y-3 sm:space-y-4 mb-4 sm:mb-8 w-full max-w-xs flex-shrink-0">
+              <Link 
+                to="/" 
+                className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.home')}
+              </Link>
+              <HashLink 
+                smooth 
+                to="/#categories" 
+                className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.categories')}
+              </HashLink>
+              <Link 
+                to="/courses" 
+                className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.courses')}
+              </Link>
+              <Link 
+                to="/shop" 
+                className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.shop')}
+              </Link>
+              <Link 
+                to="/about" 
+                className="w-full text-center py-3 px-6 text-white text-xl sm:text-2xl font-semibold hover:text-[#FCD11A] hover:bg-white/10 rounded-2xl transition-all duration-300 transform active:scale-95"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.about')}
+              </Link>
+            </nav>
+            
+            {/* Language Switcher */}
+            <div className="flex justify-center mt-3 mb-8 flex-shrink-0">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
-      </div>
+        </div>
+      )}
       
       {/* Search Modal */}
       <SearchModal 
