@@ -53,16 +53,6 @@ const CategoriesBar = () => {
   if (visibleCount <= 2) {
     return (
       <section id="categories" className="py-0 px-0">
-        {/* Section Heading */}
-        <div className="text-center mb-6 px-4">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-lg">
-            {t('categories.discoverCategories') || 'Discover Categories'}
-          </h3>
-          <p className="text-white/80 text-sm sm:text-base drop-shadow-sm">
-            {t('categories.swipeToExplore') || 'Swipe to explore different crafts'}
-          </p>
-        </div>
-
         <div className="w-full">
           {/* Scroll Container with Gradient Shadows */}
           <div className="relative">
