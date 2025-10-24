@@ -22,6 +22,25 @@ const NavBar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
   
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [isMobileMenuOpen]);
+  
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -173,7 +192,7 @@ const NavBar = () => {
         />
         
         {/* Menu Content */}
-        <div className={`relative z-10 flex flex-col items-center justify-center h-full px-8 transform transition-all duration-500 ease-out ${
+        <div className={`relative z-10 flex flex-col items-center justify-start h-full px-8 py-8 overflow-y-auto transform transition-all duration-500 ease-out ${
           isMobileMenuOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
         }`}>
           {/* Close Button */}
