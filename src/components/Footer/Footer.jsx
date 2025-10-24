@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { FaEnvelope, FaPhone } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa6";
 import NavbarLogo from "../../assets/images/hero-images/navbar-logo.png";
 import FacebookIcon from "../../assets/images/social-media-icons/facebook.ico";
 import InstagramIcon from "../../assets/images/social-media-icons/instagram.ico";
@@ -14,7 +14,7 @@ const Footer = () => {
   
   return (
     <footer className="text-white bg-[#74BFD0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
         {/* Contact */}
         <div className="text-center sm:text-left">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('about.contact')}</h3>
@@ -23,22 +23,19 @@ const Footer = () => {
               <FaEnvelope className="flex-shrink-0" />
               <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base break-all">hello@artcraft.academy</a>
             </li>
-            <li className="flex items-center justify-center sm:justify-start gap-3">
-              <FaPhone className="flex-shrink-0" />
-              <a href="tel:+10000000000" className="hover:underline text-sm sm:text-base">+1 (000) 000-0000</a>
-            </li>
           </ul>
         </div>
 
         {/* Important Links */}
         <div className="text-center sm:text-left">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('footer.quickLinks')}</h3>
-          <ul className="space-y-2 sm:space-y-3 text-white/90">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-white/90">
             <li><Link to="/" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.home')}</Link></li>
-            <li><Link to="/#video-categories" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.videos')}</Link></li>
             <li><Link to="/courses" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.courses')}</Link></li>
+            <li><Link to="/#categories" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.categories')}</Link></li>
             <li><Link to="/shop" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.shop')}</Link></li>
             <li><Link to="/about" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.about')}</Link></li>
+            <li><Link to="/privacy-policy" className="hover:underline text-sm sm:text-base inline-block py-1">{t('footer.privacyPolicy')}</Link></li>
           </ul>
         </div>
 
@@ -96,24 +93,14 @@ const Footer = () => {
 
         {/* Logo */}
         <div className="flex flex-col items-center sm:items-center md:items-end">
-          <div className="mb-3 sm:mb-4">
+          <div className="mb-2 sm:mb-3">
             <Link to="/" className="flex items-center">
               <img 
                 src={NavbarLogo} 
                 alt="Art Craft Academy" 
-                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
+                className="h-16 sm:h-20 md:h-24 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
               />
             </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-white/15">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm text-white/80 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2">
-          <p className="text-center sm:text-left">{t('footer.copyright')}</p>
-          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-            <Link to="/privacy-policy" className="hover:underline hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>
-            <a href="#" className="hover:underline hover:text-white transition-colors">{t('footer.termsOfService')}</a>
           </div>
         </div>
       </div>
