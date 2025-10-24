@@ -3,9 +3,9 @@ import { fetchChannelVideos, fetchPlaylistVideos, fetchCategorizedPlaylistVideos
 import { resetForNewApiKey, clearAllCache } from '../services/cacheManager.js';
 import { videosData } from '../mockData/videosData.js'; // Fallback data
 
-// In-memory cache for video data with 5-minute expiration
+// In-memory cache for video data with 30-minute expiration
 const videoCache = new Map();
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes in milliseconds
 
 // Cache utilities
 const getCacheKey = (playlists, maxResults) => {

@@ -246,9 +246,9 @@ export const fetchPlaylistVideos = async (playlistId, maxResults = 25) => {
     
     // Record API usage and cache the results
     recordApiUsage(5); // Estimate: 3 for playlist + 2 for stats
-    setCache(cacheKey, videos, 6 * 60 * 60 * 1000); // Cache for 6 hours for better performance
+    setCache(cacheKey, videos, 30 * 60 * 1000); // Cache for 30 minutes to show new videos faster
     
-    console.log(`✅ Fetched and cached ${videos.length} videos from playlist (sorted newest first)`);
+    console.log(`✅ Fetched and cached ${videos.length} videos from playlist (sorted newest first, cache: 30min)`);
     return videos;
     
   } catch (error) {
