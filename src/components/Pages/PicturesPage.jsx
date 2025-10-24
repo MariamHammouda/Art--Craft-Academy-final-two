@@ -157,21 +157,22 @@ const PicturesPage = () => {
               cols={3}
             />
             
-            {/* Category 9: Miniature Wonders */}
+            {/* Category 9: Science & DIY Experiments */}
             <PinterestRealWidget 
-              key="miniature-board"
-              boardUrl="https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/"
-              title={t('pictures.categories.miniatureWonders')}
+              key="science-board"
+              boardUrl="https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/"
+              title={t('pictures.categories.scienceDiyExperiments')}
               width={800}
               height={500}
               cols={3}
             />
             
-            {/* Category 10: Science & DIY Experiments */}
+            {/* Category 10: Miniature Wonders */}
             <PinterestRealWidget 
-              key="science-board"
-              boardUrl="https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/"
-              title={t('pictures.categories.scienceDiyExperiments')}
+              key="miniature-board"
+               boardUrl="https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/"
+              
+              title={t('pictures.categories.miniatureWonders')}
               width={800}
               height={500}
               cols={3}

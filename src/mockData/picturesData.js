@@ -178,27 +178,10 @@ export const picturesData = [
     featured: true
   },
 
-  // Miniature Wonders
-  {
-    id: 11,
-    categoryId: 9,
-    titleKey: "pictures.miniature.dollhouse",
-    title: "Miniature Dollhouse Room",
-    categoryTitleKey: "categories.miniatureWonders",
-    categoryTitle: "Miniature Wonders",
-    image: miniatureImg,
-    description: "Detailed miniature dollhouse room with tiny furniture",
-    tags: ["miniature", "dollhouse", "furniture", "detailed"],
-    difficulty: "advanced",
-    createdAt: "2024-02-10",
-    likes: 367,
-    featured: false
-  },
-
   // Science & DIY
   {
     id: 12,
-    categoryId: 10,
+    categoryId: 9,
     titleKey: "pictures.science.experiment",
     title: "Colorful Science Experiment",
     categoryTitleKey: "categories.scienceDiy",
@@ -209,6 +192,23 @@ export const picturesData = [
     difficulty: "intermediate",
     createdAt: "2024-02-12",
     likes: 234,
+    featured: false
+  },
+
+  // Miniature Wonders
+  {
+    id: 11,
+    categoryId: 10,
+    titleKey: "pictures.miniature.dollhouse",
+    title: "Miniature Dollhouse Room",
+    categoryTitleKey: "categories.miniatureWonders",
+    categoryTitle: "Miniature Wonders",
+    image: miniatureImg,
+    description: "Detailed miniature dollhouse room with tiny furniture",
+    tags: ["miniature", "dollhouse", "furniture", "detailed"],
+    difficulty: "advanced",
+    createdAt: "2024-02-10",
+    likes: 367,
     featured: false
   },
 

@@ -106,12 +106,30 @@ export const clearAllCache = () => {
   console.log('🧹 Clearing all cache data...');
   const keys = Object.keys(localStorage);
   keys.forEach(key => {
-    if (key.startsWith('youtube_') || key.startsWith('yt_')) {
+    if (key.startsWith('youtube_') || key.startsWith('yt_') || key.startsWith('pinterest_')) {
       localStorage.removeItem(key);
       console.log(`🗑️ Removed cache key: ${key}`);
     }
   });
   console.log('✅ All cache cleared');
+};
+
+/**
+ * Clear Pinterest cache specifically
+ */
+export const clearPinterestCache = () => {
+  console.log('🧹 Clearing Pinterest cache...');
+  const keys = Object.keys(localStorage);
+  let clearedCount = 0;
+  keys.forEach(key => {
+    if (key.startsWith('pinterest_')) {
+      localStorage.removeItem(key);
+      console.log(`🗑️ Removed Pinterest cache key: ${key}`);
+      clearedCount++;
+    }
+  });
+  console.log(`✅ Cleared ${clearedCount} Pinterest cache entries`);
+  return clearedCount;
 };
 
 /**

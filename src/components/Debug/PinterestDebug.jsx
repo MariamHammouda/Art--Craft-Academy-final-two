@@ -60,8 +60,8 @@ const PinterestDebug = () => {
     { id: 6, name: 'Preschool Crafts' },
     { id: 7, name: 'Perler Beads' },
     { id: 8, name: '3D Pen Fun' },
-    { id: 9, name: 'Miniature Wonders' },
-    { id: 10, name: 'Science & DIY Experiments' },
+    { id: 9, name: 'Science & DIY Experiments' },
+    { id: 10, name: 'Miniature Wonders' },
     { id: 11, name: 'Tips & Tricks' }
   ];
 

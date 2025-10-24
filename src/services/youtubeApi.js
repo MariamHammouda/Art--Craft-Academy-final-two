@@ -115,6 +115,9 @@ export const fetchChannelVideos = async (channelId, maxResults = 50) => {
       };
     });
     
+    // Sort videos by publishedAt date in descending order (newest first)
+    videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    
     return videos;
     
   } catch (error) {
@@ -238,11 +241,14 @@ export const fetchPlaylistVideos = async (playlistId, maxResults = 25) => {
       };
     });
     
+    // Sort videos by publishedAt date in descending order (newest first)
+    videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    
     // Record API usage and cache the results
     recordApiUsage(5); // Estimate: 3 for playlist + 2 for stats
     setCache(cacheKey, videos, 6 * 60 * 60 * 1000); // Cache for 6 hours for better performance
     
-    console.log(`✅ Fetched and cached ${videos.length} videos from playlist`);
+    console.log(`✅ Fetched and cached ${videos.length} videos from playlist (sorted newest first)`);
     return videos;
     
   } catch (error) {
@@ -334,6 +340,10 @@ export const fetchCategorizedPlaylistVideos = async (playlists, maxResults = 10)
       return acc;
     }, {}));
     
+    // Sort all videos by publishedAt date in descending order (newest first)
+    allVideos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    console.log('🔄 Sorted all videos by date (newest first)');
+    
     return allVideos;
   } catch (error) {
     console.error('Error fetching categorized playlist videos:', error);
@@ -364,7 +374,7 @@ export const searchVideos = async (query, maxResults = 25) => {
     
     const data = await response.json();
     
-    return data.items.map(item => ({
+    const videos = data.items.map(item => ({
       id: item.id.videoId,
       title: item.snippet.title,
       description: item.snippet.description,
@@ -375,6 +385,11 @@ export const searchVideos = async (query, maxResults = 25) => {
       categoryId: getCategoryFromTitle(item.snippet.title),
       categoryTitleKey: getCategoryTitleKey(item.snippet.title)
     }));
+    
+    // Sort videos by publishedAt date in descending order (newest first)
+    videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    
+    return videos;
     
   } catch (error) {
     console.error('Error searching videos:', error);

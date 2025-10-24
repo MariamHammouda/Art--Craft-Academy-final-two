@@ -34,6 +34,12 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import PinterestDebug from "./components/Debug/PinterestDebug.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
+import clearPinterestCache from "./utils/clearPinterestCache.js";
+
+// Make cache clear function available globally
+if (typeof window !== 'undefined') {
+  window.clearPinterestCache = clearPinterestCache;
+}
 
 // Component to track navigation changes
 function NavigationTracker() {

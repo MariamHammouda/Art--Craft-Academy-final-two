@@ -26,8 +26,8 @@ const PINTEREST_BOARD_MAPPING = {
   6: 'Preschool Crafts', // Preschool Crafts
   7: 'Perler Beads', // Perler Beads
   8: '3D Pen Fun', // 3D Pen Fun
-  9: 'Miniature Wonders', // Miniature Wonders
-  10: 'Science & DIY Experiments', // Science & DIY Experiments
+  9: 'Science & DIY Experiments', // Science & DIY Experiments (FIXED)
+  10: 'Miniature Wonders', // Miniature Wonders (FIXED)
   11: 'Tips & Tricks', // Tips & Tricks
   // Additional boards from your Pinterest
   12: 'Easy Paper Folding Crafts', // Easy Paper Folding Crafts
