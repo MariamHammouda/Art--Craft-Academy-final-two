@@ -11,8 +11,8 @@ const HeroSection = () => {
 
   return (
     <>
-      <section id="home" className="bg-[#74BFD0] pt-3 pb-0 sm:pt-4 sm:pb-0 md:pt-6 md:pb-0 lg:pt-8 lg:pb-0 relative">
-        <div className="container mx-auto px-4 sm:px-6 w-full">
+      <section id="home" className="bg-[#74BFD0] pt-3 pb-0 sm:pt-4 sm:pb-0 md:pt-6 md:pb-0 lg:pt-8 lg:pb-0 relative overflow-visible">
+        <div className="container mx-auto px-4 sm:px-6 w-full overflow-visible">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 lg:gap-8 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
             {/* Text Content Column */}
             <div className={`space-y-2 sm:space-y-3 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
@@ -51,8 +51,8 @@ const HeroSection = () => {
           </div>
           
           {/* Categories Section - Positioned to be partially visible above the fold */}
-          <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4 pb-8 sm:pb-10 md:pb-12">
-            <div className="text-center mb-1.5 sm:mb-2 px-4">
+          <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4 pb-8 sm:pb-10 md:pb-12 overflow-visible">
+            <div className="text-center mb-1.5 sm:mb-2 px-4 overflow-visible">
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white mb-0.5 sm:mb-1 drop-shadow-lg">
                 {t('categories.exploreCategories') || 'Explore Categories'}
               </h2>

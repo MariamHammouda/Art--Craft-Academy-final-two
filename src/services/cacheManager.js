@@ -10,7 +10,31 @@ const CACHE_KEYS = {
   LAST_FETCH: 'youtube_last_fetch'
 };
 
+// Cache version - increment this on deployment to invalidate all old caches
+const CACHE_VERSION = 'v2_2025';
+const CACHE_VERSION_KEY = 'cache_version';
+
 const DEFAULT_CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+
+/**
+ * Check and clear cache if version has changed
+ */
+const checkCacheVersion = () => {
+  try {
+    const storedVersion = localStorage.getItem(CACHE_VERSION_KEY);
+    if (storedVersion !== CACHE_VERSION) {
+      console.log(`🔄 Cache version changed from ${storedVersion} to ${CACHE_VERSION}, clearing old cache...`);
+      localStorage.clear();
+      localStorage.setItem(CACHE_VERSION_KEY, CACHE_VERSION);
+      console.log('✅ Old cache cleared, fresh data will be fetched');
+    }
+  } catch (error) {
+    console.error('Error checking cache version:', error);
+  }
+};
+
+// Check cache version on module load
+checkCacheVersion();
 
 /**
  * Set cache data with expiration

@@ -52,19 +52,19 @@ const CategoriesBar = () => {
   // ✅ Mobile Experience (horizontal scrollable)
   if (visibleCount <= 2) {
     return (
-      <section id="categories" className="py-0 px-0">
-        <div className="w-full">
+      <section id="categories" className="py-0 px-0 overflow-visible">
+        <div className="w-full overflow-visible">
           {/* Scroll Container with Gradient Shadows */}
-          <div className="relative">
-            {/* Left Gradient Shadow */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#74BFD0] to-transparent z-10 pointer-events-none" />
+          <div className="relative overflow-visible" style={{ paddingTop: "3rem" }}>
+            {/* Left Gradient Shadow - positioned below floating icons */}
+            <div className="absolute left-0 bottom-0 w-8 bg-gradient-to-r from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "3rem" }} />
             
-            {/* Right Gradient Shadow */}
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#74BFD0] to-transparent z-10 pointer-events-none" />
+            {/* Right Gradient Shadow - positioned below floating icons */}
+            <div className="absolute right-0 bottom-0 w-8 bg-gradient-to-l from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "3rem" }} />
             
             <div
               ref={scrollContainerRef}
-              className="overflow-x-auto scrollbar-hide scroll-container px-4"
+              className="scrollbar-hide scroll-container px-4"
               onScroll={(e) => {
                 const scrollLeft = e.target.scrollLeft;
                 const itemWidth = 140 + 16; // width + gap
@@ -76,6 +76,10 @@ const CategoriesBar = () => {
                 WebkitOverflowScrolling: "touch",
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
+                overflowX: "auto",
+                overflowY: "clip",
+                paddingTop: "48px",
+                marginTop: "-48px",
               }}
             >
               <div

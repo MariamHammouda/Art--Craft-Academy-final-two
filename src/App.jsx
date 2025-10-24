@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./i18n/i18n"; // Initialize i18n
-import "./utils/clearCache.js"; // Initialize cache clearing utility
+import { clearAllCaches } from "./utils/clearAllCaches.js";
 import gradientBackground from "./assets/images/gradient-background.jpg";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
@@ -55,6 +55,15 @@ function NavigationTracker() {
 
 function App() {
   const { i18n } = useTranslation();
+
+  // Make cache clearing function available globally
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.clearVideoCache = clearAllCaches;
+      window.clearAllCaches = clearAllCaches;
+      console.log('💡 Tip: Run window.clearVideoCache() in console to see new videos immediately');
+    }
+  }, []);
 
   // Suppress YouTube iframe CORS errors globally
   useEffect(() => {

@@ -108,9 +108,27 @@
       transform: translateZ(0);
     }
     
-    /* Prevent layout shifts during scroll */
-    * {
-      contain: layout style paint;
+    /* Prevent layout shifts during scroll - except for categories */
+    *:not(#categories):not(#categories *):not(#home):not(#home *) {
+      contain: layout style;
+    }
+
+    /* Fix category cards floating icons on mobile - allow vertical overflow */
+    #categories {
+      overflow: visible !important;
+      contain: none !important;
+    }
+
+    /* Allow cards to overflow vertically but keep horizontal scroll */
+    #categories .scroll-container {
+      overflow-x: auto !important;
+      overflow-y: visible !important;
+    }
+
+    #home,
+    #home > div {
+      overflow: visible !important;
+      contain: none !important;
     }
   }
   

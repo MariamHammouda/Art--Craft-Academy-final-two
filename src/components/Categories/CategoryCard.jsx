@@ -98,7 +98,8 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
       tabIndex={0}
       style={{
         touchAction: 'manipulation',
-        paddingTop: isMobile ? '20px' : '30px',
+        paddingTop: isMobile ? '40px' : '30px', // Add padding for floating icon
+        overflow: 'visible',
         ...(isMobile ? {} : { perspective: '1000px' })
       }}
     >
