@@ -11,11 +11,11 @@ const HeroSection = () => {
 
   return (
     <>
-      <section id="home" className="bg-[#74BFD0] py-6 sm:py-8 md:py-12 lg:py-16 min-h-screen flex items-center">
+      <section id="home" className="bg-[#74BFD0] pt-3 pb-0 sm:pt-4 sm:pb-0 md:pt-6 md:pb-0 lg:pt-8 lg:pb-0 relative">
         <div className="container mx-auto px-4 sm:px-6 w-full">
-          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 lg:gap-8 items-center ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
             {/* Text Content Column */}
-            <div className={`space-y-4 sm:space-y-6 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
+            <div className={`space-y-2 sm:space-y-3 text-center ${isRTL ? 'lg:text-right lg:order-2' : 'lg:text-left lg:order-1'}`}>
               {/* Big Logo */}
               {/* <div className={`flex justify-center ${isRTL ? 'lg:justify-end' : 'lg:justify-start'} mb-2 -mt-4`}>
                 <img
@@ -25,18 +25,18 @@ const HeroSection = () => {
                 />
               </div> */}
 
-              <div className="space-y-3 sm:space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight px-2">
+              <div className="space-y-1.5 sm:space-y-2.5">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight px-2">
                   {t("hero.title")}
                   <span className="text-[#FF6B35] block sm:inline drop-shadow-lg">
                     {" "}
                     {t("hero.titleHighlight")}
                   </span>
                   {t("hero.titleEnd") && (
-                    <span className="block mt-2">{t("hero.titleEnd")}</span>
+                    <span className="block mt-1 sm:mt-1.5">{t("hero.titleEnd")}</span>
                   )}
                 </h1>
-                <p className={`text-lg sm:text-xl lg:text-xl text-white/95 leading-relaxed max-w-2xl mx-auto ${isRTL ? 'lg:mr-0' : 'lg:mx-0'} drop-shadow-sm px-4 sm:px-2`}>
+                <p className={`text-base sm:text-lg lg:text-lg text-white/95 leading-snug sm:leading-relaxed max-w-2xl mx-auto ${isRTL ? 'lg:mr-0' : 'lg:mx-0'} drop-shadow-sm px-4 sm:px-2`}>
                   {t("hero.description")}
                 </p>
               </div>
@@ -50,13 +50,13 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Categories Section */}
-          <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-            <div className="text-center mb-4 sm:mb-6 px-4">
-              <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 drop-shadow-lg">
+          {/* Categories Section - Positioned to be partially visible above the fold */}
+          <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4 pb-8 sm:pb-10 md:pb-12">
+            <div className="text-center mb-1.5 sm:mb-2 px-4">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white mb-0.5 sm:mb-1 drop-shadow-lg">
                 {t('categories.exploreCategories') || 'Explore Categories'}
               </h2>
-              <p className="text-white/90 text-base sm:text-lg md:text-lg drop-shadow-sm">
+              <p className="text-white/90 text-xs sm:text-sm md:text-base drop-shadow-sm">
                 {t('categories.subtitle') || 'Discover amazing craft projects'}
               </p>
             </div>

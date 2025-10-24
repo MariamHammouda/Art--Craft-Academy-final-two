@@ -83,6 +83,8 @@ const CategoriesBar = () => {
                 style={{
                   minWidth: "max-content",
                   scrollSnapType: "x mandatory",
+                  willChange: "auto",
+                  transform: "translateZ(0)"
                 }}
               >
                 {categoriesData.map((cat, index) => (

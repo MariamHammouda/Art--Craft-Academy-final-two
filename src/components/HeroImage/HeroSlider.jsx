@@ -34,9 +34,9 @@ const HeroSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto optimize-scroll">
       {/* Image Container with Mobile-Optimized Height */}
-      <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] overflow-hidden rounded-3xl shadow-2xl bg-gray-100 ring-4 ring-white/20">
+      <div className="relative w-full h-40 sm:h-48 md:h-56 lg:h-72 xl:h-80 overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl bg-gray-100 ring-2 ring-white/20" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
         {/* Slides */}
         {images.map((src, i) => (
           <div
@@ -57,8 +57,8 @@ const HeroSlider = () => {
         {/* Enhanced Gradient Overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent z-10" />
 
-        {/* Dot Indicators - UPDATED SIZE */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30 bg-black/15 backdrop-blur-sm px-3 py-2 rounded-full">
+        {/* Dot Indicators - Compact Size */}
+        <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 bg-black/10 backdrop-blur-sm px-2 py-1 rounded-full">
           {images.map((_, i) => (
             <button
               key={i}
@@ -67,23 +67,23 @@ const HeroSlider = () => {
               style={{ minWidth: 'auto', minHeight: 'auto' }}
               className={`rounded-full transition-all duration-300 ${
                 i === index 
-                  ? "bg-[#FF6B35] w-8 h-2 sm:w-10 sm:h-2.5" 
-                  : "bg-white/50 w-2 h-2 sm:w-2.5 sm:h-2.5 hover:bg-white hover:scale-110"
+                  ? "bg-[#FF6B35] w-6 h-1.5 sm:w-8 sm:h-2" 
+                  : "bg-white/50 w-1.5 h-1.5 sm:w-2 sm:h-2 hover:bg-white hover:scale-110"
               }`}
             />
           ))}
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - Compact */}
         <div className="absolute inset-0 flex items-center justify-between pointer-events-none z-20">
           {/* Previous Arrow */}
           <button
             aria-label="Previous slide"
             onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
-            className="pointer-events-auto ml-3 sm:ml-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/95 text-gray-800 hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all duration-300 shadow-xl backdrop-blur-sm ring-2 ring-white/30"
+            className="pointer-events-auto ml-2 sm:ml-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/95 text-gray-800 hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg backdrop-blur-sm ring-1 ring-white/30"
             style={{ touchAction: 'manipulation' }}
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -92,10 +92,10 @@ const HeroSlider = () => {
           <button
             aria-label="Next slide"
             onClick={() => setIndex((prev) => (prev + 1) % images.length)}
-            className="pointer-events-auto mr-3 sm:mr-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/95 text-gray-800 hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all duration-300 shadow-xl backdrop-blur-sm ring-2 ring-white/30"
+            className="pointer-events-auto mr-2 sm:mr-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/95 text-gray-800 hover:bg-[#FF6B35] hover:text-white hover:scale-110 transition-all duration-300 shadow-lg backdrop-blur-sm ring-1 ring-white/30"
             style={{ touchAction: 'manipulation' }}
           >
-            <svg className="w-4 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>

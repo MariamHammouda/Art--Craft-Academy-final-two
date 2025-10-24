@@ -93,14 +93,37 @@
   /* Reduce animations on mobile for better performance */
   @media (max-width: 768px) {
     * {
-      animation-duration: 0.2s !important;
-      transition-duration: 0.2s !important;
+      animation-duration: 0.15s !important;
+      transition-duration: 0.15s !important;
     }
     
     /* Disable expensive transforms on mobile */
     .group:hover {
       transform: none !important;
     }
+    
+    /* Optimize heavy elements for mobile */
+    img, video, iframe {
+      will-change: auto;
+      transform: translateZ(0);
+    }
+    
+    /* Prevent layout shifts during scroll */
+    * {
+      contain: layout style paint;
+    }
+  }
+  
+  /* Optimize scroll performance */
+  .optimize-scroll {
+    contain: layout style paint;
+    content-visibility: auto;
+  }
+  
+  /* Lazy load optimization */
+  .lazy-load {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
   }
 }
 

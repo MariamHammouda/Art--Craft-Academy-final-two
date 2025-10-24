@@ -87,10 +87,11 @@ const VideoCard = ({ id, url, titleKey, categoryTitleKey, title, categoryTitle, 
   
   return (
     <div 
-      className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden hover:shadow-xl transition-shadow group"
+      className="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden hover:shadow-xl transition-shadow group optimize-scroll"
       onMouseEnter={handleMouseEnter}
+      style={{ willChange: 'auto' }}
     >
-      <div className="aspect-video relative bg-gray-100">
+      <div className="aspect-video relative bg-gray-100" style={{ transform: 'translateZ(0)' }}>
         {showIframe ? (
           <iframe
             className="w-full h-full"
