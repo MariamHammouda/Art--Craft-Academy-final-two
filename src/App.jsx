@@ -82,80 +82,80 @@ function App() {
   return (
     <Router>
       <div 
-        className="overflow-x-hidden min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+        className="overflow-x-hidden flex flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
         style={{
           backgroundImage: `url(${gradientBackground})`
         }}
       >
         <NavigationTracker />
         <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSection />
-                {/* Main content section */}
-                <div>
-                  <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
-                    <LatestVideos />
-                  </ErrorBoundary>
-                  {/* Latest Pictures - Now visible on mobile with grid layout */}
-                  <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
-                    <LatestPicturesSlider />
-                  </ErrorBoundary>
-                  
-                  {/* View Categories Button - Mobile Only */}
-                  <div className="md:hidden py-8 px-4 sm:px-8">
-                    <div className="max-w-7xl mx-auto text-center">
-                      <a 
-                        href="#/videos"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-[#59ACBE] text-white text-lg font-semibold rounded-xl hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 touch-manipulation"
-                      >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        View Categories
-                      </a>
+        <div className="flex-grow">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <HeroSection />
+                  {/* Main content section */}
+                  <div>
+                    <ErrorBoundary fallbackMessage="Unable to load latest videos. Please try refreshing the page.">
+                      <LatestVideos />
+                    </ErrorBoundary>
+                    {/* Latest Pictures - Now visible on mobile with grid layout */}
+                    <ErrorBoundary fallbackMessage="Unable to load latest pictures. Please try refreshing the page.">
+                      <LatestPicturesSlider />
+                    </ErrorBoundary>
+                    
+                    {/* View Categories Button - Mobile Only */}
+                    <div className="md:hidden py-8 px-4 sm:px-8">
+                      <div className="max-w-7xl mx-auto text-center">
+                        <a 
+                          href="#/videos"
+                          className="inline-flex items-center gap-2 px-8 py-4 bg-[#59ACBE] text-white text-lg font-semibold rounded-xl hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 touch-manipulation"
+                        >
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                          </svg>
+                          View Categories
+                        </a>
+                      </div>
+                    </div>
+                    
+                    {/* Video Categories - Hidden on mobile */}
+                    <div className="hidden md:block">
+                      <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
+                        <VideosByCategory />
+                      </ErrorBoundary>
                     </div>
                   </div>
-                  
-                  {/* Video Categories - Hidden on mobile */}
-                  <div className="hidden md:block">
-                    <ErrorBoundary fallbackMessage="Unable to load video categories. Please try refreshing the page.">
-                      <VideosByCategory />
-                    </ErrorBoundary>
-                  </div>
-                  {/* Add spacer to push footer down and ensure background extends */}
-                  <div className="h-32"></div>
-                </div>
-              </>
-            }
-          />
-          <Route path="/category/:id" element={<CategoryPageNew />} />
-          <Route path="/category/:id/:type" element={<CategoryPageNew />} />
-          <Route path="/video/:videoId" element={<VideoDetailPage />} />
-          <Route path="/videos" element={<VideosPage />} />
-          <Route path="/pictures" element={<PicturesPage />} />
-          <Route
-            path="/pictures/category/:categoryId"
-            element={<PictureCategoryPage />}
-          />
-          <Route
-            path="/pictures/image/:category/:imageId"
-            element={<ImageDetailPage />}
-          />
-          <Route path="/pictures/detail/:id" element={<PictureDetailPage />} />
-          <Route
-            path="/pictures/drawing/:drawingId"
-            element={<DrawingDetailPage />}
-          />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/debug/pinterest" element={<PinterestDebug />} />
-        </Routes>
+                </>
+              }
+            />
+            <Route path="/category/:id" element={<CategoryPageNew />} />
+            <Route path="/category/:id/:type" element={<CategoryPageNew />} />
+            <Route path="/video/:videoId" element={<VideoDetailPage />} />
+            <Route path="/videos" element={<VideosPage />} />
+            <Route path="/pictures" element={<PicturesPage />} />
+            <Route
+              path="/pictures/category/:categoryId"
+              element={<PictureCategoryPage />}
+            />
+            <Route
+              path="/pictures/image/:category/:imageId"
+              element={<ImageDetailPage />}
+            />
+            <Route path="/pictures/detail/:id" element={<PictureDetailPage />} />
+            <Route
+              path="/pictures/drawing/:drawingId"
+              element={<DrawingDetailPage />}
+            />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/debug/pinterest" element={<PinterestDebug />} />
+          </Routes>
+        </div>
 
         <Footer />
       </div>

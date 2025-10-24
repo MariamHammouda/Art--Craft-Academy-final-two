@@ -11,6 +11,9 @@
     /* Improve text rendering on mobile */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Remove default margin */
+    margin: 0;
+    padding: 0;
   }
 
   body {
@@ -20,6 +23,9 @@
     -webkit-tap-highlight-color: transparent;
     /* Better mobile text sizing */
     -webkit-text-size-adjust: 100%;
+    /* Remove default margin and padding */
+    margin: 0;
+    padding: 0;
   }
 
   /* Better touch targets on mobile */
