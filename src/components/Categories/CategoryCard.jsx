@@ -89,7 +89,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
 
   return (
     <div
-      className={`group cursor-pointer transition-all duration-300 ${isPressed ? 'scale-95' : ''}`}
+      className={`group cursor-pointer transition-transform duration-200 ${isPressed ? 'scale-95' : ''}`}
       onClick={handleCategoryClick}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -98,64 +98,78 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
       tabIndex={0}
       style={{
         touchAction: 'manipulation',
-        perspective: '1000px',
-        paddingTop: isMobile ? '20px' : '30px'
+        paddingTop: isMobile ? '20px' : '30px',
+        ...(isMobile ? {} : { perspective: '1000px' })
       }}
     >
       <div
-        className="rounded-2xl sm:rounded-3xl transition-all duration-500 overflow-visible w-full my-2 sm:m-4 transform-gpu relative"
+        className="rounded-2xl sm:rounded-3xl transition-all overflow-visible w-full my-2 sm:m-4 relative"
         style={{
           backgroundColor: cardColors.bg,
-          transformStyle: 'preserve-3d',
+          ...(isMobile ? {} : { transformStyle: 'preserve-3d' }),
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)',
           transform: 'translateY(0px)',
           ...cardStyle,
-          transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+          transition: isMobile 
+            ? 'all 0.2s ease-out' 
+            : 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          willChange: 'transform'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-          e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1)';
+          if (!isMobile) {
+            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+            e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1)';
+          }
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0px)';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)';
+          if (!isMobile) {
+            e.currentTarget.style.transform = 'translateY(0px)';
+            e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)';
+          }
         }}
       >
         {/* Floating Circular Icon Badge */}
         <div
-          className="absolute -top-4 left-1/2 transform -translate-x-1/2 transition-all duration-500"
+          className="absolute -top-4 left-1/2 transform -translate-x-1/2 transition-all"
           style={{
-            transform: `translateX(-50%) translateY(${isMobile ? '-8px' : '-12px'}) translateZ(20px)`,
-            transformStyle: 'preserve-3d'
+            transform: isMobile 
+              ? `translateX(-50%) translateY(-8px)` 
+              : `translateX(-50%) translateY(-12px) translateZ(20px)`,
+            ...(isMobile ? {} : { transformStyle: 'preserve-3d' }),
+            transition: isMobile ? 'all 0.2s ease-out' : 'all 0.5s ease-out'
           }}
         >
           <div
-            className="absolute inset-0 rounded-full transition-all duration-500"
+            className="absolute inset-0 rounded-full transition-all"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.1)',
-              transform: 'translateY(8px) scale(0.95)',
+              transform: isMobile ? 'translateY(4px) scale(0.95)' : 'translateY(8px) scale(0.95)',
               filter: 'blur(16px)',
               width: isMobile ? '80px' : '120px',
-              height: isMobile ? '80px' : '120px'
+              height: isMobile ? '80px' : '120px',
+              transition: isMobile ? 'all 0.2s ease-out' : 'all 0.5s ease-out'
             }}
           />
           <div
-            className="rounded-full flex items-center justify-center transition-all duration-500 relative"
+            className="rounded-full flex items-center justify-center transition-all relative"
             style={{
               backgroundColor: cardColors.circle,
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1)',
-              transform: 'translateZ(10px)',
+              ...(isMobile ? {} : { transform: 'translateZ(10px)' }),
               width: isMobile ? '80px' : '120px',
-              height: isMobile ? '80px' : '120px'
+              height: isMobile ? '80px' : '120px',
+              transition: isMobile ? 'all 0.2s ease-out' : 'all 0.5s ease-out'
             }}
           >
             <img
               src={icon}
               alt={title}
-              className={`${isMobile ? 'w-10 h-10' : 'w-16 h-16'} transition-all duration-300 group-hover:scale-110`}
+              loading="lazy"
+              className={`${isMobile ? 'w-10 h-10' : 'w-16 h-16'} transition-all ${isMobile ? '' : 'group-hover:scale-110'}`}
               style={{
                 filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
-                transform: 'translateZ(5px)'
+                ...(isMobile ? {} : { transform: 'translateZ(5px)' }),
+                transition: isMobile ? 'all 0.2s ease-out' : 'all 0.3s ease-out'
               }}
             />
           </div>
@@ -168,7 +182,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
               className={`text-gray-800 font-bold ${isMobile ? 'text-xs' : 'text-sm sm:text-base'} leading-tight px-2`}
               style={{
                 color: '#4A5568',
-                transform: 'translateZ(5px)',
+                ...(isMobile ? {} : { transform: 'translateZ(5px)' }),
                 textAlign: 'center'
               }}
             >
@@ -178,11 +192,12 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
           <button
             className={`${getButtonColor(
               id
-            )} ${isMobile ? 'text-xs px-4 py-1.5' : 'text-sm sm:text-base px-6 py-2.5'} font-semibold rounded-full transition-all duration-300 relative overflow-hidden`}
+            )} ${isMobile ? 'text-xs px-4 py-1.5' : 'text-sm sm:text-base px-6 py-2.5'} font-semibold rounded-full transition-all relative overflow-hidden`}
             style={{
-              transform: 'translateZ(8px)',
+              ...(isMobile ? {} : { transform: 'translateZ(8px)' }),
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              minWidth: isMobile ? '80px' : '100px'
+              minWidth: isMobile ? '80px' : '100px',
+              transition: isMobile ? 'all 0.2s ease-out' : 'all 0.3s ease-out'
             }}
           >
             <span className="relative z-10">{t('common.explore')}</span>

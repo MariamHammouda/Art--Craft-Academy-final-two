@@ -64,7 +64,7 @@ const CategoriesBar = () => {
             
             <div
               ref={scrollContainerRef}
-              className="overflow-x-auto scrollbar-hide px-4"
+              className="overflow-x-auto scrollbar-hide scroll-container px-4"
               onScroll={(e) => {
                 const scrollLeft = e.target.scrollLeft;
                 const itemWidth = 140 + 16; // width + gap

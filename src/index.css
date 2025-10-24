@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Mobile UX Enhancements */
+/* Mobile Performance Optimizations */
 @layer base {
   html {
     /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
+    /* Enable smooth hardware-accelerated scrolling */
     -webkit-overflow-scrolling: touch;
     /* Improve text rendering on mobile */
     -webkit-font-smoothing: antialiased;
@@ -14,6 +15,8 @@
     /* Remove default margin */
     margin: 0;
     padding: 0;
+    /* Optimize scroll performance */
+    scroll-behavior: smooth;
   }
 
   body {
@@ -35,6 +38,22 @@
     touch-action: manipulation;
   }
 
+  /* Optimize images for mobile */
+  img {
+    /* Prevent image dragging on mobile */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    /* Smooth image rendering */
+    image-rendering: auto;
+  }
+
+  /* Optimize iframe performance */
+  iframe {
+    will-change: auto;
+  }
   
 }
 
@@ -45,14 +64,43 @@
   }
 }
 
-/* Hide scrollbar for horizontal scroll containers */
+/* Performance and Scroll Utilities */
 @layer utilities {
+  /* Hide scrollbar for horizontal scroll containers */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Performance optimizations for animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  /* Optimize scroll containers */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+  }
+
+  /* Reduce animations on mobile for better performance */
+  @media (max-width: 768px) {
+    * {
+      animation-duration: 0.2s !important;
+      transition-duration: 0.2s !important;
+    }
+    
+    /* Disable expensive transforms on mobile */
+    .group:hover {
+      transform: none !important;
+    }
   }
 }
 
