@@ -19,9 +19,9 @@ const Footer = () => {
         <div className="text-center sm:text-left">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('about.contact')}</h3>
           <ul className="space-y-2 sm:space-y-3 text-white/90">
-            <li className="flex items-center justify-center sm:justify-start gap-3">
-              <FaEnvelope className="flex-shrink-0" />
-              <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base break-all">hello@artcraft.academy</a>
+            <li className="flex flex-row items-center justify-center sm:justify-start gap-2">
+              <FaEnvelope className="flex-shrink-0 text-base sm:text-lg" />
+              <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base">hello@artcraft.academy</a>
             </li>
           </ul>
         </div>

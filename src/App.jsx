@@ -33,6 +33,7 @@ import PrivacyPolicyPage from "./components/Pages/PrivacyPolicyPage.jsx";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import PinterestDebug from "./components/Debug/PinterestDebug.jsx";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 // Component to track navigation changes
 function NavigationTracker() {
@@ -87,6 +88,7 @@ function App() {
           backgroundImage: `url(${gradientBackground})`
         }}
       >
+        <ScrollToTop />
         <NavigationTracker />
         <NavBar />
         <div className="flex-grow">
