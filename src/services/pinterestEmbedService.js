@@ -11,8 +11,8 @@ const PINTEREST_BOARD_URLS = {
   6: 'https://www.pinterest.com/mariamhammouda/preschool-crafts/', // Preschool Crafts
   7: 'https://www.pinterest.com/mariamhammouda/perler-beads/', // Perler Beads
   8: 'https://www.pinterest.com/mariamhammouda/3d-pen-fun/', // 3D Pen Fun
-  9: 'https://www.pinterest.com/mariamhammouda/miniature-wonders/', // Miniature Wonders
-  10: 'https://www.pinterest.com/mariamhammouda/science-diy-experiments/', // Science & DIY Experiments
+  9: 'https://www.pinterest.com/mariamhammouda/science-diy-experiments/', // Science & DIY Experiments
+  10: 'https://www.pinterest.com/mariamhammouda/miniature-wonders/', // Miniature Wonders
   11: 'https://www.pinterest.com/mariamhammouda/tips-tricks/' // Tips & Tricks
 };
 

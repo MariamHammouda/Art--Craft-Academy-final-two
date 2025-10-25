@@ -14,8 +14,8 @@ export const PINTEREST_BOARD_URLS = {
   6: 'https://www.pinterest.com/ArtCraftAcademy1/preschool-crafts/',
   7: 'https://www.pinterest.com/ArtCraftAcademy1/perler-beads/',
   8: 'https://www.pinterest.com/ArtCraftAcademy1/3d-pen-fun/',
-  9: 'https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/',
-  10: 'https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/'
+  9: 'https://www.pinterest.com/ArtCraftAcademy1/science-diy-experiments/',
+  10: 'https://www.pinterest.com/ArtCraftAcademy1/miniature-wonders/'
 };
 
 /**
