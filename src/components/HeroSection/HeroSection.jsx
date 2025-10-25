@@ -52,11 +52,11 @@ const HeroSection = () => {
           
           {/* Categories Section - Positioned to be partially visible above the fold */}
           <div className="mt-1 sm:mt-2 md:mt-3 lg:mt-4 pb-8 sm:pb-10 md:pb-12 overflow-visible">
-            <div className="text-center mb-1.5 sm:mb-2 px-4 overflow-visible">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white mb-0.5 sm:mb-1 drop-shadow-lg">
+            <div className="text-center mb-0 sm:mb-2 px-4 overflow-visible">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-white mb-0 sm:mb-1 drop-shadow-lg">
                 {t('categories.exploreCategories') || 'Explore Categories'}
               </h2>
-              <p className="text-white/90 text-xs sm:text-sm md:text-base drop-shadow-sm">
+              <p className="text-white/90 text-xs sm:text-sm md:text-base drop-shadow-sm mb-0">
                 {t('categories.subtitle') || 'Discover amazing craft projects'}
               </p>
             </div>

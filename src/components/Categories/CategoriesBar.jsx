@@ -55,12 +55,12 @@ const CategoriesBar = () => {
       <section id="categories" className="py-0 px-0 overflow-visible">
         <div className="w-full overflow-visible">
           {/* Scroll Container with Gradient Shadows */}
-          <div className="relative overflow-visible" style={{ paddingTop: "3rem" }}>
+          <div className="relative overflow-visible" style={{ paddingTop: "1.5rem" }}>
             {/* Left Gradient Shadow - positioned below floating icons */}
-            <div className="absolute left-0 bottom-0 w-8 bg-gradient-to-r from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "3rem" }} />
+            <div className="absolute left-0 bottom-0 w-8 bg-gradient-to-r from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "1.5rem" }} />
             
             {/* Right Gradient Shadow - positioned below floating icons */}
-            <div className="absolute right-0 bottom-0 w-8 bg-gradient-to-l from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "3rem" }} />
+            <div className="absolute right-0 bottom-0 w-8 bg-gradient-to-l from-[#74BFD0] to-transparent z-10 pointer-events-none" style={{ top: "1.5rem" }} />
             
             <div
               ref={scrollContainerRef}
@@ -78,8 +78,8 @@ const CategoriesBar = () => {
                 msOverflowStyle: "none",
                 overflowX: "auto",
                 overflowY: "clip",
-                paddingTop: "48px",
-                marginTop: "-48px",
+                paddingTop: "24px",
+                marginTop: "-55px",
               }}
             >
               <div

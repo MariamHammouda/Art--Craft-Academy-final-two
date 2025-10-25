@@ -25,7 +25,6 @@ import VideoDetailPage from "./components/VideoDetail/VideoDetailPage.jsx";
 import AboutPage from "./components/Pages/AboutPage.jsx";
 import CoursesPage from "./components/Pages/CoursesPage.jsx";
 import ShopPage from "./components/Pages/ShopPage.jsx";
-import PicturesPage from "./components/Pages/PicturesPage.jsx";
 import VideosPage from "./components/Pages/VideosPage.jsx";
 import PictureCategoryPage from "./components/Pages/PictureCategoryPage.jsx";
 import DrawingDetailPage from "./components/Pages/DrawingDetailPage.jsx";
@@ -154,7 +153,6 @@ function App() {
             <Route path="/category/:id/:type" element={<CategoryPageNew />} />
             <Route path="/video/:videoId" element={<VideoDetailPage />} />
             <Route path="/videos" element={<VideosPage />} />
-            <Route path="/pictures" element={<PicturesPage />} />
             <Route
               path="/pictures/category/:categoryId"
               element={<PictureCategoryPage />}

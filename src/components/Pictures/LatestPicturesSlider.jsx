@@ -1,13 +1,11 @@
 import React, { memo, useEffect, useState, useMemo, useRef } from "react";
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from "react-router-dom";
 import SimplePictureCard from "./SimplePictureCard.jsx";
 import { getLatestPictures } from "../../mockData/picturesData.js";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const LatestPicturesSlider = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [pictures, setPictures] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,9 +39,6 @@ const LatestPicturesSlider = () => {
     }
   }, [pictures]);
 
-  const handleViewAllClick = () => {
-    navigate('/pictures');
-  };
 
   // Slider navigation functions
   const scrollToSlide = (direction) => {
@@ -169,32 +164,21 @@ const LatestPicturesSlider = () => {
             </h2>
           </div>
           
-          <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-between sm:justify-end">
-            {/* Navigation Buttons - Hidden on mobile, show only on desktop slider */}
-            <div className="hidden lg:flex gap-2">
-              <button
-                onClick={handlePrevClick}
-                className="p-2 bg-white text-[#59ACBE] rounded-full shadow-md hover:bg-[#59ACBE] hover:text-white transition-all duration-200"
-                aria-label="Previous pictures"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNextClick}
-                className="p-2 bg-white text-[#59ACBE] rounded-full shadow-md hover:bg-[#59ACBE] hover:text-white transition-all duration-200"
-                aria-label="Next pictures"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* View All Button */}
+          {/* Navigation Buttons - Hidden on mobile, show only on desktop slider */}
+          <div className="hidden lg:flex gap-2">
             <button
-              onClick={handleViewAllClick}
-              className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#59ACBE] text-white text-sm sm:text-base rounded-lg hover:bg-[#FCD11A] hover:text-[#59ACBE] transition-all duration-200 font-medium shadow-md hover:shadow-lg touch-manipulation"
+              onClick={handlePrevClick}
+              className="p-2 bg-white text-[#59ACBE] rounded-full shadow-md hover:bg-[#59ACBE] hover:text-white transition-all duration-200"
+              aria-label="Previous pictures"
             >
-              {t('common.viewAll')}
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNextClick}
+              className="p-2 bg-white text-[#59ACBE] rounded-full shadow-md hover:bg-[#59ACBE] hover:text-white transition-all duration-200"
+              aria-label="Next pictures"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>

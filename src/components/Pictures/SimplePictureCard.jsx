@@ -1,6 +1,5 @@
 import React, { memo, useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { Heart } from 'lucide-react';
 
 const SimplePictureCard = ({ 
   id, 
@@ -15,27 +14,9 @@ const SimplePictureCard = ({
   tags = []
 }) => {
   const { t } = useTranslation();
-  const [isLiked, setIsLiked] = useState(false);
-  const [currentLikes, setCurrentLikes] = useState(likes);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleLikeClick = (e) => {
-    e.stopPropagation();
-    setIsLiked(!isLiked);
-    setCurrentLikes(prev => isLiked ? prev - 1 : prev + 1);
-  };
-
-  const getDifficultyColor = (level) => {
-    switch (level) {
-      case 'beginner': return 'text-green-600 bg-green-100';
-      case 'intermediate': return 'text-yellow-600 bg-yellow-100';
-      case 'advanced': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
-    }
-  };
-
   const displayTitle = titleKey ? t(titleKey) : title || 'Untitled Picture';
-  const displayCategoryTitle = categoryTitleKey ? t(categoryTitleKey) : categoryTitle || 'Unknown Category';
 
   return (
     <div className="group bg-white rounded-lg sm:rounded-xl shadow-sm sm:shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-[#59ACBE]">
@@ -59,42 +40,10 @@ const SimplePictureCard = ({
             setImageLoaded(true);
           }}
         />
-        
-        {/* Overlay with like button */}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300">
-          <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button
-              onClick={handleLikeClick}
-              className="p-1.5 sm:p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors duration-200 touch-manipulation"
-              aria-label={isLiked ? "Unlike" : "Like"}
-            >
-              <Heart className={`w-4 h-4 sm:w-5 sm:h-5 ${isLiked ? 'text-red-500 fill-current' : 'text-gray-600'}`} />
-            </button>
-          </div>
-        </div>
-
-        {/* Difficulty Badge */}
-        <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-          <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-medium rounded-full ${getDifficultyColor(difficulty)}`}>
-            <span className="hidden sm:inline">{t(`common.difficulty.${difficulty}`)}</span>
-            <span className="sm:hidden">{difficulty.charAt(0).toUpperCase()}</span>
-          </span>
-        </div>
       </div>
 
       {/* Content - Simplified without View Details button */}
       <div className="p-2 sm:p-4">
-        {/* Category */}
-        <div className="flex items-center justify-between mb-1 sm:mb-2">
-          <span className="text-xs sm:text-sm font-medium text-[#59ACBE] group-hover:text-[#FCD11A] transition-colors duration-200 truncate">
-            {displayCategoryTitle}
-          </span>
-          <div className="flex items-center gap-0.5 sm:gap-1 text-gray-500 flex-shrink-0 ml-1">
-            <Heart className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm">{currentLikes}</span>
-          </div>
-        </div>
-
         {/* Title */}
         <h3 className="font-semibold text-xs sm:text-base text-gray-900 mb-1 sm:mb-2 line-clamp-2 group-hover:text-[#59ACBE] transition-colors duration-200">
           {displayTitle}

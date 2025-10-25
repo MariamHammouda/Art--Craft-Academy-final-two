@@ -101,7 +101,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
       tabIndex={0}
       style={{
         touchAction: isMobile ? 'pan-y' : 'manipulation',
-        paddingTop: isMobile ? '40px' : '30px', // Add padding for floating icon
+        paddingTop: isMobile ? '30px' : '30px', // Add padding for floating icon
         overflow: 'visible',
         ...(isMobile ? {} : { perspective: '1000px' })
       }}
@@ -137,7 +137,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
           className="absolute -top-4 left-1/2 transform -translate-x-1/2 transition-all"
           style={{
             transform: isMobile 
-              ? `translateX(-50%) translateY(-8px)` 
+              ? `translateX(-50%) translateY(-4px)` 
               : `translateX(-50%) translateY(-12px) translateZ(20px)`,
             ...(isMobile ? {} : { transformStyle: 'preserve-3d' }),
             transition: isMobile ? 'all 0.2s ease-out' : 'all 0.5s ease-out'
