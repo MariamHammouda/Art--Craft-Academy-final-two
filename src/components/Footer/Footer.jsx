@@ -14,22 +14,36 @@ const Footer = () => {
   
   return (
     <footer className="text-white bg-[#74BFD0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-        {/* Contact */}
-        <div className="text-center sm:text-left">
-          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('about.contact')}</h3>
-          <ul className="space-y-2 sm:space-y-3 text-white/90">
-            <li className="flex flex-row items-center justify-center sm:justify-start gap-2">
-              <FaEnvelope className="flex-shrink-0 text-base sm:text-lg" />
-              <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base">hello@artcraft.academy</a>
-            </li>
-          </ul>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 grid gap-6 sm:gap-16 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        {/* Contact & Logo Row on Mobile */}
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-1 sm:gap-0">
+          {/* Logo - Shows on mobile on the left, hidden on sm+ */}
+          <div className="flex flex-col items-start justify-start sm:hidden">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={NavbarLogo} 
+                alt="Art Craft Academy" 
+                className="h-16 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
+              />
+            </Link>
+          </div>
+
+{/* Contact */}
+          <div className="text-center sm:text-left mb-8 sm:mb-0">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('about.contact')}</h3>
+            <ul className="space-y-2 sm:space-y-3 text-white/90">
+              <li className="flex flex-row items-start justify-center sm:justify-start gap-2">
+                <FaEnvelope className="flex-shrink-0 text-base sm:text-lg mt-1" />
+                <a href="mailto:hello@artcraft.academy" className="hover:underline text-sm sm:text-base">hello@academy</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Important Links */}
         <div className="text-center sm:text-left">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('footer.quickLinks')}</h3>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-white/90">
+          <ul className="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-2 sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2 text-white/90">
             <li><Link to="/" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.home')}</Link></li>
             <li><Link to="/courses" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.courses')}</Link></li>
             <li><Link to="/#categories" className="hover:underline text-sm sm:text-base inline-block py-1">{t('nav.categories')}</Link></li>
@@ -91,14 +105,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Logo */}
-        <div className="flex flex-col items-center sm:items-center md:items-end">
+        {/* Logo - Hidden on mobile, shown on sm+ */}
+        <div className="hidden sm:flex flex-col items-center md:items-end">
           <div className="mb-2 sm:mb-3">
             <Link to="/" className="flex items-center">
               <img 
                 src={NavbarLogo} 
                 alt="Art Craft Academy" 
-                className="h-16 sm:h-20 md:h-24 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
+                className="h-20 md:h-24 w-auto hover:scale-105 active:scale-95 transition-transform duration-300"
               />
             </Link>
           </div>
