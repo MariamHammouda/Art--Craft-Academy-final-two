@@ -39,7 +39,10 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
   };
 
   const handleCategoryClick = useCallback((e) => {
-    e.preventDefault();
+    // Don't prevent default on touch scroll gestures
+    if (e.type === 'click') {
+      e.preventDefault();
+    }
     e.stopPropagation();
     console.log('Category clicked:', id, title);
     try {
@@ -97,7 +100,7 @@ const CategoryCard = ({ titleKey, icon, color, id, bannerImage, forceNavigate = 
       role="button"
       tabIndex={0}
       style={{
-        touchAction: 'manipulation',
+        touchAction: isMobile ? 'pan-y' : 'manipulation',
         paddingTop: isMobile ? '40px' : '30px', // Add padding for floating icon
         overflow: 'visible',
         ...(isMobile ? {} : { perspective: '1000px' })

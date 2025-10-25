@@ -72,7 +72,7 @@ const CategoriesBar = () => {
                 setScrollIndex(index);
               }}
               style={{
-                touchAction: "pan-x",
+                touchAction: "pan-y pan-x",
                 WebkitOverflowScrolling: "touch",
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",

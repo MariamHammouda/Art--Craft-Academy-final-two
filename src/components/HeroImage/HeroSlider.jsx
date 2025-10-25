@@ -36,7 +36,7 @@ const HeroSlider = () => {
   return (
     <div className="w-full max-w-4xl mx-auto optimize-scroll">
       {/* Image Container with Mobile-Optimized Height */}
-      <div className="relative w-full h-40 sm:h-48 md:h-56 lg:h-72 xl:h-80 overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl bg-gray-100 ring-2 ring-white/20" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
+      <div className="relative w-full h-56 sm:h-68 md:h-72 lg:h-80 xl:h-80 overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl bg-gray-100 ring-2 ring-white/20" style={{ willChange: 'auto', transform: 'translateZ(0)' }}>
         {/* Slides */}
         {images.map((src, i) => (
           <div

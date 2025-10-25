@@ -99,9 +99,10 @@ function App() {
   return (
     <Router>
       <div 
-        className="overflow-x-hidden flex flex-col min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+        className="overflow-x-hidden flex flex-col min-h-screen bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${gradientBackground})`
+          backgroundImage: `url(${gradientBackground})`,
+          backgroundAttachment: window.innerWidth >= 768 ? 'fixed' : 'scroll'
         }}
       >
         <ScrollToTop />
